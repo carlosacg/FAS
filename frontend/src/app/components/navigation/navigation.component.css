@@ -1,0 +1,94 @@
+.navigation{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: #2A3F54;
+    width: 230px;
+    height: 100%;
+    opacity: .99;
+    display: inline-block;
+    font-family: helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
+}
+
+nav-link{
+    color: #fff;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+    font-family: FontAwesome;
+    
+}
+ul{
+    list-style-type: none;
+}
+li a:hover{
+    background-color: #F2F4F4;
+    color: #2A3F54;
+}
+
+
+.profile_pic {
+    width: 35%;
+    float: left
+}
+.img-circle.profile_img {
+    width: 100%;
+    margin-left: 15%;
+    z-index: 1000;
+    position: inherit;
+    margin-top: 10px;
+    border: 1px solid rgba(52, 73, 94, 0.44);
+    padding: 4px
+}
+.profile_info {
+    padding: 10px;
+    width: 65%;
+    float: left
+}
+.profile_info span {
+    font-size: 13px;
+    line-height: 30px;
+    color: #BAB8B8
+}
+.profile_info h2 {
+    font-size: 14px;
+    color: #ECF0F1;
+    margin: 0;
+    font-weight: 300
+}
+
+
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 13px 15px 12px
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box
+}
+.clearfix:after,
+form:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+    
+    
+    
+    
+    
+    
+    

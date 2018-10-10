@@ -1,0 +1,58 @@
+body{
+    font-size: 12px;
+  }
+
+  #Container{
+    width: 400px;
+    margin: 100px auto;
+    background-color: #F3EDED;
+      border: 1px solid #ECE8E8;
+    height: 415px;
+    border-radius: 8px;
+    padding: 0px 9px 0px 9px;
+  }
+  
+
+  .Icon span{
+    background: #A8A6A6;
+    padding: 20px;
+    border-radius: 120px;
+  }
+
+  .Icon{
+    text-align: center;
+  }
+
+  .rememberPassword{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .singIn{
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 30px;
+    font-size: 14px;
+  }
+  
+  .botonimagen{
+    width: 280px;
+    height: 40px;
+    background-image: url(../../images/loginFace2.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  #logo{
+    background-image: url(../../images/FASG.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0px;
+  }
+
+  h3{
+    text-align: center;
+    color: rgb(150,214,36);
+  }

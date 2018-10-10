@@ -1,0 +1,89 @@
+<div class="container">
+    <div>
+    <h1>Cuentas</h1>
+  <form #accountForm="ngForm" (ngSubmit)="addAccount(accountForm)">
+              <div class="row">
+               
+                <div class="input-field col s12">
+                  <input type="hidden" name="account_number" #account_number="ngModel" [(ngModel)]="accountService.selectedAccount.account_number">
+                </div>
+                <div class="input-field col s12">
+                  <p>TIPO DE CUENTA</p>
+                    <select name="type_account" #type_account="ngModel" [(ngModel)]="accountService.selectedAccount.type_account" form="carform">
+                        <option value="CREDITO">CREDITO</option>
+                        <option value="DEBITO">DEBITO</option>
+                      </select>
+  
+                </div>
+                <div class="input-field col s12">
+                  <input type="hidden" name="positive_balance" value="0" #positive_balance="ngModel" [(ngModel)]="accountService.selectedAccount.positive_balance" placeholder="Ingresa Saldo Inicial">
+                </div>
+                <div class="input-field col s12">
+                  <input type="hidden" name="negative_balance" value="0" #negative_balance="ngModel" [(ngModel)]="accountService.selectedAccount.negative_balance">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="description" #description="ngModel" [(ngModel)]="accountService.selectedAccount.description" placeholder="Ingresa una descripcion">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="bank_name" #bank_name="ngModel" [(ngModel)]="accountService.selectedAccount.bank_name" placeholder="Ingresa tu banco">
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" name="identification" #identification="ngModel" [(ngModel)]="accountService.selectedAccount.identification" placeholder="Ingresa id usuario">
+                  </div>
+                <div class="card-action">
+                  <div class="input-field col s12">
+                    <button class="btn " style="margin-left: 2px">Save</button>
+                    <button class="btn rigth" (click)="resetForm(accountForm)">Clean</button>
+  
+                  </div>
+  
+                </div>
+              </div>
+            </form>
+    <br>
+    <br>
+    <br>
+    <div class="position-left" *ngFor="let account of accountService.accountArray">
+    <h3>{{ account.description}} - {{ account.bank_name}}</h3>
+    <table class="table table-hover">
+     <thead>
+        <tr>
+          <th scope="col">{{ account.type_account}}</th>
+          <th scope="col"></th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Saldo</td>
+          <th scope="row">$</th>
+          <td>{{ account.positive_balance}}</td>
+        </tr>
+        <tr>
+            <td>Deuda</td>
+            <th scope="row">$</th>
+            <td>{{ account.negative_balance}}</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <th scope="row">$</th>
+          <th>{{ account.positive_balance-account.negative_balance}}</th>
+        </tr>
+   <td>
+                      <a (click)="updateAccount(account)">
+                        <i class="fa fa-pencil"></i>
+                      </a>
+                      <a (click)="deleteAccount(account.account_number)">
+                        <i class="fa fa-trash"></i>
+                      </a>
+                      <a (click)="insertIncome(account)">
+                        <i class="fa fa-usd"></i>
+                      </a>
+                    </td>
+      </tbody>
+      
+    </table>
+      </div>
+    </div>       
+  </div>
+

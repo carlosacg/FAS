@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+            <form #transactionForm="ngForm" (ngSubmit)="addTransaction(transactionForm)">
+              <div class="row">
+               
+                <div class="input-field col s12">
+                  <input type="hidden" name="transaction_number" #transaction_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.transaction_number">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="item_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.item_number" placeholder="Ingresa el item del presupuesto">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="last_name" #last_name="ngModel" [(ngModel)]="userService.selectedUser.last_name" placeholder="Ingresa tu apellido">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Ingresa tu email">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="pass" #pass="ngModel" [(ngModel)]="userService.selectedUser.pass" placeholder="Ingresa tu contraseña">
+                </div>
+                <div class="input-field col s12">
+                  <input type="text" name="picture" #picture="ngModel" [(ngModel)]="userService.selectedUser.picture" placeholder="Ingresa tu foto">
+                </div>
+                <div class="card-action">
+                  <div class="input-field col s12">
+                    <button class="btn " style="margin-left: 2px">Save</button>
+                    <button class="btn rigth" (click)="resetForm(userForm)">Clean</button>
+  
+                  </div>
+  
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+        <table>
+          <thead>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+            <th>Foto</th>
+            <th>ACCIONES</th>
+  
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userService.userArray">
+              <td>{{ user.user_name}}</td>
+              <td>{{ user.last_name}}</td>
+              <td>{{ user.email}}</td>   
+              <td>{{ user.pass}}</td> 
+              <td>{{ user.picture}}</td> 
+              <td>
+                <a (click)="updateUser(user)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deleteUser(user.identification)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>       
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
