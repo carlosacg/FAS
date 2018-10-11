@@ -9,31 +9,36 @@
                 </div>
                 <div class="input-field col s12">
                   <p>TIPO DE CUENTA</p>
-                    <select name="type_account" #type_account="ngModel" [(ngModel)]="accountService.selectedAccount.type_account" form="carform">
+                    <select class="form-control" name="type_account" #type_account="ngModel" [(ngModel)]="accountService.selectedAccount.type_account" form="carform">
                         <option value="CREDITO">CREDITO</option>
                         <option value="DEBITO">DEBITO</option>
                       </select>
   
                 </div>
                 <div class="input-field col s12">
-                  <input type="hidden" name="positive_balance" value="0" #positive_balance="ngModel" [(ngModel)]="accountService.selectedAccount.positive_balance" placeholder="Ingresa Saldo Inicial">
+                  <input class="form-control" type="hidden" name="positive_balance" value="0" #positive_balance="ngModel" [(ngModel)]="accountService.selectedAccount.positive_balance" placeholder="Ingresa Saldo Inicial">
                 </div>
+                <br>
                 <div class="input-field col s12">
-                  <input type="hidden" name="negative_balance" value="0" #negative_balance="ngModel" [(ngModel)]="accountService.selectedAccount.negative_balance">
+                  <input class="form-control" type="hidden" name="negative_balance" value="0" #negative_balance="ngModel" [(ngModel)]="accountService.selectedAccount.negative_balance">
                 </div>
+                <br>
                 <div class="input-field col s12">
-                  <input type="text" name="description" #description="ngModel" [(ngModel)]="accountService.selectedAccount.description" placeholder="Ingresa una descripcion">
+                  <input  class="form-control" type="text" name="description" #description="ngModel" [(ngModel)]="accountService.selectedAccount.description" placeholder="Ingresa una descripcion">
                 </div>
+                <br>
                 <div class="input-field col s12">
-                  <input type="text" name="bank_name" #bank_name="ngModel" [(ngModel)]="accountService.selectedAccount.bank_name" placeholder="Ingresa tu banco">
+                  <input class="form-control" type="text" name="bank_name" #bank_name="ngModel" [(ngModel)]="accountService.selectedAccount.bank_name" placeholder="Ingresa tu banco">
                 </div>
+                <br>
                 <div class="input-field col s12">
-                    <input type="text" name="identification" #identification="ngModel" [(ngModel)]="accountService.selectedAccount.identification" placeholder="Ingresa id usuario">
+                    <input class="form-control" type="text" name="identification" #identification="ngModel" [(ngModel)]="accountService.selectedAccount.identification" placeholder="Ingresa id usuario">
                   </div>
+                <br>
                 <div class="card-action">
                   <div class="input-field col s12">
-                    <button class="btn " style="margin-left: 2px">Save</button>
-                    <button class="btn rigth" (click)="resetForm(accountForm)">Clean</button>
+                    <button class="btn-save " style="margin-left: 2px">Save</button>
+                    <button class="btn-clear" (click)="resetForm(accountForm)">Clean</button>
   
                   </div>
   
@@ -43,6 +48,7 @@
     <br>
     <br>
     <br>
+    <div>
     <div class="position-left" *ngFor="let account of accountService.accountArray">
     <h3>{{ account.description}} - {{ account.bank_name}}</h3>
     <table class="table table-hover">
