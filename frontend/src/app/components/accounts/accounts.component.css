@@ -37,18 +37,18 @@ th, td {
     width: 400px;
     border-radius: 5px;
 }
-.bt-save {
+.btn-save {
     border-radius: 5px;
     Position:Absolute; 
     left:2%; 
-    top:38%;
+    top:40%;
     padding: 8px 8px;
 } 
-.bt-clear {
+.btn-clear {
     border-radius: 5px;
     Position:Absolute; 
     left:9%; 
-    top:38%;
+    top:40%;
     padding: 8px 8px;
 } 
 h3{
@@ -65,6 +65,7 @@ a{
     color: #2A3F54;
     text-decoration: none;
     font-family: FontAwesome;
+    padding: 10px 8px;
     
 }
 ul{
