@@ -98,4 +98,8 @@ export class AccountsComponent implements OnInit {
     }
   }
 
+  redirect(){
+    location.reload(); 
+  }
+
 }
