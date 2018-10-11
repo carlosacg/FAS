@@ -1,3 +1,40 @@
+.header{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #2A3F54;
+    width: 1430px;
+    height: 50px;
+    opacity: .99;
+    font-family: helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+}
+.header img{
+    width: 60px; 
+    height: 50px;
+    vertical-align: -18px;
+    padding: 1px 8px;
+}
+
+nav-link{
+    color: #fff;
+}
+.header a{
+    color: white;
+    font-family: helvetica;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: left;
+    text-decoration: none;
+}
+.header button{
+    padding: 8px 8px;
+    border-radius: 5px;
+    Position:Absolute; left:92%; top:15%
+}
 .navigation{
     position: absolute;
     top: 50px;
@@ -15,12 +52,7 @@
     -moz-osx-font-smoothing: grayscale;
     
 }
-
-nav-link{
-    color: #fff;
-}
-
-a{
+.navigation a{
     color: #fff;
     text-decoration: none;
     font-family: FontAwesome;
@@ -84,6 +116,17 @@ form:after {
     height: 0;
     clear: both;
     visibility: hidden
+}
+p{
+    position: absolute;
+    top: 776px;
+    bottom: 0;
+    left: 230px;
+    background: gray;
+    color: white;
+    width: 1430px;
+    height: 30px;
+    font-family: helvetica;
 }
     
     
