@@ -10,6 +10,9 @@ import {app_routing} from './app.routes';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { BudgetComponent } from './components/budget/budget.component';
+import { LoginComponent } from './components/login/login.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +21,7 @@ import { BudgetComponent } from './components/budget/budget.component';
     AccountsComponent,
     TransactionsComponent,
     BudgetComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
