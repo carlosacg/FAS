@@ -12,6 +12,20 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { BudgetComponent } from './components/budget/budget.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("289312158718-jlabu5tck7djf68jstf430qdud676gmv.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("2052340698429751")
+  }
+]);
 
 @NgModule({
   declarations: [
@@ -22,12 +36,17 @@ import { LoginComponent } from './components/login/login.component';
     TransactionsComponent,
     BudgetComponent,
     LoginComponent,
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    app_routing
+    app_routing,
+    SocialLoginModule.initialize(config),
+    BrowserModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

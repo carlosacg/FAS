@@ -5,29 +5,36 @@
   <header class="w3-container">
     <h4><b><i class="fa fa-calendar"></i> Presupuesto</b></h4>
   </header>
-  <div class="w3-row-padding">
-      <div class="w3-half">
-        <label>Fecha de inicio</label>
-        <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd">
-      </div>
-      <div class="w3-half">
-        <label>Fecha de final</label>
-        <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd">
-      </div>
-    </div>
+
   <div class="w3-row-padding w3-margin-bottom">
-    <form class="w3-container">
-      <input class="w3-input w3-border w3-light-grey" type="text" placeholder="Ingresa nombre del presupuesto">
+    <form class="w3-container" #budgetForm="ngForm" (ngSubmit)="addBudget(budgetForm)">
+
+        <div class="w3-row-padding">
+            <div class="w3-half">
+              <label>Fecha Inicial</label>
+              <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="initial_date" #initial_date="ngModel" [(ngModel)]="budgetService.selectedBudget.initial_date">
+            </div>
+
+            <div class="w3-half">
+              <label>Fecha Finalización</label>
+              <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="end_date" #end_date="ngModel" [(ngModel)]="budgetService.selectedBudget.end_date">
+            </div>
+          </div>
+          <br>
+
+      <input class="w3-input w3-border w3-light-grey" type="text" name="budget_name" #budget_name="ngModel" [(ngModel)]="budgetService.selectedBudget.budget_name" placeholder="Ingresa nombre del presupuesto">
+      <br>
+      <input class="w3-input w3-border w3-light-grey" type="text" name="identification" #identification="ngModel" [(ngModel)]="budgetService.selectedBudget.identification" placeholder="Ingresa tu identificacion">
       <br>
       <div class="w3-show-inline-block">
           <div class="w3-bar">
-              <button class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-save"></i></button>
-              <button class="w3-button w3-blue-grey w3-padding-16 w3-circle"><i class="fa fa-repeat"></i></button>
+              <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>
+              <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)"><i class="fa fa-repeat"></i></button>
           </div>
       </div>
     </form>
-  <div class="w3-container">
-     <h5>Presupuesto-octubre</h5>
+  <div class="w3-container" *ngFor="let budget of budgetService.budgetArray">
+     <h5>{{budget.budget_name}} {{budget.initial_date}}-{{budget.end_date}}</h5>
       <table class="w3-table-all w3-hoverable ">
         <thead>
           <tr class="w3-blue-gray">
@@ -42,68 +49,25 @@
             <th></th>
           </tr>
         </thead>
-        <tr>
-          <td>1</td>
-          <td>Comida</td>
+        <tr id="registro_item" *ngFor="let item of itemService.itemArray">
+          <td>{{item.item_number}}</td>
+          <td>{{item.description}}</td>
           <td>$</td>
-          <td>300.000</td>
+          <td>{{item.spent_balance}}</td>
           <td>$</td>
-          <td>400.000</td>
-          <td><a><i class="fa fa-pencil"></i></a></td>
-          <td><a><i class="fa fa-trash"></i></a></td>
+          <td>{{item.planned_balance}}</td>
+          <td><a><i ></i></a></td>
+          <td><a><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></a></td>
           <td><a><i class="fa fa-shopping-cart"></i></a></td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Educación</td>
-            <td>$</td>
-            <td>200.000</td>
-            <td>$</td>
-            <td>300.000</td>
-            <td><a><i class="fa fa-pencil"></i></a></td>
-            <td><a><i class="fa fa-trash"></i></a></td>
-            <td><a><i class="fa fa-shopping-cart"></i></a></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Transporte</td>
-            <td>$</td>
-            <td>150.000</td>
-            <td>$</td>
-            <td>200.000</td>
-            <td><a><i class="fa fa-pencil"></i></a></td>
-            <td><a><i class="fa fa-trash"></i></a></td>
-            <td><a><i class="fa fa-shopping-cart"></i></a></td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Diversión</td>
-            <td>$</td>
-            <td>150.000</td>
-            <td>$</td>
-            <td>200.000</td>
-            <td><a><i class="fa fa-pencil"></i></a></td>
-            <td><a><i class="fa fa-trash"></i></a></td>
-            <td><a><i class="fa fa-shopping-cart"></i></a></td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Extra</td>
-            <td>$</td>
-            <td>150.000</td>
-            <td>$</td>
-            <td>200.000</td>
-            <td><a><i class="fa fa-pencil"></i></a></td>
-            <td><a><i class="fa fa-trash"></i></a></td>
-            <td><a><i class="fa fa-shopping-cart"></i></a></td>
-        </tr>
+      
         <tr>
             <td></td>
-            <td>Total</td>
-            <td>$</td>
-            <td>1'100.000</td>
-            <td>$</td>
-            <td>1'500.000</td>
+            <td><strong>Total</strong></td>
+            <td><strong>$</strong></td>
+            <td>TotalGASTO</td>
+            <td><strong>$</strong></td>
+            <td>TotalPLANEADO</td>
             <td></td>
             <td></td>
             <td></td>
@@ -115,15 +79,15 @@
               </a>
             </td>
             <td>
-              <a>
-                <button class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-pencil"></i></button>
-              </a>
-            </td>
+                <a>
+                  <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="deleteBudget(budget.budget_number)"><i class="fa fa-trash"></i></button>
+                </a>
+              </td>
             <td>
               <a>
-                <button class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-trash"></i></button>
               </a>
             </td>
+
             <td></td>
             <td></td>
             <td></td>
@@ -134,7 +98,7 @@
       </table>
       <div class="w3-container">
           
-        
+        <!-- FORMULARIO ITEM-->
           <div id="id01" class="w3-modal">
             <div class="w3-modal-content">
               <header class="w3-container w3-blue-gray"> 
@@ -143,18 +107,22 @@
                 <h2>Insertar ítem</h2>
               </header>
               <div class="w3-container">
-                  <form class="w3-container">
+                  <form class="w3-container" #itemForm="ngForm" (ngSubmit)="addItem(itemForm)">
                     
-                    <input class="w3-input w3-border w3-light-grey" type="text" placeholder="Ingresa nombre de la categoría">
+                    <input class="w3-input w3-border w3-light-grey" type="text" name="description" #description="ngModel" [(ngModel)]="itemService.selectedItem.description" placeholder="Ingresa nombre de la categoría">
                     <br>
-                    <input class="w3-input w3-border w3-light-grey" type="text" placeholder="Ingresa valor gastado">
+
+                    <input class="w3-input w3-border w3-light-grey" type="number" value="budget.budget_number" name="budget_number" #budget_number="ngModel" [(ngModel)]="itemService.selectedItem.budget_number" placeholder="Ingresa presupuesto">
+
                     <br>
-                    <input class="w3-input w3-border w3-light-grey" type="text" placeholder="Ingresa valor planeado">
+                    <input class="w3-input w3-border w3-light-grey" type="number" value=0 name="spent_balance" #spent_balance="ngModel" [(ngModel)]="itemService.selectedItem.spent_balance" placeholder="Ingresa valor gastado">
+                    <br>
+                    <input class="w3-input w3-border w3-light-grey" type="number" name="planned_balance" #planned_balance="ngModel" [(ngModel)]="itemService.selectedItem.planned_balance" placeholder="Ingresa valor planeado">
                     <br>
                     <div class="w3-show-inline-block">
                         <div class="w3-bar">
-                            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-save"></i></button>
-                            <button class="w3-button w3-blue-grey w3-padding-16 w3-circle"><i class="fa fa-repeat"></i></button>
+                            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>
+                            <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)"><i class="fa fa-repeat"></i></button>
                         </div>
                     </div>
                   </form>
@@ -165,8 +133,6 @@
         </div>
     </div>
   <hr>
-
-  
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-small w3-gray">

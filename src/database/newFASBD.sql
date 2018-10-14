@@ -51,7 +51,7 @@ CREATE TABLE item(
 	planned_balance INTEGER NOT NULL,
 	spent_balance INTEGER,
 	description VARCHAR(100),
-	CONSTRAINT spent_fk1 FOREIGN KEY (budget_number) REFERENCES budget(budget_number)
+	CONSTRAINT spent_fk1 FOREIGN KEY (budget_number) REFERENCES budget(budget_number)  ON DELETE CASCADE
 
 );
 
