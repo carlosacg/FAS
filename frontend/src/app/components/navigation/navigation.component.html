@@ -1,50 +1,58 @@
-<div>
-<div class="header">
-  <nav class="navbar navbar-light bg-light justify-content-between">
-    <form class="form-inline">
-        <a class="navbar-brand" href="#">
-          <img src="../assets/images/Imagen2.png" width="30" height="30" class="d-inline-block align-top" alt="">
-          Finance Administrative System
-        </a>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerrar sesión</button>
-    </form>
+
+  <div class="w3-bar w3-top w3-blue-gray w3-padding-15">
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menú</button>
+      <form >
+          <a class= "w3-display-middle" >
+            <img src="../assets/images/Imagen2.png" class="w3-round w3-margin-right">
+            Finance Administrative System
+          </a>  
+          <a href="#" class="w3-bar-item w3-button w3-light-gray w3-right w3-large w3-circle"><i class="fa fa-sign-out"></i></a>
+      </form>
+  </div>
+  <nav class="w3-sidebar w3-collapse w3-blue-gray w3-animate-left" id="mySidebar"><br>
+    <div class="w3-container w3-row">
+      <div class="w3-col s4">
+        <img src="../assets/images/Imagen1.png" class="w3-circle w3-margin-right" style="width:65px">
+      </div>
+      <div class="w3-col s8 w3-bar">
+        <span>  Bienvenido, <strong>  KT</strong></span><br>
+      </div>
+    </div>
+    <hr>
+    <div class="w3-container">
+      <h5>General</h5>
+    </div>
+    <div class="w3-bar-block">
+      <a class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a class="w3-bar-item w3-button w3-padding" ><i class="fa fa-home fa-fw"></i>  Inicio</a>
+      <a class="w3-bar-item w3-button w3-padding" [routerLink]="['/accounts']"><i class="fa fa-database fa-fw"></i>  Cuentas</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-credit-card fa-fw"></i>  Transacciones</a>
+      <a class="w3-bar-item w3-button w3-padding" [routerLink]="['/budget']"><i class="fa fa-calendar fa-fw"></i>  Presupuesto</a>
+    </div>
   </nav>
-</div>
-<div class="navigation"> 
- <div class="profile clearfix">
-    <div class="profile_pic">
-        <img src="../assets/images/Imagen1.png"  class="img-circle profile_img">
-    </div>
-    <div class="profile_info">
-        <span>Bienvenido,</span>
-        <h2>KT</h2>
-    </div>
-  </div>
-
-  <div>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="fa fa-home" [routerLink]="['/users']">  Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="fa fa-database" [routerLink]="['/accounts']">  Cuentas</a>
-      </li>
-      <li class="nav-item">
-        <a class="fa fa-money" [routerLink]="['/transactions']">  Transacciones</a>
-      </li>
-      <li class="nav-item">
-        <a class="fa fa-bank" [routerLink]="['/budget']">  Presupuesto</a>
-      </li>
-      <li class="nav-item">
-        <a class="fa fa-gear " [routerLink]="['/configuracion']">  Configuración</a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<router-outlet></router-outlet>
-
-<div class="bg-secondary text-white fixed-bottom container">
-  <p>Powered by XSOFT</p>
-</div>
-</div>
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" title="close side menu" id="myOverlay"></div>
+  
+  <script>
+      // Get the Sidebar
+      var mySidebar = document.getElementById("mySidebar");
+      
+      // Get the DIV with overlay effect
+      var overlayBg = document.getElementById("myOverlay");
+      
+      // Toggle between showing and hiding the sidebar, and add overlay effect
+      function w3_open() {
+          if (mySidebar.style.display === 'block') {
+              mySidebar.style.display = 'none';
+              overlayBg.style.display = "none";
+          } else {
+              mySidebar.style.display = 'block';
+              overlayBg.style.display = "block";
+          }
+      }
+      
+      // Close the sidebar with the close button
+      function w3_close() {
+          mySidebar.style.display = "none";
+          overlayBg.style.display = "none";
+      }
+      </script>

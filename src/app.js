@@ -6,7 +6,7 @@ const mysql = require('mysql');
 const myConnection = require('express-myconnection');
 const cors = require('cors');
 //IMPORTING ROUTES
-const passwordDataBase='12345';
+const passwordDataBase='fuckencio1234';
 
 
 const userRoutes=require('./routes/user');
@@ -27,7 +27,7 @@ app.use(cors({origin: 'http://localhost:4200'})); //PERMITE COMUNICACION CON ANG
 
 app.use(myConnection(mysql,{ //CONEXION A LA BASE DE DATOS
     host: 'localhost',
-    user:'andres',
+    user:'root',
     password: passwordDataBase,
     port: 3306,
     database: 'fas_db'

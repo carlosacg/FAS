@@ -1,132 +1,17 @@
-.header{
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: #2A3F54;
-    width: 1430px;
-    height: 50px;
-    opacity: .99;
-    font-family: helvetica;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
+.w3-bar .w3-top .w3-blue-gray .w3-large{
+    z-index:4;
+} 
+.w3-sidebar .w3-collapse .w3-white .w3-animate-left{
+    z-index:3;
+    width:400px;
 }
-.header img{
-    width: 60px; 
-    height: 50px;
-    vertical-align: -18px;
-    padding: 1px 8px;
-}
-
-nav-link{
-    color: #fff;
-}
-.header a{
-    color: white;
-    font-family: helvetica;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    text-align: left;
-    text-decoration: none;
-}
-.header button{
+.w3-bar-item .w3-button .w3-light-gray .w3-right{
     padding: 8px 8px;
     border-radius: 5px;
     Position:Absolute; left:92%; top:15%
 }
-.navigation{
-    position: absolute;
-    top: 50px;
-    left: 0;
-    background: #2A3F54;
-    width: 230px;
-    height: 100%;
-    opacity: .99;
-    display: inline-block;
-    font-family: helvetica;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    
-}
-.navigation a{
-    color: #fff;
-    text-decoration: none;
-    font-family: FontAwesome;
-    
-}
-ul{
-    list-style-type: none;
-}
-li a:hover{
-    background-color: #F2F4F4;
-    color: #2A3F54;
-}
-
-
-.profile_pic {
-    width: 35%;
-    float: left
-}
-.img-circle.profile_img {
-    width: 100%;
-    margin-left: 15%;
-    z-index: 1000;
-    position: inherit;
-    margin-top: 10px;
-    border: 1px solid rgba(52, 73, 94, 0.44);
-    padding: 4px
-}
-.profile_info {
-    padding: 10px;
-    width: 65%;
-    float: left
-}
-.profile_info span {
-    font-size: 13px;
-    line-height: 30px;
-    color: #BAB8B8
-}
-.profile_info h2 {
-    font-size: 14px;
-    color: #ECF0F1;
-    margin: 0;
-    font-weight: 300
-}
-
-
-.nav>li>a {
-    position: relative;
-    display: block;
-    padding: 13px 15px 12px
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box
-}
-.clearfix:after,
-form:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden
-}
-p{
-    position: absolute;
-    top: 776px;
-    bottom: 0;
-    left: 230px;
-    background: gray;
-    color: white;
-    width: 1430px;
-    height: 30px;
-    font-family: helvetica;
+.w3-overlay .w3-hide-large .w3-animate-opacity{
+    cursor:pointer;
 }
     
     
