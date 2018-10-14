@@ -6,7 +6,7 @@ const mysql = require('mysql');
 const myConnection = require('express-myconnection');
 const cors = require('cors');
 //IMPORTING ROUTES
-const passwordDataBase='fuckencio1234';
+const passwordDataBase='123456';
 
 
 const userRoutes=require('./routes/user');
