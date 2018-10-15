@@ -50,12 +50,16 @@ export class BudgetComponent implements OnInit {
     })
   }
 
+  
+
 
   getItems(){//OBTENGO LA LISTA DE USUARIOS
     this.itemService.getItems().subscribe(res =>{
       this.itemService.itemArray = res as Item[];
     })
   }
+
+
 
   deleteBudget(budget_number:string,form: NgForm){
     if(confirm('¿Seguro que desea eliminar este presupuesto?')) {

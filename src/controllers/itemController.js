@@ -3,6 +3,7 @@ const Item = require('../models/item');
 const itemController={};
 
 itemController.getItems=(req,res)=>{//LISTA LOS DATOS
+    console.log(req.params);
     req.getConnection((err,conn)=>{
         conn.query('SELECT * FROM item;',(err,items)=>{
             if(err){
@@ -16,6 +17,7 @@ itemController.getItems=(req,res)=>{//LISTA LOS DATOS
 };
 
 itemController.getEspecifyItem=(req,res)=>{//LISTA LOS DATOS
+    console.log(req.params);
     req.getConnection((err,conn)=>{
         conn.query("SELECT * FROM item WHERE item_number="+req.params.id+";",(err,items)=>{
             if(err){
@@ -26,6 +28,7 @@ itemController.getEspecifyItem=(req,res)=>{//LISTA LOS DATOS
         })
     })
 };
+
 
 
 itemController.createItem=(req,res)=>{//LISTA LOS DATOS
