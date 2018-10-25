@@ -7,8 +7,8 @@
 6 silly lifecycle fas@1.0.0~predev: no script for predev, continuing
 7 info lifecycle fas@1.0.0~dev: fas@1.0.0
 8 verbose lifecycle fas@1.0.0~dev: unsafe-perm in lifecycle true
-9 verbose lifecycle fas@1.0.0~dev: PATH: /usr/share/npm/bin/node-gyp-bin:/home/andres/Documents/CarlosCuervo/fas/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
-10 verbose lifecycle fas@1.0.0~dev: CWD: /home/andres/Documents/CarlosCuervo/fas
+9 verbose lifecycle fas@1.0.0~dev: PATH: /usr/share/npm/bin/node-gyp-bin:/home/andres/Documents/CarlosCuervo/F.A.S/node_modules/.bin:/home/andres/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+10 verbose lifecycle fas@1.0.0~dev: CWD: /home/andres/Documents/CarlosCuervo/F.A.S
 11 silly lifecycle fas@1.0.0~dev: Args: [ '-c', 'nodemon src/app.js' ]
 12 info lifecycle fas@1.0.0~dev: Failed to exec dev script
 13 verbose stack Error: fas@1.0.0 dev: `nodemon src/app.js`
@@ -19,7 +19,7 @@
 13 verbose stack     at maybeClose (internal/child_process.js:925:16)
 13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
 14 verbose pkgid fas@1.0.0
-15 verbose cwd /home/andres/Documents/CarlosCuervo/fas
+15 verbose cwd /home/andres/Documents/CarlosCuervo/F.A.S
 16 error Linux 4.15.0-29-generic
 17 error argv "/usr/bin/node" "/usr/bin/npm" "run" "dev"
 18 error node v8.10.0

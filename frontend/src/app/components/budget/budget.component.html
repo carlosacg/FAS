@@ -42,11 +42,8 @@
            <tr class="w3-blue-gray">
             <th>Número</th>
              <th>Categoría</th>
-             <th></th>
              <th>Valor gastado</th>
-             <th></th>
              <th>Valor planeado</th>
-             <th></th>
              <th></th>
              <th></th>
            </tr>
@@ -54,11 +51,8 @@
          <tr id="registro_item" *ngFor="let item of itemService.itemArray">
            <td *ngIf="budget.budget_number==item.budget_number">{{item.item_number}}</td>
            <td *ngIf="budget.budget_number==item.budget_number">{{item.description}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number">$</td>
-           <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number">$</td>
-           <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number"><a><i ></i></a></td>
+           <td *ngIf="budget.budget_number==item.budget_number" >$ {{item.spent_balance}}</td>
+           <td *ngIf="budget.budget_number==item.budget_number">$ {{item.planned_balance}}</td>
            <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></a></td>
            <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-shopping-cart"></i></a></td>
          </tr>
@@ -67,9 +61,9 @@
              <td></td>
              <td><strong>Total</strong></td>
              <td><strong>$</strong></td>
-             <td>TotalGASTO</td>
+             <td id="gastadoTotal">totalGastado</td>
              <td><strong>$</strong></td>
-             <td>TotalPLANEADO</td>
+             <td id="planeadoTotal">TotalPLANEADO</td>
              <td></td>
              <td></td>
              <td></td>
@@ -87,6 +81,7 @@
                </td>
              <td>
                <a>
+                  <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="calculateTotal(budget.budget_number)">Calcular</button> 
                </a>
              </td>
  

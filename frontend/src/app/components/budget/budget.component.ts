@@ -95,12 +95,6 @@ export class BudgetComponent implements OnInit {
      
   }
 
-  calculateTotal($scope){
-    $scope.contador= 0;
-    $scope.sumar = function(cantidad) { $scope.contador += cantidad; };
-  }
-
-
   resetForm(form?:NgForm){//LIMPIA LOS CAMPOS
     if(form){
       form.reset();
@@ -113,9 +107,33 @@ export class BudgetComponent implements OnInit {
     location.reload(); 
   }
 
-  ocultar($scope){
-    $scope.variable = true;
+  calculatePlanned(budget_number){
+    let cantidadItem=this.itemService.itemArray.length
+    let totalPlaneado=0
+    for(var i=0; i<cantidadItem;i++){
+      if(this.itemService.itemArray[i].budget_number == budget_number){
+        totalPlaneado+=parseInt(this.itemService.itemArray[i].planned_balance)
+      }
+    }
+    alert(totalPlaneado);
+    document.getElementById('planeadoTotal').innerHTML = totalPlaneado.toString();
+  }
 
+  calculateSpent(budget_number){
+    let cantidadItem=this.itemService.itemArray.length
+    let totalGastado=0
+    for(var i=0; i<cantidadItem;i++){
+      if(this.itemService.itemArray[i].budget_number == budget_number){
+        totalGastado+=parseInt(this.itemService.itemArray[i].spent_balance)
+      }
+    }
+    alert(totalGastado);
+    document.getElementById('gastadoTotal').innerHTML = totalGastado.toString();
+  }
+
+  calculateTotal(budget_number){
+    this.calculateSpent(budget_number);
+    this.calculatePlanned(budget_number);
   }
 
 }
