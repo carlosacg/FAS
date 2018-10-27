@@ -36,7 +36,7 @@
   <div>
     <div class="w3-container" *ngFor="let budget of budgetService.budgetArray">
       <h5> <strong> #{{budget.budget_number}}  {{budget.budget_name}} </strong></h5>
-      <h6><strong>FECHA INICIAL: </strong> {{budget.initial_date}}   //  <strong> FECHA FINALIZACIÓN: </strong>{{budget.end_date}}</h6>
+      <h6><strong>FECHA INICIAL: </strong> {{budget.initial_date | date}}   //  <strong> FECHA FINALIZACIÓN: </strong>{{budget.end_date | date}}</h6>
        <table class="w3-table-all w3-hoverable ">
          <thead>
            <tr class="w3-blue-gray">
@@ -51,8 +51,8 @@
          <tr id="registro_item" *ngFor="let item of itemService.itemArray">
            <td *ngIf="budget.budget_number==item.budget_number">{{item.item_number}}</td>
            <td *ngIf="budget.budget_number==item.budget_number">{{item.description}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number" >$ {{item.spent_balance}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number">$ {{item.planned_balance}}</td>
+           <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance}}</td>
+           <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance}}</td>
            <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></a></td>
            <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-shopping-cart"></i></a></td>
          </tr>
@@ -60,11 +60,8 @@
          <tr>
              <td></td>
              <td><strong>Total</strong></td>
-             <td><strong>$</strong></td>
              <td id="gastadoTotal">totalGastado</td>
-             <td><strong>$</strong></td>
              <td id="planeadoTotal">TotalPLANEADO</td>
-             <td></td>
              <td></td>
              <td></td>
          </tr>
@@ -88,14 +85,13 @@
              <td></td>
              <td></td>
              <td></td>
-             <td></td>
-             <td></td>
-             <td></td>
+
            </tr>
        </table>
        <div class="w3-container">
   </div>
-          
+
+     <div class="w3-container">    
         <!-- FORMULARIO ITEM-->
           <div id="id01" class="w3-modal">
             <div class="w3-modal-content">
@@ -106,15 +102,15 @@
               </header>
               <div class="w3-container">
                   <form class="w3-container" #itemForm="ngForm" (ngSubmit)="addItem(itemForm)">
-                    
-                    <input class="w3-input w3-border w3-light-grey" type="text" name="description" #description="ngModel" [(ngModel)]="itemService.selectedItem.description" placeholder="Ingresa nombre de la categoría">
-                    <br>
+                    <label> Seleccione el presupuesto</label>
                     <select class="w3-input w3-border w3-light-grey"  name="budget_number" #budget_number="ngModel" [(ngModel)]="itemService.selectedItem.budget_number"> 
-                      <option *ngFor="let budget of budgetService.budgetArray"  [selected]="budget.budget_number == 'Seleccione el presupuesto'">{{budget.budget_number}}</option> 
+                      <option *ngFor="let budget of budgetService.budgetArray"  ng-selected="Seleccione el presupuesto" placeholder="Seleccione el presupuesto">{{budget.budget_number}}</option> 
                     </select> 
                     <br>
-                    <input class="w3-input w3-border w3-light-grey" type="number" value=0 name="spent_balance" #spent_balance="ngModel" [(ngModel)]="itemService.selectedItem.spent_balance" placeholder="Ingresa valor gastado">
+
+                    <input class="w3-input w3-border w3-light-grey" type="text" name="description" #description="ngModel" [(ngModel)]="itemService.selectedItem.description" placeholder="Ingresa nombre de la categoría">
                     <br>
+
                     <input class="w3-input w3-border w3-light-grey" type="number" name="planned_balance" #planned_balance="ngModel" [(ngModel)]="itemService.selectedItem.planned_balance" placeholder="Ingresa valor planeado">
                     <br>
                     <div class="w3-show-inline-block">

@@ -23,6 +23,7 @@ export class BudgetComponent implements OnInit {
     this.getBudgets();
     this.getItems();
   }
+
   addBudget(form?:NgForm){//AGREGAR CUENTA
       console.log(form.value);
       this.budgetService.postBudget(form.value).subscribe(res =>{
@@ -36,10 +37,10 @@ export class BudgetComponent implements OnInit {
   addItem(form?:NgForm){//AGREGAR CUENTA
     console.log(form.value);
     this.itemService.postItem(form.value).subscribe(res =>{
-      this.resetForm(form);
+      //this.resetForm(form);
       M.toast({html: 'Item Creada satisfactoriamente'});
-      this.getBudgets();
-      this.getItems();
+      //this.getBudgets();
+      //this.getItems();
     })
 }
 
@@ -116,7 +117,7 @@ export class BudgetComponent implements OnInit {
       }
     }
     alert(totalPlaneado);
-    document.getElementById('planeadoTotal').innerHTML = totalPlaneado.toString();
+    document.getElementById('planeadoTotal').innerHTML = '$ '+totalPlaneado.toString();
   }
 
   calculateSpent(budget_number){
@@ -128,7 +129,7 @@ export class BudgetComponent implements OnInit {
       }
     }
     alert(totalGastado);
-    document.getElementById('gastadoTotal').innerHTML = totalGastado.toString();
+    document.getElementById('gastadoTotal').innerHTML = '$ '+totalGastado.toString();
   }
 
   calculateTotal(budget_number){

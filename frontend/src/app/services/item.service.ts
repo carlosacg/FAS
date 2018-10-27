@@ -20,6 +20,7 @@ export class ItemService {
   }
 
   postItem(item:Item){//CREAR
+    item.spent_balance='0';
     return this.http.post(this.URL_API,item);
   }
 
