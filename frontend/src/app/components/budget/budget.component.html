@@ -33,6 +33,33 @@
           </div>
       </div>
     </form>
+
+    <div class="w3-container">
+    <!--AQUI VA EL BALANCE GENERAL DE LOS PRESUPUESTO-->
+    <table class="w3-table-all w3-hoverable ">
+      <thead>
+        <tr class="w3-blue-gray">
+          <th>Total gastado </th>
+          <th>Total planeado</th>
+        </tr>
+      </thead>
+      <tr>
+        <td id="gastadoTotal">$GASTADO</td>
+        <td id="planeadoTotal">$PLANEADO</td>
+      </tr>
+      <tr>
+        <td>
+          <a>
+            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="calculateTotal()">Calcular</button> 
+          </a>
+        </td>
+      </tr>
+    </table>
+    <!--FIN BALANCE-->
+  </div>
+
+
+
   <div>
     <div class="w3-container" *ngFor="let budget of budgetService.budgetArray">
       <h5> <strong> #{{budget.budget_number}}  {{budget.budget_name}} </strong></h5>
@@ -58,6 +85,8 @@
          </tr>
        
          <tr>
+<<<<<<< HEAD
+=======
              <td></td>
              <td><strong>Total</strong></td>
              <td id="gastadoTotal">totalGastado</td>
@@ -66,6 +95,7 @@
              <td></td>
          </tr>
          <tr>
+>>>>>>> c219d49a1400ee9c11af2f82b48596572c1f0029
              <td>
                <a>
                  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-plus"></i></button>
@@ -76,11 +106,6 @@
                    <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="deleteBudget(budget.budget_number)"><i class="fa fa-trash"></i></button>
                  </a>
                </td>
-             <td>
-               <a>
-                  <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="calculateTotal(budget.budget_number)">Calcular</button> 
-               </a>
-             </td>
  
              <td></td>
              <td></td>

@@ -108,33 +108,30 @@ export class BudgetComponent implements OnInit {
     location.reload(); 
   }
 
-  calculatePlanned(budget_number){
+  calculatePlanned(){
     let cantidadItem=this.itemService.itemArray.length
     let totalPlaneado=0
     for(var i=0; i<cantidadItem;i++){
-      if(this.itemService.itemArray[i].budget_number == budget_number){
         totalPlaneado+=parseInt(this.itemService.itemArray[i].planned_balance)
-      }
+      
     }
     alert(totalPlaneado);
     document.getElementById('planeadoTotal').innerHTML = '$ '+totalPlaneado.toString();
   }
 
-  calculateSpent(budget_number){
+  calculateSpent(){
     let cantidadItem=this.itemService.itemArray.length
     let totalGastado=0
     for(var i=0; i<cantidadItem;i++){
-      if(this.itemService.itemArray[i].budget_number == budget_number){
-        totalGastado+=parseInt(this.itemService.itemArray[i].spent_balance)
-      }
+        totalGastado+=parseInt(this.itemService.itemArray[i].spent_balance)  
     }
     alert(totalGastado);
     document.getElementById('gastadoTotal').innerHTML = '$ '+totalGastado.toString();
   }
 
-  calculateTotal(budget_number){
-    this.calculateSpent(budget_number);
-    this.calculatePlanned(budget_number);
+  calculateTotal(){
+    this.calculateSpent();
+    this.calculatePlanned();
   }
 
 }
