@@ -22,6 +22,8 @@ export class BudgetComponent implements OnInit {
   ngOnInit() {
     this.getBudgets();
     this.getItems();
+    this.calculateTotal();
+
   }
 
   addBudget(form?:NgForm){//AGREGAR CUENTA
@@ -37,10 +39,9 @@ export class BudgetComponent implements OnInit {
   addItem(form?:NgForm){//AGREGAR CUENTA
     console.log(form.value);
     this.itemService.postItem(form.value).subscribe(res =>{
-      //this.resetForm(form);
+      this.resetForm(form);
       M.toast({html: 'Item Creada satisfactoriamente'});
-      //this.getBudgets();
-      //this.getItems();
+      this.ngOnInit()
     })
 }
 
@@ -105,7 +106,8 @@ export class BudgetComponent implements OnInit {
   }
 
   redirect(){
-    location.reload(); 
+    location.reload();
+    this.calculateTotal(); 
   }
 
   calculatePlanned(){
@@ -115,8 +117,8 @@ export class BudgetComponent implements OnInit {
         totalPlaneado+=parseInt(this.itemService.itemArray[i].planned_balance)
       
     }
-    alert(totalPlaneado);
     document.getElementById('planeadoTotal').innerHTML = '$ '+totalPlaneado.toString();
+    return totalPlaneado;
   }
 
   calculateSpent(){
@@ -125,13 +127,15 @@ export class BudgetComponent implements OnInit {
     for(var i=0; i<cantidadItem;i++){
         totalGastado+=parseInt(this.itemService.itemArray[i].spent_balance)  
     }
-    alert(totalGastado);
     document.getElementById('gastadoTotal').innerHTML = '$ '+totalGastado.toString();
+    return totalGastado;
   }
 
   calculateTotal(){
-    this.calculateSpent();
-    this.calculatePlanned();
+    let spent=this.calculateSpent();
+    let planned=this.calculatePlanned();
+    let balance = planned-spent
+    document.getElementById('balanceTotal').innerHTML = '$ '+balance.toString();
   }
 
 }

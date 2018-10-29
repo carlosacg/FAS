@@ -27,7 +27,7 @@ app.use(cors({origin: 'http://localhost:4200'})); //PERMITE COMUNICACION CON ANG
 
 app.use(myConnection(mysql,{ //CONEXION A LA BASE DE DATOS
     host: 'localhost',
-    user:'root',
+    user:'andres',
     password: passwordDataBase,
     port: 3306,
     database: 'fas_db'
