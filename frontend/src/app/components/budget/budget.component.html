@@ -8,109 +8,112 @@
 
   <div class="w3-row-padding w3-margin-bottom">
     <form class="w3-container" #budgetForm="ngForm" (ngSubmit)="addBudget(budgetForm)">
-
         <div class="w3-row-padding">
-            <div class="w3-half">
-              <label>Fecha Inicial</label>
-              <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="initial_date" #initial_date="ngModel" [(ngModel)]="budgetService.selectedBudget.initial_date">
-            </div>
-
-            <div class="w3-half">
-              <label>Fecha Finalización</label>
-              <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="end_date" #end_date="ngModel" [(ngModel)]="budgetService.selectedBudget.end_date">
-            </div>
+          <div class="w3-half">
+            <label>Fecha Inicial</label>
+            <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="initial_date" #initial_date="ngModel" [(ngModel)]="budgetService.selectedBudget.initial_date">
           </div>
-          <br>
-
-      <input class="w3-input w3-border w3-light-grey" type="text" name="budget_name" #budget_name="ngModel" [(ngModel)]="budgetService.selectedBudget.budget_name" placeholder="Ingresa nombre del presupuesto">
-      <br>
-      <input class="w3-input w3-border w3-light-grey" type="text" name="identification" #identification="ngModel" [(ngModel)]="budgetService.selectedBudget.identification" placeholder="Ingresa tu identificacion">
-      <br>
-      <div class="w3-show-inline-block">
+          <div class="w3-half">
+            <label>Fecha Finalización</label>
+            <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="end_date" #end_date="ngModel" [(ngModel)]="budgetService.selectedBudget.end_date">
+          </div>
+        </div>
+        <br>
+      <div class="w3-container">
+        <input class="w3-input w3-border w3-light-grey" type="text" name="budget_name" #budget_name="ngModel" [(ngModel)]="budgetService.selectedBudget.budget_name" placeholder="Ingresa nombre del presupuesto">
+        <br>
+        <input class="w3-input w3-border w3-light-grey" type="text" name="identification" #identification="ngModel" [(ngModel)]="budgetService.selectedBudget.identification" placeholder="Ingresa tu identificacion">
+        <br>
+        <div class="w3-show-inline-block">
           <div class="w3-bar">
-              <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>
-              <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)"><i class="fa fa-repeat"></i></button>
+            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>
+            <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)"><i class="fa fa-repeat"></i></button>
           </div>
+        </div>
       </div>
     </form>
 
     <div class="w3-container">
-
-
-    <!--AQUI VA EL BALANCE GENERAL DE LOS PRESUPUESTO-->
-    <table class="w3-table-all w3-hoverable ">
-      <thead>
-        <tr class="w3-blue-gray">
-          <th>Total gastado </th>
-          <th>Total planeado</th>
-          <th>Balance general </th>
-        </tr>
-      </thead>
-      <tr>
-        <td id="gastadoTotal">CalcularGastado</td>
-        <td id="planeadoTotal">CalcularPlaneado</td>
-        <td id="balanceTotal">Balance</td>
-      </tr>
-      <tr>
-        <td>
-          <a>
-            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="calculateTotal()">Calcular</button> 
-          </a>
-        </td>
-      </tr>
-    </table>
-    <!--FIN BALANCE-->
-  </div>
-
-
+      <div class="w3-row-padding w3-margin-bottom">
+        <div class="w3-third">
+          <div class="w3-container w3-orange w3-text-white w3-padding-16">
+            <div class="w3-left"><i class="fa fa-line-chart w3-xxxlarge"></i></div>
+            <div class="w3-right">
+              <h3 id="gastadoTotal">___</h3>
+            </div>
+            <div class="w3-clear"></div>
+              <h4>TOTAL GASTADO</h4>
+          </div>
+        </div>
+        <div class="w3-third">
+          <div class="w3-container w3-teal w3-padding-16">
+            <div class="w3-left"><i class="fa fa-bar-chart w3-xxxlarge"></i></div>
+            <div class="w3-right">
+              <h3 id="planeadoTotal">___</h3>
+            </div>
+            <div class="w3-clear"></div>
+              <h4>TOTAL PLANEADO</h4>
+          </div>
+        </div>
+        <div class="w3-third">
+          <div class="w3-container w3-blue w3-padding-16">
+            <div class="w3-left"><i class="fa fa-usd w3-xxxlarge"></i></div>
+            <div class="w3-right">
+              <h3 id="balanceTotal">___</h3>
+            </div>
+            <div class="w3-clear"></div>
+              <h4>PRESUPUESTO TOTAL</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a>
+      <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="calculateTotal()">Calcular</button> 
+    </a>
 
   <div>
     <div class="w3-container" *ngFor="let budget of budgetService.budgetArray">
       <h5> <strong> #{{budget.budget_number}}  {{budget.budget_name}} </strong></h5>
       <h6><strong>FECHA INICIAL: </strong> {{budget.initial_date | date}}   //  <strong> FECHA FINALIZACIÓN: </strong>{{budget.end_date | date}}</h6>
-       <table class="w3-table-all w3-hoverable ">
-         <thead>
-           <tr class="w3-blue-gray">
+      <table class="w3-table-all w3-hoverable ">
+        <thead>
+          <tr class="w3-blue-gray">
             <th>Número</th>
-             <th>Categoría</th>
-             <th>Valor gastado</th>
-             <th>Valor planeado</th>
-             <th></th>
-             <th></th>
-           </tr>
-         </thead>
-         <tr id="registro_item" *ngFor="let item of itemService.itemArray">
-           <td *ngIf="budget.budget_number==item.budget_number">{{item.item_number}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number">{{item.description}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance}}</td>
-           <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></a></td>
-           <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-shopping-cart"></i></a></td>
-         </tr>
+            <th>Categoría</th>
+            <th>Valor gastado</th>
+            <th>Valor planeado</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tr id="registro_item" *ngFor="let item of itemService.itemArray">
+          <td *ngIf="budget.budget_number==item.budget_number">{{item.item_number}}</td>
+          <td *ngIf="budget.budget_number==item.budget_number">{{item.description}}</td>
+          <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance}}</td>
+          <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance}}</td>
+          <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></a></td>
+          <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-shopping-cart"></i></a></td>
+        </tr>
        
-         <tr>
+        <tr>
+          <td>
+            <a>
+              <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-plus"></i></button>
+            </a>
+          </td>
+          <td>
+            <a>
+              <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="deleteBudget(budget.budget_number)"><i class="fa fa-trash"></i></button>
+            </a>
+          </td>
 
-             <td>
-               <a>
-                 <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-plus"></i></button>
-               </a>
-             </td>
-             <td>
-                 <a>
-                   <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="deleteBudget(budget.budget_number)"><i class="fa fa-trash"></i></button>
-                 </a>
-               </td>
- 
-             <td></td>
-             <td></td>
-             <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
 
-           </tr>
-       </table>
-       <div class="w3-container">
-  </div>
-
-     <div class="w3-container">    
+    <div class="w3-container">    
         <!-- FORMULARIO ITEM-->
           <div id="id01" class="w3-modal">
             <div class="w3-modal-content">
