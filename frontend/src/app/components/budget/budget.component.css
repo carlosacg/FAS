@@ -12,3 +12,6 @@ i{
 table{
     width: 100%;
 }
+.separators{
+    border-top: 1px solid rgb(52, 109, 141);
+}
