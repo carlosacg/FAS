@@ -1,1 +1,126 @@
 
+<!-- !PAGE CONTENT! -->
+<div class="w3-main">
+
+    <!-- Header -->
+    <header class="w3-container">
+      <h4><b><i class="fa fa-credit-card"></i> Transacciones</b></h4>
+    </header>
+  
+    <div class="w3-row-padding w3-margin-bottom">
+          <div class="w3-container">
+              <h6><strong>FECHA INICIAL: </strong>   //  <strong> FECHA FINALIZACIÓN:   </strong> <button class="w3-button w3-padding-small w3-blue-grey w3-circle" ><i class="fa fa-search"></i></button></h6> 
+              <table class="w3-table-all w3-hoverable ">
+                  <thead>
+                      <tr class="w3-blue-gray">
+                      <th>Núm. transacción</th>
+                      <th>Categoría</th>
+                      <th>Núm. cuenta</th>
+                      <th>Fecha del gasto</th>
+                      <th>Valor del gasto</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                      </tr>
+                  </thead>
+                  <tr>
+                      <td ></td>
+                      <td ></td>
+                      <td ></td>
+                      <td></td>
+                      <td ></td>
+                      <td ><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-eye"></i></button></td>
+                      <td ><button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-pencil"></i></button></td>
+                      <td><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash"></i></button></td>
+                  </tr>
+              </table>
+          </div>
+          <div class="w3-container">    
+              <!-- FORMULARIO ITEM-->
+              <div id="id01" class="w3-modal">
+                  <div class="w3-modal-content">
+                      <header class="w3-container w3-blue-gray"> 
+                          <span onclick="document.getElementById('id01').style.display='none'" 
+                          class="w3-button w3-display-topright">&times;</span>
+                          <h2>(Nombre Transacción)</h2>
+                      </header>
+                      <div class="w3-container">
+                          <form class="w3-container" >
+                              <label >Número de transacción</label>
+                              <input class="w3-input w3-border w3-light-grey" type="text">
+                              <br>
+  
+                              <label >Categoría</label>
+                              <input class="w3-input w3-border w3-light-grey" type="text" >
+                              <br>
+  
+                              <label >Número de cuenta</label>
+                              <input class="w3-input w3-border w3-light-grey" type="text" >
+                              <br>
+  
+                              <label >Fecha del gasto</label>
+                              <input class="w3-input w3-border w3-light-grey" type="text" >
+                              <br>
+  
+                              <label >Valor del gasto</label>
+                              <input class="w3-input w3-border w3-light-grey" type="text" >
+                              <br>
+                              
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+          <div class="w3-container">    
+                  <!-- FORMULARIO ITEM-->
+                  <div id="id02" class="w3-modal">
+                      <div class="w3-modal-content">
+                          <header class="w3-container w3-blue-gray"> 
+                              <span onclick="document.getElementById('id02').style.display='none'" 
+                              class="w3-button w3-display-topright">&times;</span>
+                              <h2>Editar (nombre de transacción)</h2>
+                          </header>
+                          <div class="w3-container">
+                              <form class="w3-container" >
+                                  <label >Número de transacción</label>
+                                  <input class="w3-input w3-border w3-light-grey" type="text">
+                                  <br>
+  
+                                  <label >Categoría</label>
+                                  <input class="w3-input w3-border w3-light-grey" type="text" >
+                                  <br>
+  
+                                  <label >Número de cuenta</label>
+                                  <input class="w3-input w3-border w3-light-grey" type="text" >
+                                  <br>
+  
+                                  <label >Fecha del gasto</label>
+                                  <input class="w3-input w3-light-grey w3-border" type="date" value="aaaa/mm/dd"  >
+                                  <br>
+                                  
+                                  <label >Valor del gasto</label>
+                                  <input class="w3-input w3-border w3-light-grey" type="text" >
+                                  <br>
+                                  <div class="w3-show-inline-block">
+                                      <div class="w3-bar">
+                                          <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" ><i class="fa fa-save"></i></button>
+                                          <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" ><i class="fa fa-repeat"></i></button>
+                                      </div>
+                                  </div>
+                              </form>
+  
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </div>
+  
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-small w3-gray">
+    <p>Powered by XSOFT</p>
+    </footer>
+  
+    <!-- End page content -->
+  </div>
+  
