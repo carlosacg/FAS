@@ -10,11 +10,11 @@
     <form class="w3-container" #budgetForm="ngForm" (ngSubmit)="addBudget(budgetForm)">
         <div class="w3-row-padding">
           <div class="w3-half">
-            <label>Fecha Inicial</label>
+            <label>Fecha inicial</label>
             <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="initial_date" #initial_date="ngModel" [(ngModel)]="budgetService.selectedBudget.initial_date">
           </div>
           <div class="w3-half">
-            <label>Fecha Finalización</label>
+            <label>Fecha finalización</label>
             <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="end_date" #end_date="ngModel" [(ngModel)]="budgetService.selectedBudget.end_date">
           </div>
         </div>
@@ -22,7 +22,7 @@
       <div class="w3-container">
         <input class="w3-input w3-border w3-light-grey" type="text" name="budget_name" #budget_name="ngModel" [(ngModel)]="budgetService.selectedBudget.budget_name" placeholder="Ingresa nombre del presupuesto">
         <br>
-        <input class="w3-input w3-border w3-light-grey" type="text" name="identification" #identification="ngModel" [(ngModel)]="budgetService.selectedBudget.identification" placeholder="Ingresa tu identificacion">
+        <input class="w3-input w3-border w3-light-grey" type="text" name="identification" #identification="ngModel" [(ngModel)]="budgetService.selectedBudget.identification" placeholder="Ingresa tu identificación">
         <br>
         <div class="w3-show-inline-block">
           <div class="w3-bar">

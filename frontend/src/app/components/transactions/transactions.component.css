@@ -1,0 +1,17 @@
+.w3-main{
+    margin-left:200px;
+    margin-top:34px;
+}
+.w3-container{
+    padding-top:20px;
+}
+
+i{
+    width: 30px;
+}
+table{
+    width: 100%;
+}
+.separators{
+    border-top: 1px solid rgb(52, 109, 141);
+}
