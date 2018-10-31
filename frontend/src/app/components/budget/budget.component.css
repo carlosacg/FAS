@@ -1,9 +1,11 @@
 .w3-main{
     margin-left:200px;
     margin-top:34px;
+    font-family: sans-serif, Helvetica;
 }
 .w3-container{
     padding-top:20px;
+    font-family: sans-serif, Helvetica;
 }
 
 i{
@@ -11,6 +13,7 @@ i{
 }
 table{
     width: 100%;
+    font-family: sans-serif, Helvetica;
 }
 .separators{
     border-top: 1px solid rgb(52, 109, 141);

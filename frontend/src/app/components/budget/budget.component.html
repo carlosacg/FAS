@@ -67,9 +67,16 @@
         </div>
       </div>
     </div>
-    <a>
-      <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="calculateTotal()"><i class="fa fa-calculator"></i></button> 
-    </a>
+    <div class="w3-row-padding">
+      <div class="w3-row-padding">
+          <div class="w3-row-padding">
+          <a>
+              <button class="w3-button w3-padding-16 w3-blue-grey w3-circle w3-right" (click)="calculateTotal()"><i class="fa fa-calculator"></i></button> 
+            </a>
+      </div>
+      </div>
+    </div>
+    
     <hr class="separators">
   <div>
     <div class="w3-container" *ngFor="let budget of budgetService.budgetArray">
@@ -151,7 +158,7 @@
   <hr>
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-small w3-gray">
+  <footer class="w3-container w3-padding-small w3-dark-grey">
   <p>Powered by XSOFT</p>
   </footer>
 
