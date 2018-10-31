@@ -1,6 +1,6 @@
 
-  <div class="w3-bar w3-top w3-blue-gray w3-padding-15">
-    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menú</button>
+  <div class="w3-bar w3-top w3-dark-grey w3-padding-15">
+    <button type="submit" class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();return false"><i class="fa fa-bars"></i>  Menú</button>
       <form >
           <a class= "w3-display-middle" >
             <img src="../assets/images/Imagen2.png" class="w3-round w3-margin-right">
@@ -9,7 +9,7 @@
           <a href="#" class="w3-bar-item w3-button w3-light-gray w3-right w3-large w3-circle"><i class="fa fa-sign-out"></i></a>
       </form>
   </div>
-  <nav class="w3-sidebar w3-collapse w3-blue-gray w3-animate-left" id="mySidebar"><br>
+  <nav class="w3-sidebar w3-collapse w3-dark-grey w3-animate-left" id="mySidebar"><br>
     <div class="w3-container w3-row">
       <div class="w3-col s4">
         <!--
@@ -26,7 +26,7 @@
       <h5>General</h5>
     </div>
     <div class="w3-bar-block">
-      <a class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a type="submit" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw" ></i>Cerrar Menú</a>
       <a class="w3-bar-item w3-button w3-padding" ><i class="fa fa-home fa-fw"></i>  Inicio</a>
       <a class="w3-bar-item w3-button w3-padding" [routerLink]="['/accounts']"><i class="fa fa-database fa-fw"></i>  Cuentas</a>
       <a class="w3-bar-item w3-button w3-padding" [routerLink]="['/transactions']"><i class="fa fa-credit-card fa-fw"></i>  Transacciones</a>
@@ -37,25 +37,25 @@
   
   <script>
       // Get the Sidebar
-      var mySidebar = document.getElementById("mySidebar");
-      
-      // Get the DIV with overlay effect
-      var overlayBg = document.getElementById("myOverlay");
-      
-      // Toggle between showing and hiding the sidebar, and add overlay effect
-      function w3_open() {
-          if (mySidebar.style.display === 'block') {
-              mySidebar.style.display = 'none';
-              overlayBg.style.display = "none";
-          } else {
-              mySidebar.style.display = 'block';
-              overlayBg.style.display = "block";
-          }
-      }
-      
-      // Close the sidebar with the close button
-      function w3_close() {
-          mySidebar.style.display = "none";
-          overlayBg.style.display = "none";
-      }
-      </script>
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+        overlayBg.style.display = "none";
+    } else {
+        mySidebar.style.display = 'block';
+        overlayBg.style.display = "block";
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+    overlayBg.style.display = "none";
+}
+    </script>
