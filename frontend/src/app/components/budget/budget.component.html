@@ -98,14 +98,14 @@
           <td *ngIf="budget.budget_number==item.budget_number">{{item.description}}</td>
           <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance}}</td>
           <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance}}</td>
-          <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></a></td>
-          <td *ngIf="budget.budget_number==item.budget_number"><a><i class="fa fa-shopping-cart"></i></a></td>
+          <td *ngIf="budget.budget_number==item.budget_number"><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></button></td>
+         <td *ngIf="budget.budget_number==item.budget_number"><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-shopping-cart"></i></button></td>
         </tr>
        
         <tr>
           <td>
             <a>
-              <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-plus"></i></button>
+              <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-16 w3-blue-grey w3-circle"><i class="fa fa-plus"></i></button>
             </a>
           </td>
           <td>
@@ -120,12 +120,45 @@
         </tr>
       </table>
 
-    <div class="w3-container">    
-        <!-- FORMULARIO ITEM-->
+      <div class="w3-container">   
+        <!-- FORMULARIO EGRESO-->
           <div id="id01" class="w3-modal">
             <div class="w3-modal-content">
+              <header class="w3-container w3-blue-gray">
+                <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+                <h2>Insertar egreso</h2>
+              </header>
+              <div class="w3-container">
+                    <form class="w3-container" #egresoForm="ngForm" (ngSubmit)="addTransactions(egresoForm)">
+                    <label> Seleccione la cuenta</label>
+                    <select class="w3-input w3-border w3-light-grey"  name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number"> 
+                        <option *ngFor="let account of accountService.accountArray"  ng-selected="Seleccione la cuenta" placeholder="Seleccione la cuenta">{{account.account_number}}</option> 
+                    </select>
+                    <br>
+                    <label>Valor de egreso</label>
+                    <input class="w3-input w3-border w3-light-grey" type="number" name="spent_balance" #spent_balance="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_balance" placeholder="Ingresa el valor del egreso">
+                    <br>
+                    <div class="w3-show-inline-block">
+                        <div class="w3-bar">
+                            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>
+                            <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)"><i class="fa fa-repeat"></i></button>
+                        </div>
+                    </div>
+                  </form>
+              </div>
+             
+            </div>
+          </div>
+      </div>
+ 
+
+    <div class="w3-container">    
+        <!-- FORMULARIO ITEM-->
+          <div id="id02" class="w3-modal">
+            <div class="w3-modal-content">
               <header class="w3-container w3-blue-gray"> 
-                <span onclick="document.getElementById('id01').style.display='none'" 
+                <span onclick="document.getElementById('id02').style.display='none'" 
                 class="w3-button w3-display-topright">&times;</span>
                 <h2>Insertar ítem</h2>
               </header>

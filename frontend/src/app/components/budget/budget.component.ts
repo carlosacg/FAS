@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { BudgetService } from '../../services/budget.service';
 import { ItemService } from '../../services/item.service';
+import { TransactionsService } from '../../services/transactions.service';
+import { AccountService } from '../../services/account.service';
 import { NgForm } from '@angular/forms';
 import { Budget } from '../../models/budget';
 import { Item } from '../../models/item';
+import { Transaction } from '../../models/transaction';
+import { Account } from '../../models/account';
+
 
 declare var M: any;
 
@@ -12,16 +17,18 @@ declare var M: any;
   selector: 'app-budget',
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.css'],
-  providers :[BudgetService,ItemService]
+  providers :[BudgetService,ItemService,TransactionsService, AccountService]
 
 })
 export class BudgetComponent implements OnInit {
 
-  constructor(private budgetService: BudgetService,private itemService: ItemService) { }
+  constructor(private budgetService: BudgetService,private itemService: ItemService, private transactionService:TransactionsService, private accountService:AccountService) { }
 
   ngOnInit() {
     this.getBudgets();
     this.getItems();
+    this.getTransactions();
+    this.getAccounts();
     this.calculateTotal();
 
   }
@@ -44,15 +51,26 @@ export class BudgetComponent implements OnInit {
       this.ngOnInit()
     })
 }
-
+ 
+addTransactions(form?:NgForm){//AGREGAR TRANSACCION
+  console.log(form.value);
+  this.transactionService.postEgress(form.value).subscribe(res =>{
+    this.resetForm(form);
+    M.toast({html: 'Transaccion Creada satisfactoriamente'});
+    this.getTransactions();
+  })
+}
 
   getBudgets(){//OBTENGO LA LISTA DE USUARIOS
     this.budgetService.getBudgets().subscribe(res =>{
       this.budgetService.budgetArray = res as Budget[];
     })
   }
-
-  
+  getAccounts(){//OBTENGO LA LISTA DE USUARIOS
+    this.accountService.getAccounts().subscribe(res =>{
+      this.accountService.accountArray = res as Account[];
+    })
+  } 
 
 
   getItems(){//OBTENGO LA LISTA DE USUARIOS
@@ -62,6 +80,11 @@ export class BudgetComponent implements OnInit {
   }
 
 
+  getTransactions(){//OBTENGO LA LISTA DE transactions
+    this.transactionService.getTransactions().subscribe(res =>{
+      this.transactionService.transactionArray = res as Transaction[];
+    })
+  }
 
   deleteBudget(budget_number:string,form: NgForm){
     if(confirm('¿Seguro que desea eliminar este presupuesto?')) {
@@ -93,15 +116,12 @@ export class BudgetComponent implements OnInit {
   }
 
 
-  insertTransaction(item:Item, form:NgForm){
-     
-  }
-
   resetForm(form?:NgForm){//LIMPIA LOS CAMPOS
     if(form){
       form.reset();
       this.budgetService.selectedBudget = new Budget();  
-      this.itemService.selectedItem = new Item();    
+      this.itemService.selectedItem = new Item(); 
+      this.transactionService.selectedTransaction = new Transaction(); 
     }
   }
 
@@ -136,6 +156,10 @@ export class BudgetComponent implements OnInit {
     let planned=this.calculatePlanned();
     let balance = planned-spent
     document.getElementById('balanceTotal').innerHTML = '$ '+balance.toString();
+  }
+
+  substractAccount(){
+
   }
 
 }

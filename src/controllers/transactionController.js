@@ -36,7 +36,7 @@ transactionController.createTransaction=(req,res)=>{//LISTA LOS DATOS
     
 
     req.getConnection((err,conn)=>{
-        let instrucQuery="INSERT INTO transactions VALUES (DEFAULT,"+transactions.item_number+","+transactions.account_number+",'"+transactions.spent_date+"',"+transactions.spent_balance+");";
+        let instrucQuery="INSERT INTO transactions VALUES (DEFAULT,"+transactions.item_number+","+transactions.account_number+", CURRENT_DATE"+","+transactions.spent_balance+");";
         console.log(instrucQuery);
 
         conn.query(instrucQuery,(err,transactions)=>{

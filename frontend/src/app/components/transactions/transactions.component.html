@@ -1,4 +1,4 @@
-
+ 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
 
@@ -23,15 +23,15 @@
                       <th></th>
                       </tr>
                   </thead>
-                  <tr>
-                      <td ></td>
-                      <td ></td>
-                      <td ></td>
-                      <td></td>
-                      <td ></td>
-                      <td ><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-eye"></i></button></td>
-                      <td ><button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-pencil"></i></button></td>
-                      <td><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash"></i></button></td>
+                  <tr id="registro_transactions" *ngFor="let transactions of transactionService.transactionArray">
+                        <td *ngIf="transactions.transaction_number==transactions.transaction_number">{{transactions.transaction_number}}</td>
+                        <td *ngIf="transactions.item_number==transactions.item_number">{{transactions.item_number}}</td>
+                        <td *ngIf="transactions.account_number==transactions.account_number">{{transactions.account_number}}</td>
+                        <td *ngIf="transactions.spent_date==transactions.spent_date">{{transactions.spent_date}}</td>
+                        <td *ngIf="transactions.spent_balance==transactions.spent_balance">{{transactions.spent_balance}}</td>
+                      <td ><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-eye" (click)="updateTransaction(transactions)"></i></button></td>
+                      <td ><button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-small w3-circle"  ><i class="fa fa-pencil" (click)="updateTransaction(transactions)"></i></button></td>
+                      <td><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash" (click)="deleteTransaction(transactions.transaction_number)"></i></button></td>
                   </tr>
               </table>
           </div>
@@ -42,29 +42,25 @@
                       <header class="w3-container w3-blue-gray"> 
                           <span onclick="document.getElementById('id01').style.display='none'" 
                           class="w3-button w3-display-topright">&times;</span>
-                          <h2>(Nombre Transacción)</h2>
+                          <h2>Visualizar Transacción</h2>
                       </header>
                       <div class="w3-container">
-                          <form class="w3-container" >
-                              <label >Número de transacción</label>
-                              <input class="w3-input w3-border w3-light-grey" type="text">
-                              <br>
-  
-                              <label >Categoría</label>
-                              <input class="w3-input w3-border w3-light-grey" type="text" >
-                              <br>
-  
-                              <label >Número de cuenta</label>
-                              <input class="w3-input w3-border w3-light-grey" type="text" >
-                              <br>
-  
-                              <label >Fecha del gasto</label>
-                              <input class="w3-input w3-border w3-light-grey" type="text" >
-                              <br>
-  
-                              <label >Valor del gasto</label>
-                              <input class="w3-input w3-border w3-light-grey" type="text" >
-                              <br>
+                        <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactionForm)">
+                            <label >Categoría</label>
+                            <input class="w3-input w3-border w3-light-grey" type="text" name="item_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.item_number" placeholder="Ingresa el numero del item">
+                            <br>
+
+                            <label >Número de cuenta</label>
+                            <input class="w3-input w3-border w3-light-grey" type="text" name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number" placeholder="Ingresa el numero de cuenta">
+                            <br>
+
+                            <label >Fecha del gasto</label>
+                            <input class="w3-input w3-light-grey w3-border" type="date" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
+                            <br>
+                            
+                            <label >Valor del gasto</label>
+                            <input class="w3-input w3-border w3-light-grey" type="text" name="spent_balance" #spent_balance="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_balance" placeholder="Ingresa el valor" >
+                            <br>
                               
                           </form>
                       </div>
@@ -79,33 +75,29 @@
                           <header class="w3-container w3-blue-gray"> 
                               <span onclick="document.getElementById('id02').style.display='none'" 
                               class="w3-button w3-display-topright">&times;</span>
-                              <h2>Editar (nombre de transacción)</h2>
+                              <h2>Editar transacción</h2>
                           </header>
                           <div class="w3-container">
-                              <form class="w3-container" >
-                                  <label >Número de transacción</label>
-                                  <input class="w3-input w3-border w3-light-grey" type="text">
-                                  <br>
-  
+                              <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactionForm)">
                                   <label >Categoría</label>
-                                  <input class="w3-input w3-border w3-light-grey" type="text" >
+                                  <input class="w3-input w3-border w3-light-grey" type="text" name="item_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.item_number" placeholder="Ingresa el numero del item">
                                   <br>
   
                                   <label >Número de cuenta</label>
-                                  <input class="w3-input w3-border w3-light-grey" type="text" >
+                                  <input class="w3-input w3-border w3-light-grey" type="text" name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number" placeholder="Ingresa el numero de cuenta">
                                   <br>
   
                                   <label >Fecha del gasto</label>
-                                  <input class="w3-input w3-light-grey w3-border" type="date" value="aaaa/mm/dd"  >
+                                  <input class="w3-input w3-light-grey w3-border" type="date" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
                                   <br>
                                   
                                   <label >Valor del gasto</label>
-                                  <input class="w3-input w3-border w3-light-grey" type="text" >
+                                  <input class="w3-input w3-border w3-light-grey" type="text" name="spent_balance" #spent_balance="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_balance" placeholder="Ingresa el valor" >
                                   <br>
                                   <div class="w3-show-inline-block">
                                       <div class="w3-bar">
-                                          <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" ><i class="fa fa-save"></i></button>
-                                          <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" ><i class="fa fa-repeat"></i></button>
+                                          <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>
+                                          <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(transactionForm)"><i class="fa fa-repeat"></i></button>
                                       </div>
                                   </div>
                               </form>

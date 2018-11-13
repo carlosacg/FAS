@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { NgForm } from '@angular/forms';
 import { Account } from '../../models/account';
+import { TransactionsService } from '../../services/transactions.service';
+import { Transaction } from '../../models/transaction';
 
 declare var M: any;
 
@@ -10,12 +12,12 @@ declare var M: any;
   selector: 'app-accounts',
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.css'],
-  providers :[AccountService]
+  providers :[AccountService,TransactionsService]
 
 })
 export class AccountsComponent implements OnInit {
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private transactionService:TransactionsService) { }
 
   ngOnInit() {
     this.getAccounts();
@@ -45,6 +47,11 @@ export class AccountsComponent implements OnInit {
     })
   }
 
+  getTransactions(){//OBTENGO LA LISTA DE transactions
+    this.transactionService.getTransactions().subscribe(res =>{
+      this.transactionService.transactionArray = res as Transaction[];
+    })
+  }
   updateAccount(account:Account, form:NgForm){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
     this.accountService.selectedAccount= account;
     this.resetForm(form);
@@ -61,7 +68,15 @@ export class AccountsComponent implements OnInit {
     this.getAccounts();
     this.ngOnInit();
   }
-
+ 
+  addTransactions(form?:NgForm){//AGREGAR TRANSACCION
+    console.log(form.value);
+    this.transactionService.postEntry(form.value).subscribe(res =>{
+      this.resetForm(form);
+      M.toast({html: 'Transaccion Creada satisfactoriamente'});
+      this.getTransactions();
+    })
+  }
 
   insertIncome(account:Account, form:NgForm){
     
@@ -78,6 +93,7 @@ export class AccountsComponent implements OnInit {
         account.positive_balance=account.positive_balance+parseInt(reply);
         console.log(account);
         this.accountService.selectedAccount= account; //ACTUALIZA LA LISTA
+        //this.addTransactions(form);
         this.accountService.putAccount(account).subscribe(res=>{ //ACTUALIZA SALDO EN LA BASE DE DATOS
         this.resetForm(form);//REINICIA EL FORMULARIO
         M.toast({html: 'INGRESO REALIZADO EXITOSAMENTE'});
