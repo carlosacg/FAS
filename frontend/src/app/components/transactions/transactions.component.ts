@@ -27,7 +27,7 @@ export class TransactionsComponent implements OnInit {
  
   addTransactions(form?:NgForm){//AGREGAR CUENTA
     console.log(form.value);
-    this.transactionService.postTransaction(form.value).subscribe(res =>{
+    this.transactionService.putTransaction(form.value).subscribe(res =>{
       this.resetForm(form);
       M.toast({html: 'Transaccion Creada satisfactoriamente'});
       this.getTransactions();
