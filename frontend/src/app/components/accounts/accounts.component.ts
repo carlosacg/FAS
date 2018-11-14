@@ -68,16 +68,6 @@ export class AccountsComponent implements OnInit {
     this.getAccounts();
     this.ngOnInit();
   }
- 
-  addTransactions(form?:NgForm){//AGREGAR TRANSACCION
-    console.log(form.value);
-    this.transactionService.postEntry(form.value).subscribe(res =>{
-      this.resetForm(form);
-      M.toast({html: 'Transaccion Creada satisfactoriamente'});
-      this.getTransactions();
-    })
-  }
-
   insertIncome(account:Account, form:NgForm){
     
 		var reply = prompt("INSERTE SALDO A SU CUENTA", "");

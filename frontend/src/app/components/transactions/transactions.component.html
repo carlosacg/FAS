@@ -45,7 +45,7 @@
                           <h2>Visualizar Transacción</h2>
                       </header>
                       <div class="w3-container">
-                        <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactionForm)">
+                        <form class="w3-container" #viewTransactionForm="ngForm" >
                             <label >Categoría</label>
                             <input class="w3-input w3-border w3-light-grey" type="text" name="item_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.item_number" placeholder="Ingresa el numero del item">
                             <br>
@@ -55,7 +55,7 @@
                             <br>
 
                             <label >Fecha del gasto</label>
-                            <input class="w3-input w3-light-grey w3-border" type="date" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
+                            <input class="w3-input w3-light-grey w3-border" type="text" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
                             <br>
                             
                             <label >Valor del gasto</label>
@@ -78,7 +78,7 @@
                               <h2>Editar transacción</h2>
                           </header>
                           <div class="w3-container">
-                              <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactionForm)">
+                              <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactions)">
                                   <label >Categoría</label>
                                   <input class="w3-input w3-border w3-light-grey" type="text" name="item_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.item_number" placeholder="Ingresa el numero del item">
                                   <br>
@@ -88,7 +88,7 @@
                                   <br>
   
                                   <label >Fecha del gasto</label>
-                                  <input class="w3-input w3-light-grey w3-border" type="date" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
+                                  <input class="w3-input w3-light-grey w3-border" type="text" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
                                   <br>
                                   
                                   <label >Valor del gasto</label>

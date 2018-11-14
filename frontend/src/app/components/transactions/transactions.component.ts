@@ -42,9 +42,11 @@ export class TransactionsComponent implements OnInit {
     })
   }
 
-  updateTransaction(transaction:Transaction, form:NgForm){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
-    this.transactionService.selectedTransaction= transaction;
-    this.resetForm(form);
+  updateTransaction(transactions:Transaction){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
+    console.log("entre aqui");
+    this.transactionService.selectedTransaction= transactions;
+    //this.resetForm(form);
+    
   }
 
   deleteTransaction(transaction_number:string,form: NgForm){

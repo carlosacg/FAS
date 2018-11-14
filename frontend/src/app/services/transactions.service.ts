@@ -21,13 +21,6 @@ export class TransactionsService {
   postEgress(transaction:Transaction){//CREAR
     var f = new Date();
     transaction.spent_date = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
-    transaction.item_number = "2";
-    console.log("voy aqui");
-    return this.http.post(this.URL_API,transaction);
-  }
-  postEntry(transaction:Transaction){//CREAR
-    var f = new Date();
-    transaction.spent_date = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
     transaction.item_number = "1";
     console.log("voy aqui");
     return this.http.post(this.URL_API,transaction);

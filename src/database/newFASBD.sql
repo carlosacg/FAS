@@ -47,7 +47,7 @@ INSERT INTO budget VALUES(DEFAULT,'UNIVERSIDAD','2018-10-15','2018-12-25',1);
 DROP TABLE IF EXISTS item;
 CREATE TABLE item(
 	item_number INTEGER auto_increment NOT NULL PRIMARY KEY,
-	budget_number INTEGER NOT NULL,
+	budget_number INTEGER ,
 	planned_balance INTEGER NOT NULL,
 	spent_balance INTEGER,
 	description VARCHAR(100),
@@ -76,7 +76,7 @@ CREATE TABLE transactions(
 DROP TRIGGER IF EXISTS trigger_budget;
 
 DELIMITER //
-CREATE TRIGGER trigger_budget AFTER UPDATE ON transactions 
+CREATE TRIGGER trigger_budget AFTER INSERT ON transactions 
 FOR EACH ROW 
 BEGIN
 
@@ -112,7 +112,35 @@ END;
 END IF;
 
 
+DROP TRIGGER IF EXISTS trigger_transactions_delete;
+
+DELIMITER //
+CREATE TRIGGER trigger_transactions_delete BEFORE DELETE ON transactions 
+FOR EACH ROW 
+BEGIN
+
+
+
+IF(SELECT positive_balance FROM account WHERE account_number=OLD.account_number)>=OLD.spent_balance THEN BEGIN
+UPDATE account SET positive_balance=positive_balance+OLD.spent_balance WHERE account_number=OLD.account_number;
+END;
+END IF;
+
+IF(SELECT positive_balance FROM account WHERE account_number=OLD.account_number)<0 THEN BEGIN
+UPDATE account SET negative_balance=negative_balance-OLD.spent_balance WHERE account_number=OLD.account_number;
+END;
+END IF;
+
+IF(SELECT positive_balance FROM account WHERE account_number=OLD.account_number)=0 THEN BEGIN
+UPDATE account SET negative_balance=negative_balance WHERE account_number=OLD.account_number;
+UPDATE account SET positive_balance=-1 WHERE account_number=OLD.account_number;
+END;
+END IF;
+
+
 
 END //
 
 DELIMITER ;
+
+
