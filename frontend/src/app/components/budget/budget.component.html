@@ -94,14 +94,14 @@
           </tr>
         </thead>
         <tr id="registro_item" *ngFor="let item of itemService.itemArray">
-          <td *ngIf="budget.budget_number==item.budget_number">{{item.item_number}}</td>
+          <td *ngIf="budget.budget_number==item.budget_number">{{item.item_number }}</td>
           <td *ngIf="budget.budget_number==item.budget_number">{{item.description}}</td>
-          <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance}}</td>
-          <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance}}</td>
+          <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance | currency:'USD'}}</td>
+          <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance | currency:'USD'}}</td>
           <td *ngIf="budget.budget_number==item.budget_number"><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></button></td>
          <td *ngIf="budget.budget_number==item.budget_number"><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-shopping-cart"></i></button></td>
         </tr>
-       
+
         <tr>
           <td>
             <a>
@@ -114,6 +114,7 @@
             </a>
           </td>
 
+          <td></td>
           <td></td>
           <td></td>
           <td></td>
@@ -166,7 +167,7 @@
                   <form class="w3-container" #itemForm="ngForm" (ngSubmit)="addItem(itemForm)">
                     <label> Seleccione el presupuesto</label>
                     <select class="w3-input w3-border w3-light-grey"  name="budget_number" #budget_number="ngModel" [(ngModel)]="itemService.selectedItem.budget_number"> 
-                      <option *ngFor="let budget of budgetService.budgetArray"  ng-selected="Seleccione el presupuesto" placeholder="Seleccione el presupuesto">{{budget.budget_number}}</option> 
+                      <option *ngFor="let budget of budgetService.budgetArray"  ng-selected="Seleccione el presupuesto" placeholder="Seleccione el presupuesto">#{{budget.budget_number}} {{budget.budget_name}}</option> 
                     </select> 
                     <br>
 

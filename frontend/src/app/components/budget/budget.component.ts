@@ -21,7 +21,6 @@ declare var M: any;
 
 })
 export class BudgetComponent implements OnInit {
-
   constructor(private budgetService: BudgetService,private itemService: ItemService, private transactionService:TransactionsService, private accountService:AccountService) { }
 
   ngOnInit() {
