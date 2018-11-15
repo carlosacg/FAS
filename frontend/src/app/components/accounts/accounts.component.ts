@@ -22,6 +22,7 @@ export class AccountsComponent implements OnInit {
   ngOnInit() {
     this.getAccounts();
   }
+
   addAccount(form?:NgForm){//AGREGAR CUENTA
     if(form.value.account_number){//SI EL INPUT ID HIDDEN ESTA LLENO ACTUALIZO EL CUENTA
         this.accountService.putAccount(form.value).subscribe(res=>{
@@ -68,8 +69,8 @@ export class AccountsComponent implements OnInit {
     this.getAccounts();
     this.ngOnInit();
   }
-  insertIncome(account:Account, form:NgForm){
-    
+  insertIncome( account:Account, form:NgForm){
+    let transaction = new Transaction();
 		var reply = prompt("INSERTE SALDO A SU CUENTA", "");
 		if(reply==undefined)
 		{
@@ -79,11 +80,14 @@ export class AccountsComponent implements OnInit {
 		}else{
       if(Number.isInteger(parseInt(reply))){
         alert("MONTO A INSERTAR: " + reply);
-        console.log(reply);
         account.positive_balance=account.positive_balance+parseInt(reply);
-        console.log(account);
+        transaction.account_number = account.account_number;
+        transaction.spent_balance = reply;
+        this.transactionService.postIngress(transaction).subscribe(res =>{
+          M.toast({html: 'Transaccion Creada satisfactoriamente'});
+          this.getTransactions();
+        })
         this.accountService.selectedAccount= account; //ACTUALIZA LA LISTA
-        //this.addTransactions(form);
         this.accountService.putAccount(account).subscribe(res=>{ //ACTUALIZA SALDO EN LA BASE DE DATOS
         this.resetForm(form);//REINICIA EL FORMULARIO
         M.toast({html: 'INGRESO REALIZADO EXITOSAMENTE'});

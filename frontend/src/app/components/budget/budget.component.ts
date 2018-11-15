@@ -33,7 +33,6 @@ export class BudgetComponent implements OnInit {
   }
 
   addBudget(form?:NgForm){//AGREGAR CUENTA
-      console.log(form.value);
       this.budgetService.postBudget(form.value).subscribe(res =>{
         this.resetForm(form);
         M.toast({html: 'Presupuesto Creada satisfactoriamente'});
@@ -43,7 +42,6 @@ export class BudgetComponent implements OnInit {
   }
 
   addItem(form?:NgForm){//AGREGAR CUENTA
-    console.log(form.value);
     this.itemService.postItem(form.value).subscribe(res =>{
       this.resetForm(form);
       M.toast({html: 'Item Creada satisfactoriamente'});
@@ -52,7 +50,6 @@ export class BudgetComponent implements OnInit {
 }
  
 addTransactions(form?:NgForm){//AGREGAR TRANSACCION
-  console.log(form.value);
   this.transactionService.postEgress(form.value).subscribe(res =>{
     this.resetForm(form);
     M.toast({html: 'Transaccion Creada satisfactoriamente'});
@@ -155,10 +152,6 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
     let planned=this.calculatePlanned();
     let balance = planned-spent
     document.getElementById('balanceTotal').innerHTML = '$ '+balance.toString();
-  }
-
-  substractAccount(){
-
   }
 
 }

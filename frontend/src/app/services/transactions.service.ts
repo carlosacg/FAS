@@ -20,12 +20,18 @@ export class TransactionsService {
 
   postEgress(transaction:Transaction){//CREAR
     var f = new Date();
+    let subcadena = transaction.account_number.substr(1,1);
+    transaction.account_number = subcadena;
     transaction.spent_date = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
     transaction.item_number = "1";
-    console.log("voy aqui");
     return this.http.post(this.URL_API,transaction);
   }
-
+  postIngress(transaction:Transaction){//CREAR
+    var f = new Date();
+    transaction.spent_date = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
+    transaction.item_number = "2";
+    return this.http.post(this.URL_API,transaction);
+  }
   putTransaction(transaction:Transaction){//ACTUALIZAR
     return this.http.put(this.URL_API +"/"+ transaction.transaction_number,transaction);
   }

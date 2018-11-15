@@ -99,7 +99,7 @@
           <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance | currency:'USD'}}</td>
           <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance | currency:'USD'}}</td>
           <td *ngIf="budget.budget_number==item.budget_number"><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></button></td>
-         <td *ngIf="budget.budget_number==item.budget_number"><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-shopping-cart"></i></button></td>
+         <td *ngIf="budget.budget_number==item.budget_number"><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-money"></i></button></td>
         </tr>
 
         <tr>
@@ -133,8 +133,8 @@
               <div class="w3-container">
                     <form class="w3-container" #egresoForm="ngForm" (ngSubmit)="addTransactions(egresoForm)">
                     <label> Seleccione la cuenta</label>
-                    <select class="w3-input w3-border w3-light-grey"  name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number"> 
-                        <option *ngFor="let account of accountService.accountArray"  ng-selected="Seleccione la cuenta" placeholder="Seleccione la cuenta">{{account.account_number}}</option> 
+                    <select class="w3-input w3-border w3-light-grey"  name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number" > 
+                        <option *ngFor="let account of accountService.accountArray"  ng-selected="Seleccione la cuenta" placeholder="Seleccione la cuenta">#{{account.account_number}} {{account.description}} </option> 
                     </select>
                     <br>
                     <label>Valor de egreso</label>
