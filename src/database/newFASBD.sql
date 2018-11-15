@@ -67,7 +67,6 @@ CREATE TABLE transactions(
 	spent_balance INTEGER NOT NULL,
 	CONSTRAINT transaction_fk1 FOREIGN KEY (account_number) REFERENCES account(account_number),
 	CONSTRAINT transaction_fk3 FOREIGN KEY (item_number) REFERENCES item(item_number)	
-
 );
 
 
@@ -111,6 +110,9 @@ END IF;
 END;
 END IF;
 
+END //
+DELIMITER ;
+
 
 DROP TRIGGER IF EXISTS trigger_transactions_delete;
 
@@ -138,9 +140,5 @@ END;
 END IF;
 
 
-
 END //
-
 DELIMITER ;
-
-

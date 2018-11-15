@@ -27,8 +27,8 @@
                         <td *ngIf="transactions.transaction_number==transactions.transaction_number">{{transactions.transaction_number}}</td>
                         <td *ngIf="transactions.item_number==transactions.item_number">{{transactions.item_number}}</td>
                         <td *ngIf="transactions.account_number==transactions.account_number">{{transactions.account_number}}</td>
-                        <td *ngIf="transactions.spent_date==transactions.spent_date">{{transactions.spent_date}}</td>
-                        <td *ngIf="transactions.spent_balance==transactions.spent_balance">{{transactions.spent_balance}}</td>
+                        <td *ngIf="transactions.spent_date==transactions.spent_date">{{transactions.spent_date | date}}</td>
+                        <td *ngIf="transactions.spent_balance==transactions.spent_balance">{{transactions.spent_balance | currency:'USD'}}</td>
                       <td ><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-eye" (click)="updateTransaction(transactions)"></i></button></td>
                       <td ><button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-small w3-circle"  ><i class="fa fa-pencil" (click)="updateTransaction(transactions)"></i></button></td>
                       <td><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash" (click)="deleteTransaction(transactions.transaction_number)"></i></button></td>
