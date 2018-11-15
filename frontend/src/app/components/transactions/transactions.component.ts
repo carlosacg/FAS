@@ -43,9 +43,12 @@ export class TransactionsComponent implements OnInit {
   }
 
   updateTransaction(transactions:Transaction, form:NgForm){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
-    console.log("entre aqui");
+
     this.transactionService.selectedTransaction= transactions;
-    this.resetForm(form);
+    this.transactionService.putTransaction(transactions).subscribe(res=>{ //ACTUALIZA SALDO EN LA BASE DE DATOS
+      M.toast({html: 'INGRESO REALIZADO EXITOSAMENTE'});
+      this.getTransactions();
+      });
     
   }
 

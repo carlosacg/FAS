@@ -78,19 +78,8 @@
                               <h2>Editar transacción</h2>
                           </header>
                           <div class="w3-container">
-                              <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="redirect()">
-                                 <label >Categoría</label>
-                                 <input class="w3-input w3-border w3-light-grey" type="text" name="transaction_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.transaction_number" >
-                                 <br>
-
-                                  <label >Categoría</label>
-                                  <input class="w3-input w3-border w3-light-grey" type="text" name="item_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.item_number" placeholder="Ingresa el numero del item">
-                                  <br>
-  
-                                  <label >Número de cuenta</label>
-                                  <input class="w3-input w3-border w3-light-grey" type="text" name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number" placeholder="Ingresa el numero de cuenta">
-                                  <br>
-  
+                              <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactionForm)">
+                                
                                   <label >Fecha del gasto</label>
                                   <input class="w3-input w3-light-grey w3-border" type="text" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
                                   <br>
@@ -100,7 +89,7 @@
                                   <br>
                                   <div class="w3-show-inline-block">
                                       <div class="w3-bar">
-                                          <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="updateTransaction(transactions)"><i class="fa fa-save"></i></button>
+                                          <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>
                                           <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(transactionForm)"><i class="fa fa-repeat"></i></button>
                                       </div>
                                   </div>

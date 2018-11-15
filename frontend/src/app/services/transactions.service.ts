@@ -24,7 +24,6 @@ export class TransactionsService {
     transaction.account_number = subcadena;
     transaction.item_number = number_item;
     transaction.spent_date = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
-//    transaction.item_number = "1";
     return this.http.post(this.URL_API,transaction);
   }
   postIngress(transaction:Transaction){//CREAR
