@@ -99,7 +99,7 @@
           <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance | currency:'USD'}}</td>
           <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance | currency:'USD'}}</td>
           <td *ngIf="budget.budget_number==item.budget_number"><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash" (click)="deleteItem(item.item_number)"></i></button></td>
-         <td *ngIf="budget.budget_number==item.budget_number"><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-money"></i></button></td>
+         <td *ngIf="budget.budget_number==item.budget_number"><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-money" (click)="getNumberItem(item)"></i></button></td>
         </tr>
 
         <tr>

@@ -18,12 +18,13 @@ export class TransactionsService {
     return this.http.get(this.URL_API);     
   }
 
-  postEgress(transaction:Transaction){//CREAR
+  postEgress(transaction:Transaction , number_item:string){//CREAR
     var f = new Date();
     let subcadena = transaction.account_number.substr(1,1);
     transaction.account_number = subcadena;
+    transaction.item_number = number_item;
     transaction.spent_date = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
-    transaction.item_number = "1";
+//    transaction.item_number = "1";
     return this.http.post(this.URL_API,transaction);
   }
   postIngress(transaction:Transaction){//CREAR
