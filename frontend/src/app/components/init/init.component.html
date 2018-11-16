@@ -1,0 +1,88 @@
+<!-- !PAGE CONTENT! -->
+<div class="w3-main">
+
+  <!-- Header -->
+  <header class="w3-container">
+    <h4><b><i class="fa fa-home fa-fw"></i> Inicio</b></h4>
+  </header>
+
+  <!--GRAFICO DE LINEAS-->
+  <div class="row">
+    <div class="col-md-6">
+      <div style="display: block;">
+      <canvas baseChart width="400" height="400"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+    <div class="col-md-6" style="margin-bottom: 10px">
+      
+      <table class="table table-responsive table-condensed">
+        <tr>
+          <th *ngFor="let label of lineChartLabels">{{label}}</th>
+        </tr>
+        <tr *ngFor="let d of lineChartData">
+          <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+        </tr>
+      </table>
+
+      <button (click)="randomizeLine()">CLICK</button>
+    </div>
+  </div>
+
+
+
+  <!--GRAFICO DE BARRAS-->
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    <button (click)="randomizeBar()">Update</button>
+  </div>
+
+
+
+  <!--GRAFICO DE DONA-->
+
+  <div class="row">
+    <div class="col-md-8">
+      <div style="display: block">
+        <canvas baseChart
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button type="button" name="button" (click)="randomizeDona()">Update</button>
+    </div>
+  </div>
+  
+
+  
+
+
+
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-small w3-dark-grey">
+  <p>Powered by XSOFT</p>
+  </footer>
+
+  <!-- End page content -->
+</div>

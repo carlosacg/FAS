@@ -5,6 +5,7 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { BudgetComponent} from './components/budget/budget.component';
 import { NavigationComponent} from './components/navigation/navigation.component';
 import { LoginComponent} from './components/login/login.component';
+import { InitComponent} from './components/init/init.component';
 
 const app_routes: Routes =[
     {path: 'users', component: UsersComponent},
@@ -12,6 +13,7 @@ const app_routes: Routes =[
     {path: 'transactions', component: TransactionsComponent},
     {path: 'budget', component: BudgetComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'init', component: InitComponent},
     {path: 'navigation', component: NavigationComponent},
     {path: '', redirectTo: '/login', pathMatch: 'full' },
     {path: '**', redirectTo: '/login'}

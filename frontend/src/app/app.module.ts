@@ -11,9 +11,10 @@ import { AccountsComponent } from './components/accounts/accounts.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { BudgetComponent } from './components/budget/budget.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { ChartsModule } from 'ng2-charts';
 import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+import { InitComponent } from './components/init/init.component';
 
 
 let config = new AuthServiceConfig([
@@ -37,6 +38,7 @@ let config = new AuthServiceConfig([
     BudgetComponent,
     LoginComponent,
     AppComponent,
+    InitComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ let config = new AuthServiceConfig([
     app_routing,
     SocialLoginModule.initialize(config),
     BrowserModule,
+    ChartsModule,
 
 
   ],

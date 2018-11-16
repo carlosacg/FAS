@@ -1,0 +1,22 @@
+.w3-main{
+    margin-left:200px;
+    margin-top:50px;
+    font-family: sans-serif, Helvetica;
+}
+.w3-container{
+    padding-top:20px;
+    font-family: sans-serif, Helvetica;
+}
+
+i{
+    width: 30px;
+}
+table{
+    width: 50%;
+    font-family: sans-serif, Helvetica;
+}
+button {
+    border:0;
+    outline:0 none;
+    margin-right: 5px;
+}
