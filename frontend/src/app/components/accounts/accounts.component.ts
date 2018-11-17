@@ -69,7 +69,7 @@ export class AccountsComponent implements OnInit {
     this.getAccounts();
     this.ngOnInit();
   }
-  
+
   insertIncome( account:Account, form:NgForm){
     let transaction = new Transaction();
 		var reply = prompt("INSERTE SALDO A SU CUENTA", "");

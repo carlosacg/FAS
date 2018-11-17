@@ -6,6 +6,28 @@
     <h4><b><i class="fa fa-home fa-fw"></i> Inicio</b></h4>
   </header>
 
+
+
+
+  <!--GRAFICO DE DONA-->
+  <header class="w3-container">
+    <h4><b> Saldo en cuentas</b></h4>
+  </header>
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngIf="doughnutChartData.length > 1" style="display: block">
+        <canvas  baseChart #baseChart="base-chart" width="400" height="250"
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    [options]="doughnutChartOptions"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>
+  
+
   <!--GRAFICO DE LINEAS-->
   <div class="row">
     <div class="col-md-6">
@@ -52,28 +74,6 @@
     </div>
     <button (click)="randomizeBar()">Update</button>
   </div>
-
-
-
-  <!--GRAFICO DE DONA-->
-
-  <div class="row">
-    <div class="col-md-8">
-      <div style="display: block">
-        <canvas baseChart
-                    [data]="doughnutChartData"
-                    [labels]="doughnutChartLabels"
-                    [chartType]="doughnutChartType"
-                    (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <button type="button" name="button" (click)="randomizeDona()">Update</button>
-    </div>
-  </div>
-  
-
   
 
 

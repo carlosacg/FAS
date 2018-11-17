@@ -1,16 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { AccountService } from '../../services/account.service';
+import { Account } from '../../models/account';
+import { BaseChartDirective } from 'ng2-charts/ng2-charts';
+
+
 
 @Component({
   selector: 'app-init',
   templateUrl: './init.component.html',
-  styleUrls: ['./init.component.css']
+  styleUrls: ['./init.component.css'],
+  providers :[AccountService]
+
 })
 export class InitComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit() {
+    this.getAccounts()
+    
   }
+  @ViewChild("baseChart") chart: BaseChartDirective;
+
+
+   updateChart(){
+    this.chart.chart.update(); // This re-renders the canvas element.
+  }
+
+  
+  
+    /**OBTENCION DE DATOS */
+  public getAccounts(){//OBTENGO LA LISTA DE CUENTAS
+      this.accountService.getAccounts().subscribe(res =>{
+        let accounts=this.accountService.accountArray = res as Account[];
+        console.log(accounts);
+        console.log(accounts[0].positive_balance);
+        this.getDataDona(accounts);
+      })
+    }
+
+
+    
 
   //--------------------------GRAFICO DE LINEAS--------------------------------------------------------------------
   public lineChartData:Array<any> = [
@@ -88,12 +118,14 @@ export class InitComponent implements OnInit {
   public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
- 
+  
   public barChartData:any[] = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
   ];
  
+
+
  
   public randomizeBar():void {
     // Only Change 3 values
@@ -119,17 +151,35 @@ export class InitComponent implements OnInit {
 
   //--------------------------GRAFICO DE DONAS--------------------------------------------------------------------
   // Doughnut
-  public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-  public doughnutChartData:number[] = [350, 450, 100];
+
   public doughnutChartType:string = 'doughnut';
-  
-  public randomizeDona(){
-    this.doughnutChartData = [
-      Math.round(Math.random() * 100),
-      Math.round(Math.random() * 100),
-      Math.round(Math.random() * 100)
-    ];
+  public doughnutChartLabels:string[] = [];
+  public doughnutChartData:number[] = [];
+  public doughnutChartOptions:any = {
+    responsive: true
+  };
+  public getDataDona(accounts){
+    for( let i=0; i<accounts.length; i++){ //SALDO POSITIVO
+      this.doughnutChartData[i]=accounts[i].positive_balance;
+    }
+
+    for( let i=0; i<accounts.length; i++){ //NOMBRES CUENTA 
+        this.doughnutChartLabels[i]=accounts[i].description;
+      }  
+      setTimeout(() => {  //REFRESCA EL GRAFICO
+        if (this.chart && this.chart.chart && this.chart.chart.config) {
+          this.chart.chart.config.data.labels = this.doughnutChartLabels;
+          this.chart.chart.update();
+        }
+        });
   }
+
+
+
+
   //---------------FIN--------GRAFICO DE DONAS--------------------------------------------------------------------
+  
+
+
 
 }
