@@ -34,7 +34,7 @@ userController.createUser=(req,res)=>{//LISTA LOS DATOS
     res.json('recibido');
     
     req.getConnection((err,conn)=>{
-        let instrucQuery="INSERT INTO users VALUES (DEFAULT,'"+user.user_name+"','"+user.last_name+"','"+user.email+"','"+user.pass+"','"+user.picture+"');";
+        let instrucQuery="INSERT INTO users VALUES ("+user.identification+",'"+user.user_name+"','"+user.last_name+"','"+user.email+"','"+user.picture+"');";
         console.log(instrucQuery);
 
         conn.query(instrucQuery,(err,users)=>{

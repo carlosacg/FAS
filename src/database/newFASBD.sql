@@ -3,16 +3,15 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users(
 
-	identification INTEGER auto_increment NOT NULL PRIMARY KEY,
-	user_name VARCHAR(20) NOT NULL,
+	identification VARCHAR(100)  NOT NULL PRIMARY KEY,
+	users_name VARCHAR(40) NOT NULL,
 	last_name VARCHAR(20) NOT NULL,
 	email VARCHAR(40),
-	pass VARCHAR(20) NOT NULL,
-	picture VARCHAR(40)
+	picture VARCHAR(100)
 
 );
 
-INSERT INTO users VALUES(DEFAULT,'carlos','cuervo','carlos.cuervo@correounivalle.edu.co','nada','nada');
+INSERT INTO users VALUES(1,'carlos','cuervo','carlos.cuervo@correounivalle.edu.co','nada');
 
 DROP TABLE IF EXISTS account;
 CREATE TABLE account(
@@ -23,7 +22,7 @@ CREATE TABLE account(
 	negative_balance INTEGER,
 	description VARCHAR(50),
 	bank_name VARCHAR(20),
-	identification INTEGER NOT NULL,
+	identification VARCHAR(100) NOT NULL,
 	CONSTRAINT account_fk FOREIGN KEY (identification) REFERENCES users(identification)
 	
 );
@@ -37,7 +36,7 @@ CREATE TABLE budget(
 	budget_name VARCHAR(20) NOT NULL,
 	initial_date DATE NOT NULL,
 	end_date DATE NOT NULL,
-	identification INTEGER NOT NULL,
+	identification VARCHAR(100) NOT NULL,
 	CONSTRAINT budget_fk FOREIGN KEY (identification) REFERENCES users(identification)
 	
 );

@@ -12,11 +12,16 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { BudgetComponent } from './components/budget/budget.component';
 import { LoginComponent } from './components/login/login.component';
 import { ChartsModule } from 'ng2-charts';
-import { SocialLoginModule, AuthServiceConfig } from "angular4-social-login";
-import { GoogleLoginProvider, FacebookLoginProvider } from "angular4-social-login";
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  FacebookLoginProvider,
+} from "angular-6-social-login";
+
 import { InitComponent } from './components/init/init.component';
 
-
+/*
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -24,9 +29,27 @@ let config = new AuthServiceConfig([
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("2052340698429751")
+    provider: new FacebookLoginProvider("")
   }
 ]);
+*/
+
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("2052340698429751")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("289312158718-vhs2e0pghd0081amen631t9brgp3eoqr.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -39,19 +62,23 @@ let config = new AuthServiceConfig([
     LoginComponent,
     AppComponent,
     InitComponent,
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     app_routing,
-    SocialLoginModule.initialize(config),
+    SocialLoginModule,
     BrowserModule,
     ChartsModule,
 
 
   ],
-  providers: [],
+  providers: [{
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {Router} from "@angular/router";
+import {LoginComponent} from '../login/login.component';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-navigation',
@@ -7,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor( ) { }
+
+  @ViewChild(LoginComponent) login: LoginComponent;
 
   ngOnInit() {
   }
 
+  getName(){
 
+  }
 }

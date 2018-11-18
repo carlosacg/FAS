@@ -1,35 +1,63 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
 import {Router} from "@angular/router";
-import { AuthService } from "angular4-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angular4-social-login";
+import { User } from '../../models/user';
+
+
+import {
+  AuthService,
+  FacebookLoginProvider,
+  GoogleLoginProvider
+} from "angular-6-social-login";
+
+declare var M: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router,private authService: AuthService) { }
-
- 
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
- 
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
- 
-  signOut(): void {
-    this.authService.signOut();
-  }
-
   ngOnInit() {
- 
+    this.getUsers();
   }
- correctLogin(){
-    this.router.navigate(['/navigation']);
-  }
+  constructor( private socialAuthService: AuthService, private usersService: UserService ) {}
   
+  public socialSignIn(socialPlatform : string) {
+    let socialPlatformProvider;
+    if(socialPlatform == "facebook"){
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    }else if(socialPlatform == "google"){
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+    
+    this.socialAuthService.signIn(socialPlatformProvider).then(
+      (userData) => {
+        console.log(socialPlatform+" sign in data : " , userData);
+        let user = new User();
+        user.identification = userData.id;
+        user.user_name = userData.name.split(' ')[1];
+        user.last_name = userData.name.split(' ')[2];
+        user.email = userData.email;
+        user.user_name = userData.name;
+        user.picture = userData.image;
+        this.usersService.postUser(user).subscribe(res =>{
+          M.toast({html: 'Usuario Creado satisfactoriamente'});
+          this.getUsers();
+        })
+      }
+    );
+  }
+
+  getUsers(){//OBTENGO LA LISTA DE USUARIOS
+    this.usersService.getUsers().subscribe(res =>{
+      this.usersService.userArray = res as User[];
+    })
+  }
+
+
+
 }
 
