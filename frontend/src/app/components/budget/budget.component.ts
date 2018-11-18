@@ -143,7 +143,10 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
     let cantidadItem=this.itemService.itemArray.length
     let totalGastado=0
     for(var i=0; i<cantidadItem;i++){
-        totalGastado+=parseInt(this.itemService.itemArray[i].spent_balance)  
+      console.log(this.itemService.itemArray[i].budget_number);
+      if(this.itemService.itemArray[i].budget_number!=null){
+        totalGastado+=parseInt(this.itemService.itemArray[i].spent_balance)
+      }  
     }
     document.getElementById('gastadoTotal').innerHTML = '$ '+totalGastado.toString();
     return totalGastado;
@@ -161,3 +164,4 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
   }
 
 }
+

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { Account } from '../../models/account';
+import { ItemService } from '../../services/item.service';
+import { Item } from '../../models/item';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 
@@ -9,15 +11,15 @@ import { BaseChartDirective } from 'ng2-charts/ng2-charts';
   selector: 'app-init',
   templateUrl: './init.component.html',
   styleUrls: ['./init.component.css'],
-  providers :[AccountService]
+  providers :[AccountService,ItemService]
 
 })
 export class InitComponent implements OnInit {
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService,private itemService: ItemService) { }
 
   ngOnInit() {
-    this.getAccounts()
+    this.getAccounts();
     
   }
   @ViewChild("baseChart") chart: BaseChartDirective;
@@ -35,9 +37,10 @@ export class InitComponent implements OnInit {
         let accounts=this.accountService.accountArray = res as Account[];
         console.log(accounts);
         console.log(accounts[0].positive_balance);
-        this.getDataDona(accounts);
+        this.getDataDonaSaldo(accounts);
       })
     }
+
 
 
     
@@ -49,12 +52,16 @@ export class InitComponent implements OnInit {
     {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
   ];
 
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 
   public lineChartOptions:any = {
     responsive: true
   };
   
+  public getDataLine(){
+
+  }
+
   public lineChartColors:Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
@@ -152,13 +159,14 @@ export class InitComponent implements OnInit {
   //--------------------------GRAFICO DE DONAS--------------------------------------------------------------------
   // Doughnut
 
+  //SALDO EN CUENTAS
   public doughnutChartType:string = 'doughnut';
   public doughnutChartLabels:string[] = [];
   public doughnutChartData:number[] = [];
   public doughnutChartOptions:any = {
     responsive: true
   };
-  public getDataDona(accounts){
+  public getDataDonaSaldo(accounts){
     for( let i=0; i<accounts.length; i++){ //SALDO POSITIVO
       this.doughnutChartData[i]=accounts[i].positive_balance;
     }
@@ -173,6 +181,29 @@ export class InitComponent implements OnInit {
         }
         });
   }
+
+    //ITEMS MAS COMPRADOS
+    public doughnutChartTypeItem:string = 'doughnut';
+    public doughnutChartLabelsItem:string[] = [];
+    public doughnutChartDataItem:number[] = [];
+    public doughnutChartOptionsItem:any = {
+      responsive: true
+    };
+    public getDataDonaItem(accounts){
+      for( let i=0; i<accounts.length; i++){ //SALDO POSITIVO
+        this.doughnutChartData[i]=accounts[i].positive_balance;
+      }
+  
+      for( let i=0; i<accounts.length; i++){ //NOMBRES CUENTA 
+          this.doughnutChartLabels[i]=accounts[i].description;
+        }  
+        setTimeout(() => {  //REFRESCA EL GRAFICO
+          if (this.chart && this.chart.chart && this.chart.chart.config) {
+            this.chart.chart.config.data.labels = this.doughnutChartLabels;
+            this.chart.chart.update();
+          }
+          });
+    }
 
 
 

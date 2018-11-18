@@ -9,7 +9,7 @@
 
 
 
-  <!--GRAFICO DE DONA-->
+  <!--GRAFICO DE DONA SALDOS-->
   <header class="w3-container">
     <h4><b> Saldo en cuentas</b></h4>
   </header>
@@ -26,6 +26,25 @@
       </div>
     </div>
   </div>
+
+    <!--GRAFICO DE DONA TOP ITEM-->
+    <header class="w3-container">
+      <h4><b> Saldo en cuentas</b></h4>
+    </header>
+    <div class="row">
+      <div class="col-md-8">
+        <div *ngIf="doughnutChartDataItem.length > 1" style="display: block">
+          <canvas  baseChart #baseChart="base-chart" width="400" height="250"
+                      [data]="doughnutChartDataItem"
+                      [labels]="doughnutChartLabelsItem"
+                      [chartType]="doughnutChartTypeItem"
+                      [options]="doughnutChartOptionsItem"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+  
   
 
   <!--GRAFICO DE LINEAS-->

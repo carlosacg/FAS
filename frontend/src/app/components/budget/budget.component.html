@@ -134,7 +134,8 @@
                     <form class="w3-container" #egresoForm="ngForm" (ngSubmit)="addTransactions(egresoForm)">
                     <label> Seleccione la cuenta</label>
                     <select class="w3-input w3-border w3-light-grey"  name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number" > 
-                        <option *ngFor="let account of accountService.accountArray"  ng-selected="Seleccione la cuenta" placeholder="Seleccione la cuenta">#{{account.account_number}} {{account.description}} </option> 
+                      <option value="" disabled selected></option>  
+                      <option *ngFor="let account of accountService.accountArray"  ng-selected="Seleccione la cuenta" placeholder="Seleccione la cuenta">#{{account.account_number}} {{account.description}} </option> 
                     </select>
                     <br>
                     <label>Valor de egreso</label>
