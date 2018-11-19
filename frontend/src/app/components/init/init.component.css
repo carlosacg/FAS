@@ -20,3 +20,18 @@ button {
     outline:0 none;
     margin-right: 5px;
 }
+header{
+    font-family: sans-serif, Helvetica;
+}
+#donut{
+    width: 50%;
+}
+#lines{
+    width: 50%;
+}
+#bars{
+    width: 50%;
+}
+.separators{
+    border-top: 1px solid rgb(52, 109, 141);
+}
