@@ -23,14 +23,14 @@
                       <th></th>
                       </tr>
                   </thead>
-                  <tr id="registro_transactions" *ngFor="let transactions of transactionService.transactionArray">
+                  <tr id="registro_transactions" *ngFor="let transactions of transactionService.transactionArray" >
                         <td *ngIf="transactions.transaction_number==transactions.transaction_number">{{transactions.transaction_number}}</td>
-                        <td *ngIf="transactions.item_number==transactions.item_number">{{transactions.item_number}}</td>
+                        <td *ngIf="transactions.description==transactions.description">{{transactions.description}}</td>
                         <td *ngIf="transactions.account_number==transactions.account_number">{{transactions.account_number}}</td>
                         <td *ngIf="transactions.spent_date==transactions.spent_date">{{transactions.spent_date | date}}</td>
                         <td *ngIf="transactions.spent_balance==transactions.spent_balance">{{transactions.spent_balance | currency:'USD'}}</td>
                       <td ><button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle"><i class="fa fa-eye" (click)="updateTransaction(transactions)"></i></button></td>
-                      <td ><button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-small w3-circle"  ><i class="fa fa-pencil" (click)="updateTransaction(transactions)"></i></button></td>
+                      <td ><button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-small w3-circle"  ><i class="fa fa-pencil" (click)="updateOverFlowTransactions(transactions)"></i></button></td>
                       <td><button class="w3-button w3-padding-small w3-circle"><i class="fa fa-trash" (click)="deleteTransaction(transactions.transaction_number)"></i></button></td>
                   </tr>
               </table>
@@ -81,11 +81,11 @@
                               <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactionForm)">
                                 
                                   <label >Fecha del gasto</label>
-                                  <input class="w3-input w3-light-grey w3-border" type="text" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date"  >
+                                  <input class="w3-input w3-light-grey w3-border" type="text" value="aaaa-mm-dd " name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date "  >
                                   <br>
                                   
                                   <label >Valor del gasto</label>
-                                  <input class="w3-input w3-border w3-light-grey" type="text" name="spent_balance" #spent_balance="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_balance" placeholder="Ingresa el valor" >
+                                  <input class="w3-input w3-border w3-light-grey" type="text" placeholder="Ingresa el valor" >
                                   <br>
                                   <div class="w3-show-inline-block">
                                       <div class="w3-bar">

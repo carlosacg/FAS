@@ -12,6 +12,8 @@ import { Account } from '../../models/account';
 
 declare var M: any;
 var number_items: string;
+var description: string;
+
 
 
 @Component({
@@ -52,7 +54,7 @@ export class BudgetComponent implements OnInit {
  
 addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 
-  this.transactionService.postEgress(form.value, number_items).subscribe(res =>{
+  this.transactionService.postEgress(form.value, number_items, description).subscribe(res =>{
     this.resetForm(form);
     M.toast({html: 'Transaccion Creada satisfactoriamente'});
     this.getTransactions();
@@ -161,6 +163,7 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 
   getNumberItem(item:Item){
     number_items = item.item_number;
+    description = item.description;
   }
 
 }

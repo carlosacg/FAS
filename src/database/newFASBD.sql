@@ -65,6 +65,7 @@ CREATE TABLE transactions(
 	account_number INTEGER NOT NULL,
 	spent_date DATE NOT NULL,
 	spent_balance INTEGER NOT NULL,
+	description VARCHAR(100) NOT NULL,
 	CONSTRAINT transaction_fk1 FOREIGN KEY (account_number) REFERENCES account(account_number),
 	CONSTRAINT transaction_fk3 FOREIGN KEY (item_number) REFERENCES item(item_number)	
 );

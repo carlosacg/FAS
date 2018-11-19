@@ -42,11 +42,15 @@ export class TransactionsComponent implements OnInit {
     })
   }
 
-  updateTransaction(transactions:Transaction, form:NgForm){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
-
+  updateOverFlowTransactions(transactions:Transaction, form:NgForm){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
     this.transactionService.selectedTransaction= transactions;
-    this.transactionService.putTransaction(transactions).subscribe(res=>{ //ACTUALIZA SALDO EN LA BASE DE DATOS
-      M.toast({html: 'INGRESO REALIZADO EXITOSAMENTE'});
+    this.resetForm(form);
+  }
+
+  updateTransaction(transactions:Transaction, form:NgForm){
+    this.transactionService.selectedTransaction= transactions;
+    this.transactionService.putTransaction(transactions).subscribe(res=>{ 
+      M.toast({html: 'ACTUALIZACION REALIZADA EXITOSAMENTE'});
       this.getTransactions();
       });
     

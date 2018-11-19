@@ -8,6 +8,8 @@ const TransacionSchema=new Schema({
     account_number:{type:String,required:false},
     spent_date:{type:String,required:false},
     spent_balance:{type:String,required:true},
+    description:{type:String,required:true},
+
 })
 
 module.exports=mongoose.model('Transaction',TransacionSchema);

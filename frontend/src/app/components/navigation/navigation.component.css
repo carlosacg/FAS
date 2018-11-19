@@ -7,7 +7,6 @@
     width:200px;
     font-family: sans-serif, Helvetica;
     margin-top: 10px;
-    
 }
 .w3-bar-item .w3-button .w3-light-gray .w3-right{
     padding: 8px 8px;
@@ -20,9 +19,6 @@
 .w3-overlay .w3-hide-large .w3-animate-opacity{
     cursor:pointer;
     font-family: sans-serif, Helvetica;
-}
-#bar{
-    text-align: none;
 }
     
     

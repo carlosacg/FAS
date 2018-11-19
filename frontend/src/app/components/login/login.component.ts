@@ -11,6 +11,8 @@ import {
 } from "angular-6-social-login";
 
 declare var M: any;
+var name: string;
+var id: string;
 
 @Component({
   selector: 'app-login',
@@ -43,6 +45,8 @@ export class LoginComponent implements OnInit {
         user.email = userData.email;
         user.user_name = userData.name;
         user.picture = userData.image;
+        name = userData.name.split(' ')[2];
+        id = userData.id;
         this.usersService.postUser(user).subscribe(res =>{
           M.toast({html: 'Usuario Creado satisfactoriamente'});
           this.getUsers();
@@ -51,6 +55,13 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  getName(){
+    return name;
+  }
+  getIdentification(){
+    
+    return  id;
+  }
   getUsers(){//OBTENGO LA LISTA DE USUARIOS
     this.usersService.getUsers().subscribe(res =>{
       this.usersService.userArray = res as User[];

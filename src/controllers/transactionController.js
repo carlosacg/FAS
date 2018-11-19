@@ -14,6 +14,18 @@ transactionController.getTransactions=(req,res)=>{//LISTA LOS DATOS
     })
 
 };
+transactionController.getFiltrerTransactions=(req,res)=>{//LISTA LOS DATOS
+    req.getConnection((err,conn)=>{
+        conn.query('SELECT * FROM transactions;',(err,transactions)=>{
+            if(err){
+                res.json(err);
+            }
+            res.json(transactions);
+           
+        })
+    })
+
+};
 
 transactionController.getEspecifyTransaction=(req,res)=>{//LISTA LOS DATOS
     req.getConnection((err,conn)=>{
@@ -36,7 +48,7 @@ transactionController.createTransaction=(req,res)=>{//LISTA LOS DATOS
     
 
     req.getConnection((err,conn)=>{
-        let instrucQuery="INSERT INTO transactions VALUES (DEFAULT,"+transactions.item_number+","+transactions.account_number+", CURRENT_DATE"+","+transactions.spent_balance+");";
+        let instrucQuery="INSERT INTO transactions VALUES (DEFAULT,"+transactions.item_number+","+transactions.account_number+", CURRENT_DATE"+","+transactions.spent_balance+ ",'"+transactions.description  +"');";
         console.log(instrucQuery);
 
         conn.query(instrucQuery,(err,transactions)=>{
