@@ -31,6 +31,7 @@ export class TransactionsService {
     var f = new Date();
     transaction.spent_date = f.getDate() + "-" + (f.getMonth() +1) + "-" + f.getFullYear();
     transaction.item_number = "2";
+    transaction.description = "Ingreso Nomina";
     return this.http.post(this.URL_API,transaction);
   }
   putTransaction(transaction:Transaction){//ACTUALIZAR
