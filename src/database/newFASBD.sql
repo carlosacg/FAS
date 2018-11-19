@@ -50,7 +50,7 @@ CREATE TABLE item(
 	planned_balance INTEGER NOT NULL,
 	spent_balance INTEGER,
 	description VARCHAR(100),
-	CONSTRAINT spent_fk1 FOREIGN KEY (budget_number) REFERENCES budget(budget_number)  ON DELETE CASCADE
+	CONSTRAINT spent_fk1 FOREIGN KEY (budget_number) REFERENCES budget(budget_number) ON DELETE CASCADE
 
 );
 
@@ -66,24 +66,9 @@ CREATE TABLE transactions(
 	spent_date DATE NOT NULL,
 	spent_balance INTEGER NOT NULL,
 	description VARCHAR(100) NOT NULL,
-	CONSTRAINT transaction_fk1 FOREIGN KEY (account_number) REFERENCES account(account_number),
-	CONSTRAINT transaction_fk3 FOREIGN KEY (item_number) REFERENCES item(item_number)	
+	CONSTRAINT transaction_fk1 FOREIGN KEY (account_number) REFERENCES account(account_number) ON DELETE CASCADE,
+	CONSTRAINT transaction_fk3 FOREIGN KEY (item_number) REFERENCES item(item_number) ON DELETE CASCADE	
 );
-
-
-
-
-DROP TRIGGER IF EXISTS trigger_budget;
-
-DELIMITER //
-CREATE TRIGGER trigger_budget AFTER INSERT ON transactions 
-FOR EACH ROW 
-BEGIN
-
-		UPDATE item SET spent_balance=NEW.spent_balance+spent_balance WHERE item_number=NEW.item_number;
-END //
-
-DELIMITER ;
 
 
 
@@ -93,7 +78,7 @@ DELIMITER //
 CREATE TRIGGER trigger_accounts AFTER INSERT ON transactions 
 FOR EACH ROW 
 BEGIN
-
+UPDATE item SET spent_balance=NEW.spent_balance+spent_balance WHERE item_number=NEW.item_number;
 
 	IF(SELECT positive_balance FROM account WHERE account_number=NEW.account_number)>=NEW.spent_balance THEN BEGIN
 		UPDATE account SET positive_balance=positive_balance-NEW.spent_balance WHERE account_number=NEW.account_number;
@@ -122,8 +107,6 @@ CREATE TRIGGER trigger_transactions_delete BEFORE DELETE ON transactions
 FOR EACH ROW 
 BEGIN
 
-
-
 IF(SELECT positive_balance FROM account WHERE account_number=OLD.account_number)>=OLD.spent_balance THEN BEGIN
 UPDATE account SET positive_balance=positive_balance+OLD.spent_balance WHERE account_number=OLD.account_number;
 END;
@@ -139,7 +122,6 @@ UPDATE account SET negative_balance=negative_balance WHERE account_number=OLD.ac
 UPDATE account SET positive_balance=-1 WHERE account_number=OLD.account_number;
 END;
 END IF;
-
 
 END //
 DELIMITER ;
