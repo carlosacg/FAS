@@ -28,12 +28,12 @@
 
   <!--GRAFICO DE DONA TOP ITEM-->
   <header class="w3-container">
-    <h4><b> Saldo en cuentas</b></h4>
+    <h4><b> Top #5 gastos</b></h4>
   </header>
   <div class="w3-row-padding">
     <div class="w3-container" id="donut">
       <div *ngIf="doughnutChartDataItem.length > 1" >
-        <canvas  baseChart #baseChart="base-chart" 
+        <canvas  baseChart #baseChart2="base-chart" 
                     [data]="doughnutChartDataItem"
                     [labels]="doughnutChartLabelsItem"
                     [chartType]="doughnutChartTypeItem"

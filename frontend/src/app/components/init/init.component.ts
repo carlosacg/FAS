@@ -19,15 +19,15 @@ export class InitComponent implements OnInit {
   constructor(private accountService: AccountService,private itemService: ItemService) { }
 
   ngOnInit() {
-    this.getAccounts();
-    
+    this.getAccounts();   
+    this.getItems();   
+
   }
   @ViewChild("baseChart") chart: BaseChartDirective;
+  @ViewChild("baseChart2") chart2: BaseChartDirective;
 
 
-   updateChart(){
-    this.chart.chart.update(); // This re-renders the canvas element.
-  }
+
 
   
   
@@ -38,6 +38,15 @@ export class InitComponent implements OnInit {
         console.log(accounts);
         console.log(accounts[0].positive_balance);
         this.getDataDonaSaldo(accounts);
+      })
+    }
+
+  public getItems(){//OBTENGO LA LISTA DE USUARIOS
+      this.itemService.getItems().subscribe(res =>{
+        let items=this.itemService.itemArray = res as Item[];
+        console.log(items);
+        console.log(items[0].spent_balance);
+        this.getDataDonaItem(items);
       })
     }
 
@@ -184,25 +193,30 @@ export class InitComponent implements OnInit {
 
     //ITEMS MAS COMPRADOS
     public doughnutChartTypeItem:string = 'doughnut';
-    public doughnutChartLabelsItem:string[] = [];
-    public doughnutChartDataItem:number[] = [];
+    public doughnutChartLabelsItem:string[] = ['1','2','3'];
+    public doughnutChartDataItem:number[] = [5,10,15];
     public doughnutChartOptionsItem:any = {
       responsive: true
     };
-    public getDataDonaItem(accounts){
-      for( let i=0; i<accounts.length; i++){ //SALDO POSITIVO
-        this.doughnutChartData[i]=accounts[i].positive_balance;
+    public getDataDonaItem(items){
+      for(let i=0; i<items.length; i ++){
+        if(i==5) break;
+        if(items[i].item_number!=2){
+          this.doughnutChartDataItem[i]=items[i].spent_balance;
+          this.doughnutChartLabelsItem[i]=items[i].description;
+        }else{
+          this.doughnutChartDataItem[i]=null;
+          this.doughnutChartLabelsItem[i]=' ';
+
+        }
       }
-  
-      for( let i=0; i<accounts.length; i++){ //NOMBRES CUENTA 
-          this.doughnutChartLabels[i]=accounts[i].description;
-        }  
-        setTimeout(() => {  //REFRESCA EL GRAFICO
-          if (this.chart && this.chart.chart && this.chart.chart.config) {
-            this.chart.chart.config.data.labels = this.doughnutChartLabels;
-            this.chart.chart.update();
-          }
-          });
+      setTimeout(() => {  //REFRESCA EL GRAFICO
+        if (this.chart2 && this.chart2.chart && this.chart2.chart.config) {
+          this.chart2.chart.config.data.labels = this.doughnutChartLabelsItem;
+          this.chart2.chart.update();
+        }
+        });
+
     }
 
 
