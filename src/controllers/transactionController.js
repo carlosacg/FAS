@@ -64,7 +64,7 @@ transactionController.updateTransaction=(req,res)=>{//LISTA LOS DATOS
     const newTransaction = req.body;
     console.log(newTransaction);
     req.getConnection((err,conn)=>{
-        let instrucQuery="UPDATE transactions SET item_number="+newTransaction.item_number+", account_number="+newTransaction.account_number+", spent_date='"+newTransaction.spent_date+"', spent_balance="+newTransaction.spent_balance+" WHERE transaction_number ="+id+";";
+        let instrucQuery="UPDATE transactions SET  spent_date='"+newTransaction.spent_date+"', spent_balance="+newTransaction.spent_balance+" WHERE transaction_number ="+id+";";
         console.log(instrucQuery);
         conn.query(instrucQuery,(err,conn)=>{
             res.json('Cuenta actualizado');

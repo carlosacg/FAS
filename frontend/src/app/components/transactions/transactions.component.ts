@@ -3,6 +3,7 @@ import { TransactionsService } from '../../services/transactions.service';
 import { NgForm } from '@angular/forms';
 import { Transaction } from '../../models/transaction';
 declare var M: any;
+declare var transactionId: any;
 
 @Component({
   selector: 'app-transactions',
@@ -43,13 +44,14 @@ export class TransactionsComponent implements OnInit {
   }
 
   updateOverFlowTransactions(transactions:Transaction, form:NgForm){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
+
     this.transactionService.selectedTransaction= transactions;
     this.resetForm(form);
+    transactionId = transactions.account_number;
   }
 
-  updateTransaction(transactions:Transaction, form:NgForm){
-    this.transactionService.selectedTransaction= transactions;
-    this.transactionService.putTransaction(transactions).subscribe(res=>{ 
+  updateTransaction(form?:NgForm){
+    this.transactionService.putTransaction(form.value).subscribe(res=>{ 
       M.toast({html: 'ACTUALIZACION REALIZADA EXITOSAMENTE'});
       this.getTransactions();
       });

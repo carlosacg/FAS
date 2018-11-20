@@ -100,6 +100,7 @@ END //
 DELIMITER ;
 
 
+
 DROP TRIGGER IF EXISTS trigger_transactions_delete;
 
 DELIMITER //

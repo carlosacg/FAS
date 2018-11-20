@@ -36,6 +36,7 @@ export class TransactionsService {
   }
   putTransaction(transaction:Transaction){//ACTUALIZAR
     transaction.spent_date=transaction.spent_date.substring(0,10);
+    alert(transaction.spent_balance);
     return this.http.put(this.URL_API +"/"+ transaction.transaction_number,transaction);
   }
 
