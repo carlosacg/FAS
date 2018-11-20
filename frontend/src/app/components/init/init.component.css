@@ -24,13 +24,14 @@ header{
     font-family: sans-serif, Helvetica;
 }
 #donut{
-    width: 50%;
+    width: 100%;
+    
 }
 #lines{
-    width: 50%;
+    width: 100%;
 }
 #bars{
-    width: 50%;
+    width: 100%;
 }
 .separators{
     border-top: 1px solid rgb(52, 109, 141);
