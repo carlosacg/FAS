@@ -10,7 +10,7 @@
     <div class="w3-half w3-center">
       <!--GRAFICO DE DONA SALDOS-->
       <header class="w3-container ">
-        <h4><b> Saldo en cuentas</b></h4>
+        <h4><b> Saldo de cuentas</b></h4>
       </header>
       <div class="w3-container w3-center"  id="donut">
         <div *ngIf="doughnutChartData.length > 1" >
@@ -48,9 +48,8 @@
   
   <hr class="separators">
 
-  <div class="w3-row-padding">
-    <div class="w3-half w3-center">
-      <!--GRAFICO DE LINEAS-->
+<div class="w3-row-padding">
+  <!-- <div class="w3-half w3-center">
       <div class="w3-container w3-half" id="lines">
         <div style="display: block;">
         <canvas baseChart 
@@ -70,17 +69,20 @@
           <tr class="w3-blue-gray">
             <th *ngFor="let label of lineChartLabels">{{label}}</th>
           </tr>
-          <tr *ngFor="let d of lineChartData">
+          <tr *ngFor="let d of lineChartData"> 
             <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
           </tr>
         </table>
   
         <button (click)="randomizeLine()">CLICK</button>
       </div>
-    </div>
+    </div> -->
 
     <div class="w3-half w3-center">
       <!--GRAFICO DE BARRAS-->
+      <header class="w3-container">
+        <h4><b> Transacciones por mes</b></h4>
+      </header>
       <div class="w3-container" style="display: block" id="bars">
           <canvas baseChart
                   [datasets]="barChartData"

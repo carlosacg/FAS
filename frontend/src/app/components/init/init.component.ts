@@ -37,8 +37,6 @@ export class InitComponent implements OnInit {
   public getAccounts(){//OBTENGO LA LISTA DE CUENTAS
       this.accountService.getAccounts().subscribe(res =>{
         let accounts=this.accountService.accountArray = res as Account[];
-        console.log(accounts);
-        console.log(accounts[0].positive_balance);
         this.getDataDonaSaldo(accounts);
       })
     }
@@ -46,17 +44,17 @@ export class InitComponent implements OnInit {
   public getItems(){//OBTENGO LA LISTA DE USUARIOS
       this.itemService.getItems().subscribe(res =>{
         let items=this.itemService.itemArray = res as Item[];
-        console.log(items);
-        console.log(items[0].spent_balance);
         this.getDataDonaItem(items);
       })
     }
 
+
+
   public getTransactions(){//OBTENGO LA LISTA DE transactions
       this.transactionService.getTransactions().subscribe(res =>{
         let transactions=this.transactionService.transactionArray = res as Transaction[];
-        console.log(transactions);
         this.getDataBar(transactions);
+
       })
     }
 
@@ -146,128 +144,110 @@ export class InitComponent implements OnInit {
   public barChartLegend:boolean = true;
   
   public barChartData:any[] = [
-    {data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'T. Ingresos'},
-    {data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'T. Egresos'}
+    {data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Egresos'},
+    {data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Ingresos'}
   ];
  
   public getDataBar(transactions){
-    console.log('ENTRO AL GET DATA BARRAS');
-    console.log(this.barChartData);
-    console.log(this.barChartData[0].label);
-    console.log(this.barChartData[0].data);
-    console.log(this.barChartData[0].data[1]);
+
     for( let i=0; i<transactions.length; i++){ 
       let date = new Date(transactions[i].spent_date);
-      console.log(date);
       let month = date.getMonth()+1;
-      console.log(month);
       switch(month) { 
          case 1: {
-            if(transactions[i].item_number= 2){//Si la transaccion es nomina
-              this.barChartData[0].data[0]=this.barChartData[0].data[0]+1;
-            }else{//Si es gasto
+            if(transactions[i].item_number==2){//Si la transaccion es nomina
               this.barChartData[1].data[0]=this.barChartData[1].data[0]+1;
+            }else{//Si es gasto
+              this.barChartData[0].data[0]=this.barChartData[0].data[0]+1;
             }
-            console.log("Enero"); 
             break; 
          } 
          case 2: { 
-            if(transactions[i].item_number = 2){//Si la transaccion es nomina
-              this.barChartData[1].data[0]=this.barChartData[1].data[0]+1;
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
+            this.barChartData[1].data[0]=this.barChartData[1].data[0]+1;
             }else{//Si es gasto
-              this.barChartData[1].data[1]=this.barChartData[1].data[1]+1;
+              this.barChartData[0].data[1]=this.barChartData[0].data[1]+1;
             }
-            console.log("Febrero"); 
             break; 
          } 
          case 3: {
-            if(transactions[i].item_number = 2){//Si la transaccion es nomina
-              this.barChartData[0].data[2]=this.barChartData[0].data[2]+1;
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
+            this.barChartData[1].data[2]=this.barChartData[1].data[2]+1;
             }else{//Si es gasto
-              this.barChartData[1].data[2]=this.barChartData[1].data[2]+1;
+              this.barChartData[0].data[2]=this.barChartData[0].data[2]+1;
             }
-            console.log("Marzo"); 
             break;    
          } 
          case 4: { 
-            if(transactions[i].item_number = 2){//Si la transaccion es nomina
-              this.barChartData[0].data[3]=this.barChartData[0].data[3]+1;
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
+            this.barChartData[1].data[3]=this.barChartData[1].data[3]+1;
             }else{//Si es gasto
-              this.barChartData[1].data[3]=this.barChartData[1].data[3]+1;
+              this.barChartData[0].data[3]=this.barChartData[0].data[3]+1;
             }
-            console.log("Abril"); 
             break; 
          }  
          case 5: { 
-            if(transactions[i].item_number = 2){//Si la transaccion es nomina
-              this.barChartData[0].data[4]=this.barChartData[0].data[4]+1;
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
+            this.barChartData[1].data[4]=this.barChartData[1].data[4]+1;
             }else{//Si es gasto
-              this.barChartData[1].data[4]=this.barChartData[1].data[4]+1;
+              this.barChartData[0].data[4]=this.barChartData[0].data[4]+1;
             }
-          console.log("Mayo"); 
           break; 
         } 
         case 6: { 
-          if(transactions[i].item_number = 2){//Si la transaccion es nomina
-            this.barChartData[0].data[5]=this.barChartData[0].data[5]+1;
-          }else{//Si es gasto
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
             this.barChartData[1].data[5]=this.barChartData[1].data[5]+1;
+          }else{//Si es gasto
+            this.barChartData[0].data[5]=this.barChartData[0].data[5]+1;
           }
-            console.log("Junio"); 
             break; 
         } 
         case 7: {
-          if(transactions[i].item_number = 2){//Si la transaccion es nomina
-            this.barChartData[0].data[6]=this.barChartData[0].data[6]+1;
-          }else{//Si es gasto
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
             this.barChartData[1].data[6]=this.barChartData[1].data[6]+1;
+          }else{//Si es gasto
+            this.barChartData[0].data[6]=this.barChartData[0].data[6]+1;
           }
-            console.log("Julio"); 
             break;    
         } 
         case 8: { 
-          if(transactions[i].item_number = 2){//Si la transaccion es nomina
-            this.barChartData[0].data[7]=this.barChartData[0].data[7]+1;
-          }else{//Si es gasto
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
             this.barChartData[1].data[7]=this.barChartData[1].data[7]+1;
+          }else{//Si es gasto
+            this.barChartData[0].data[7]=this.barChartData[0].data[7]+1;
           }
-            console.log("Agosto"); 
             break; 
         } 
         case 9: { 
-          if(transactions[i].item_number = 2){//Si la transaccion es nomina
-            this.barChartData[0].data[8]=this.barChartData[0].data[8]+1;
-          }else{//Si es gasto
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
             this.barChartData[1].data[8]=this.barChartData[1].data[8]+1;
+          }else{//Si es gasto
+            this.barChartData[0].data[8]=this.barChartData[0].data[8]+1;
           }
-          console.log("Septiembre"); 
           break; 
         } 
         case 10: { 
-          if(transactions[i].item_number = 2){//Si la transaccion es nomina
-            this.barChartData[0].data[9]=this.barChartData[0].data[9]+1;
-          }else{//Si es gasto
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
             this.barChartData[1].data[9]=this.barChartData[1].data[9]+1;
+          }else{//Si es gasto
+            this.barChartData[0].data[9]=this.barChartData[0].data[9]+1;
           }
-            console.log("Octubre"); 
             break; 
         } 
         case 11: {
-          if(transactions[i].item_number = 2){//Si la transaccion es nomina
-            this.barChartData[0].data[10]=this.barChartData[0].data[10]+1;
-          }else{//Si es gasto
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
             this.barChartData[1].data[10]=this.barChartData[1].data[10]+1;
+          }else{//Si es gasto
+            this.barChartData[0].data[10]=this.barChartData[0].data[10]+1;
           }
-            console.log("Noviembre"); 
             break;    
         } 
         case 12: { 
-          if(transactions[i].item_number = 2){//Si la transaccion es nomina
-            this.barChartData[0].data[11]=this.barChartData[0].data[11]+1;
-          }else{//Si es gasto
+          if(transactions[i].item_number==2){//Si la transaccion es nomina
             this.barChartData[1].data[11]=this.barChartData[1].data[11]+1;
+          }else{//Si es gasto
+            this.barChartData[0].data[11]=this.barChartData[0].data[11]+1;
           }
-            console.log("Diciembre"); 
             break; 
         }    
          default: { 
@@ -276,22 +256,7 @@ export class InitComponent implements OnInit {
          } 
       }
     }
-  }
-
- 
-  public randomizeBar():void {
-    // Only Change 3 values
-    let data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40];
-    let clone = JSON.parse(JSON.stringify(this.barChartData));
-    clone[0].data = data;
-    this.barChartData = clone;
+    console.log(this.barChartData);
   }
 
     //-----------FIN------------GRAFICO DE BARRAS--------------------------------------------------------------------
