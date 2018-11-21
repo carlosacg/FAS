@@ -3,6 +3,8 @@ import { AccountService } from '../../services/account.service';
 import { Account } from '../../models/account';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';
+import { Transaction} from '../../models/transaction'
+import { TransactionsService} from '../../services/transactions.service'
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 
@@ -11,17 +13,17 @@ import { BaseChartDirective } from 'ng2-charts/ng2-charts';
   selector: 'app-init',
   templateUrl: './init.component.html',
   styleUrls: ['./init.component.css'],
-  providers :[AccountService,ItemService]
+  providers :[AccountService,ItemService,TransactionsService]
 
 })
 export class InitComponent implements OnInit {
 
-  constructor(private accountService: AccountService,private itemService: ItemService) { }
+  constructor(private accountService: AccountService,private itemService: ItemService, private transactionService:TransactionsService) { }
 
   ngOnInit() {
     this.getAccounts();   
     this.getItems();   
-
+    this.getTransactions();
   }
   @ViewChild("baseChart") chart: BaseChartDirective;
   @ViewChild("baseChart2") chart2: BaseChartDirective;
@@ -47,6 +49,14 @@ export class InitComponent implements OnInit {
         console.log(items);
         console.log(items[0].spent_balance);
         this.getDataDonaItem(items);
+      })
+    }
+
+  public getTransactions(){//OBTENGO LA LISTA DE transactions
+      this.transactionService.getTransactions().subscribe(res =>{
+        let transactions=this.transactionService.transactionArray = res as Transaction[];
+        console.log(transactions);
+        this.getDataBar(transactions);
       })
     }
 
@@ -131,16 +141,142 @@ export class InitComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels:string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   public barChartType:string = 'bar';
   public barChartLegend:boolean = true;
   
   public barChartData:any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'T. Ingresos'},
+    {data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'T. Egresos'}
   ];
  
-
+  public getDataBar(transactions){
+    console.log('ENTRO AL GET DATA BARRAS');
+    console.log(this.barChartData);
+    console.log(this.barChartData[0].label);
+    console.log(this.barChartData[0].data);
+    console.log(this.barChartData[0].data[1]);
+    for( let i=0; i<transactions.length; i++){ 
+      let date = new Date(transactions[i].spent_date);
+      console.log(date);
+      let month = date.getMonth()+1;
+      console.log(month);
+      switch(month) { 
+         case 1: {
+            if(transactions[i].item_number= 2){//Si la transaccion es nomina
+              this.barChartData[0].data[0]=this.barChartData[0].data[0]+1;
+            }else{//Si es gasto
+              this.barChartData[1].data[0]=this.barChartData[1].data[0]+1;
+            }
+            console.log("Enero"); 
+            break; 
+         } 
+         case 2: { 
+            if(transactions[i].item_number = 2){//Si la transaccion es nomina
+              this.barChartData[1].data[0]=this.barChartData[1].data[0]+1;
+            }else{//Si es gasto
+              this.barChartData[1].data[1]=this.barChartData[1].data[1]+1;
+            }
+            console.log("Febrero"); 
+            break; 
+         } 
+         case 3: {
+            if(transactions[i].item_number = 2){//Si la transaccion es nomina
+              this.barChartData[0].data[2]=this.barChartData[0].data[2]+1;
+            }else{//Si es gasto
+              this.barChartData[1].data[2]=this.barChartData[1].data[2]+1;
+            }
+            console.log("Marzo"); 
+            break;    
+         } 
+         case 4: { 
+            if(transactions[i].item_number = 2){//Si la transaccion es nomina
+              this.barChartData[0].data[3]=this.barChartData[0].data[3]+1;
+            }else{//Si es gasto
+              this.barChartData[1].data[3]=this.barChartData[1].data[3]+1;
+            }
+            console.log("Abril"); 
+            break; 
+         }  
+         case 5: { 
+            if(transactions[i].item_number = 2){//Si la transaccion es nomina
+              this.barChartData[0].data[4]=this.barChartData[0].data[4]+1;
+            }else{//Si es gasto
+              this.barChartData[1].data[4]=this.barChartData[1].data[4]+1;
+            }
+          console.log("Mayo"); 
+          break; 
+        } 
+        case 6: { 
+          if(transactions[i].item_number = 2){//Si la transaccion es nomina
+            this.barChartData[0].data[5]=this.barChartData[0].data[5]+1;
+          }else{//Si es gasto
+            this.barChartData[1].data[5]=this.barChartData[1].data[5]+1;
+          }
+            console.log("Junio"); 
+            break; 
+        } 
+        case 7: {
+          if(transactions[i].item_number = 2){//Si la transaccion es nomina
+            this.barChartData[0].data[6]=this.barChartData[0].data[6]+1;
+          }else{//Si es gasto
+            this.barChartData[1].data[6]=this.barChartData[1].data[6]+1;
+          }
+            console.log("Julio"); 
+            break;    
+        } 
+        case 8: { 
+          if(transactions[i].item_number = 2){//Si la transaccion es nomina
+            this.barChartData[0].data[7]=this.barChartData[0].data[7]+1;
+          }else{//Si es gasto
+            this.barChartData[1].data[7]=this.barChartData[1].data[7]+1;
+          }
+            console.log("Agosto"); 
+            break; 
+        } 
+        case 9: { 
+          if(transactions[i].item_number = 2){//Si la transaccion es nomina
+            this.barChartData[0].data[8]=this.barChartData[0].data[8]+1;
+          }else{//Si es gasto
+            this.barChartData[1].data[8]=this.barChartData[1].data[8]+1;
+          }
+          console.log("Septiembre"); 
+          break; 
+        } 
+        case 10: { 
+          if(transactions[i].item_number = 2){//Si la transaccion es nomina
+            this.barChartData[0].data[9]=this.barChartData[0].data[9]+1;
+          }else{//Si es gasto
+            this.barChartData[1].data[9]=this.barChartData[1].data[9]+1;
+          }
+            console.log("Octubre"); 
+            break; 
+        } 
+        case 11: {
+          if(transactions[i].item_number = 2){//Si la transaccion es nomina
+            this.barChartData[0].data[10]=this.barChartData[0].data[10]+1;
+          }else{//Si es gasto
+            this.barChartData[1].data[10]=this.barChartData[1].data[10]+1;
+          }
+            console.log("Noviembre"); 
+            break;    
+        } 
+        case 12: { 
+          if(transactions[i].item_number = 2){//Si la transaccion es nomina
+            this.barChartData[0].data[11]=this.barChartData[0].data[11]+1;
+          }else{//Si es gasto
+            this.barChartData[1].data[11]=this.barChartData[1].data[11]+1;
+          }
+            console.log("Diciembre"); 
+            break; 
+        }    
+         default: { 
+            console.log("Invalid choice"); 
+            break;              
+         } 
+      }
+    }
+  }
 
  
   public randomizeBar():void {
@@ -176,13 +312,11 @@ export class InitComponent implements OnInit {
     responsive: true
   };
   public getDataDonaSaldo(accounts){
-    for( let i=0; i<accounts.length; i++){ //SALDO POSITIVO
+    for( let i=0; i<accounts.length; i++){ 
       this.doughnutChartData[i]=accounts[i].positive_balance;
+      this.doughnutChartLabels[i]=accounts[i].description;
     }
 
-    for( let i=0; i<accounts.length; i++){ //NOMBRES CUENTA 
-        this.doughnutChartLabels[i]=accounts[i].description;
-      }  
       setTimeout(() => {  //REFRESCA EL GRAFICO
         if (this.chart && this.chart.chart && this.chart.chart.config) {
           this.chart.chart.config.data.labels = this.doughnutChartLabels;
