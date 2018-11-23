@@ -6,7 +6,7 @@ const mysql = require('mysql');
 const myConnection = require('express-myconnection');
 const cors = require('cors');
 //IMPORTING ROUTES
-const passwordDataBase='un1v4ll3';
+const passwordDataBase='k4HDdT9v4T';
 
 
 const userRoutes=require('./routes/user');
@@ -26,11 +26,11 @@ app.use(express.json());
 app.use(cors({origin: 'http://localhost:4200'})); //PERMITE COMUNICACION CON ANGULAR
 
 app.use(myConnection(mysql,{ //CONEXION A LA BASE DE DATOS
-    host: 'localhost',
-    user:'root',
+    host: 'sql10.freemysqlhosting.net',
+    user:'sql10266769',
     password: passwordDataBase,
     port: 3306,
-    database: 'fas_db'
+    database: 'sql10266769'
 },'single'));
 
 app.use(express.urlencoded({extended:false}));
