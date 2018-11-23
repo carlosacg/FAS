@@ -26,11 +26,11 @@ app.use(express.json());
 app.use(cors({origin: 'http://localhost:4200'})); //PERMITE COMUNICACION CON ANGULAR
 
 app.use(myConnection(mysql,{ //CONEXION A LA BASE DE DATOS
-    host: 'sql10.freemysqlhosting.net',
-    user:'sql10266769',
-    password: passwordDataBase,
+    host: 'db4free.net',
+    user:'un1v4ll3',
+    password: 'un1v4ll3',
     port: 3306,
-    database: 'sql10266769'
+    database: 'fas_db'
 },'single'));
 
 app.use(express.urlencoded({extended:false}));
