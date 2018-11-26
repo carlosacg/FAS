@@ -7,7 +7,7 @@ import { User } from '../models/user';
 })
 
 export class UserService {
-  readonly URL_API="http://localhost:3000/api/users";
+  readonly URL_API="https://backend-fas-uv.herokuapp.com/api/users";
   selectedUser : User;
   userArray : User[];
 

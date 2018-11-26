@@ -7,7 +7,7 @@ import { Budget } from '../models/budget';
   providedIn: 'root'
 })
 export class ItemService {
-  readonly URL_API="http://localhost:3000/api/items";
+  readonly URL_API="https://backend-fas-uv.herokuapp.com/api/items";
   selectedItem : Item;
   itemArray : Item[];
 
