@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 import { User } from '../../models/user';
 
 
@@ -9,6 +9,8 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from "angular-6-social-login";
+import { isBoolean } from 'util';
+import { tryParse } from 'selenium-webdriver/http';
 
 declare var M: any;
 var name: string;
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.getUsers();
   }
-  constructor( private socialAuthService: AuthService, public usersService: UserService ) {}
+
+  constructor( private socialAuthService: AuthService, public usersService: UserService, private router: Router ) {}
   
   public socialSignIn(socialPlatform : string) {
     let socialPlatformProvider;
@@ -34,7 +37,8 @@ export class LoginComponent implements OnInit {
     }else if(socialPlatform == "google"){
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
-    
+    let isDone: boolean;
+
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
@@ -47,12 +51,22 @@ export class LoginComponent implements OnInit {
         user.picture = userData.image;
         name = userData.name.split(' ')[2];
         id = userData.id;
+        console.log(name);
+        isDone = true
         this.usersService.postUser(user).subscribe(res =>{
           M.toast({html: 'Usuario Creado satisfactoriamente'});
           this.getUsers();
+          isDone = true
+          return isDone;
         })
+        console.log("pase");
+
+        if(isDone == true){
+          this.onLoginClick();
+        }
       }
     );
+    
   }
 
   getName(){
@@ -68,7 +82,9 @@ export class LoginComponent implements OnInit {
     })
   }
 
-
+  public onLoginClick(){
+    this.router.navigate(['./navigation']);
+}
 
 }
 
