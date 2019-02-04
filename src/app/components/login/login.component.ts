@@ -9,6 +9,8 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from "angular-6-social-login";
+import { isBoolean } from 'util';
+import { tryParse } from 'selenium-webdriver/http';
 
 declare var M: any;
 var name: string;

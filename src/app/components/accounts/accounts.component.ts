@@ -13,12 +13,10 @@ declare var M: any;
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.css'],
   providers :[AccountService,TransactionsService,LoginComponent]
-
 })
 export class AccountsComponent implements OnInit {
 
   constructor(public accountService: AccountService, public transactionService:TransactionsService, public loginComponent:LoginComponent) { }
-
   ngOnInit() {
     this.getAccounts();
     this.loginComponent.getIdentification();

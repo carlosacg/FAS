@@ -10,8 +10,10 @@ export class AccountService {
   readonly URL_API="https://backend-fas-uv.herokuapp.com/api/accounts";
   selectedAccount : Account;
   accountArray : Account[];
+  loginComponent : LoginComponent;
 
-  constructor(public loginComponent:LoginComponent, private http: HttpClient) {
+  
+  constructor(private http: HttpClient) {
     this.selectedAccount = new Account();
    }
 
