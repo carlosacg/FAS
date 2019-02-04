@@ -9,8 +9,6 @@ import {
   FacebookLoginProvider,
   GoogleLoginProvider
 } from "angular-6-social-login";
-import { isBoolean } from 'util';
-import { tryParse } from 'selenium-webdriver/http';
 
 declare var M: any;
 var name: string;
@@ -70,10 +68,11 @@ export class LoginComponent implements OnInit {
   }
 
   getName(){
+    console.log(name)
     return name;
   }
   getIdentification(){
-    
+    console.log(id)
     return  id;
   }
   getUsers(){//OBTENGO LA LISTA DE USUARIOS

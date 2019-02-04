@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Account } from '../../models/account';
 import { TransactionsService } from '../../services/transactions.service';
 import { Transaction } from '../../models/transaction';
-
+import { LoginComponent } from '../../components/login/login.component'
 declare var M: any;
 
 
@@ -12,15 +12,17 @@ declare var M: any;
   selector: 'app-accounts',
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.css'],
-  providers :[AccountService,TransactionsService]
+  providers :[AccountService,TransactionsService,LoginComponent]
 
 })
 export class AccountsComponent implements OnInit {
 
-  constructor(public accountService: AccountService, public transactionService:TransactionsService) { }
+  constructor(public accountService: AccountService, public transactionService:TransactionsService, public loginComponent:LoginComponent) { }
 
   ngOnInit() {
     this.getAccounts();
+    this.loginComponent.getIdentification();
+    this.loginComponent.getName();
   }
 
   addAccount(form?:NgForm){//AGREGAR CUENTA
