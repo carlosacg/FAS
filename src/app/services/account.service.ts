@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Account } from '../models/account';
+import { LoginComponent } from '../components/login/login.component'
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AccountService {
   selectedAccount : Account;
   accountArray : Account[];
 
-  constructor(private http: HttpClient) {
+  constructor(public loginComponent:LoginComponent, private http: HttpClient) {
     this.selectedAccount = new Account();
    }
 
@@ -19,6 +20,7 @@ export class AccountService {
   }
 
   postAccount(account:Account){//CREAR
+    account.identification= this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
     return this.http.post(this.URL_API,account);
   }
 
