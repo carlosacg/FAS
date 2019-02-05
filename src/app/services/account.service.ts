@@ -21,7 +21,7 @@ export class AccountService {
   }
 
   postAccount(account:Account){//CREAR
-    account.identification= this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
+   // account.identification= this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
     return this.http.post(this.URL_API,account);
   }
 
