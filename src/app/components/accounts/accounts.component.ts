@@ -32,6 +32,7 @@ export class AccountsComponent implements OnInit {
       });
     }else{//SI NO HAY ID, INSERTO EL CUENTA
       form.value.identication=this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
+      console.log(form.value);
       this.accountService.postAccount(form.value).subscribe(res =>{
         this.resetForm(form);
         M.toast({html: 'Cuenta Creada satisfactoriamente'});
