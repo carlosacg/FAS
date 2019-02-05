@@ -25,7 +25,7 @@ export class AccountsComponent implements OnInit {
 
   addAccount(form?:NgForm){//AGREGAR CUENTA
     if(form.value.account_number){//SI EL INPUT ID HIDDEN ESTA LLENO ACTUALIZO EL CUENTA
-        this.accountService.putAccount(form.value).subscribe(res=>{
+        this.accountService.putAccount(form.value,this.loginComponent.getIdentification()).subscribe(res=>{
         this.resetForm(form);
         M.toast({html: 'Cuenta Actualizado satisfactoriamente'});
         this.getAccounts();
@@ -33,7 +33,7 @@ export class AccountsComponent implements OnInit {
     }else{//SI NO HAY ID, INSERTO EL CUENTA
       //form.value.identication=this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
       //console.log(form.value);
-      this.accountService.postAccount(form.value).subscribe(res =>{
+      this.accountService.postAccount(form.value,this.loginComponent.getIdentification()).subscribe(res =>{
         this.resetForm(form);
         M.toast({html: 'Cuenta Creada satisfactoriamente'});
         this.getAccounts();
@@ -44,7 +44,7 @@ export class AccountsComponent implements OnInit {
 
 
   getAccounts(){//OBTENGO LA LISTA DE USUARIOS
-    this.accountService.getAccounts().subscribe(res =>{
+    this.accountService.getAccounts(this.loginComponent.getIdentification()).subscribe(res =>{
       this.accountService.accountArray = res as Account[];
     })
   }
@@ -61,7 +61,7 @@ export class AccountsComponent implements OnInit {
 
   deleteAccount(account_number:string,form: NgForm){
     if(confirm('¿Seguro que desea eliminar este usuario?')) {
-      this.accountService.deleteAccount(account_number).subscribe(res => {
+      this.accountService.deleteAccount(account_number,this.loginComponent.getIdentification()).subscribe(res => {
         M.toast({html: 'cuenta eliminado'});
         this.getAccounts();
           this.resetForm(form);
@@ -90,7 +90,7 @@ export class AccountsComponent implements OnInit {
           this.getTransactions();
         })
         this.accountService.selectedAccount= account; //ACTUALIZA LA LISTA
-        this.accountService.putAccount(account).subscribe(res=>{ //ACTUALIZA SALDO EN LA BASE DE DATOS
+        this.accountService.putAccount(account,this.loginComponent.getIdentification()).subscribe(res=>{ //ACTUALIZA SALDO EN LA BASE DE DATOS
         this.resetForm(form);//REINICIA EL FORMULARIO
         M.toast({html: 'INGRESO REALIZADO EXITOSAMENTE'});
         this.getAccounts();

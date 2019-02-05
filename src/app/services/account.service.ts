@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Account } from '../models/account';
-import { LoginComponent } from '../components/login/login.component'
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +11,25 @@ export class AccountService {
   accountArray : Account[];
 
   
-  constructor(private http: HttpClient, public loginComponent:LoginComponent) {
+  constructor(private http: HttpClient) {
     this.selectedAccount = new Account();
    }
 
-  getAccounts(){//LEER
+  getAccounts(id:string){//LEER
     return this.http.get(this.URL_API);     
   }
 
-  postAccount(account:Account){//CREAR
-    account.identification= this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
+  postAccount(account:Account,id:string){//CREAR
+    account.identification=id; //INSERTO EL ID DEL USUARIO LOGUEADO
+    console.log(account);
     return this.http.post(this.URL_API,account);
   }
 
-  putAccount(account:Account){//ACTUALIZAR
+  putAccount(account:Account,id:string){//ACTUALIZAR
     return this.http.put(this.URL_API +"/"+ account.account_number,account);
   }
 
-  deleteAccount(account_number:string){//ELIMINAR
+  deleteAccount(account_number:string,id:string){//ELIMINAR
     return this.http.delete(this.URL_API +"/" +account_number);
   }
 

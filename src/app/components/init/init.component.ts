@@ -6,6 +6,7 @@ import { Item } from '../../models/item';
 import { Transaction} from '../../models/transaction'
 import { TransactionsService} from '../../services/transactions.service'
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
+import { LoginComponent } from '../../components/login/login.component'
 
 
 
@@ -13,12 +14,12 @@ import { BaseChartDirective } from 'ng2-charts/ng2-charts';
   selector: 'app-init',
   templateUrl: './init.component.html',
   styleUrls: ['./init.component.css'],
-  providers :[AccountService,ItemService,TransactionsService]
+  providers :[AccountService,ItemService,TransactionsService,LoginComponent]
 
 })
 export class InitComponent implements OnInit {
 
-  constructor(public accountService: AccountService,public itemService: ItemService, public transactionService:TransactionsService) { }
+  constructor(public loginComponent:LoginComponent,public accountService: AccountService,public itemService: ItemService, public transactionService:TransactionsService) { }
 
   ngOnInit() {
     this.getAccounts();   
@@ -35,7 +36,7 @@ export class InitComponent implements OnInit {
   
     /**OBTENCION DE DATOS */
   public getAccounts(){//OBTENGO LA LISTA DE CUENTAS
-      this.accountService.getAccounts().subscribe(res =>{
+      this.accountService.getAccounts(this.loginComponent.getIdentification()).subscribe(res =>{
         let accounts=this.accountService.accountArray = res as Account[];
         this.getDataDonaSaldo(accounts);
       })

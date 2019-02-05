@@ -8,6 +8,7 @@ import { Budget } from '../../models/budget';
 import { Item } from '../../models/item';
 import { Transaction } from '../../models/transaction';
 import { Account } from '../../models/account';
+import { LoginComponent } from '../../components/login/login.component'
 
 
 declare var M: any;
@@ -20,11 +21,11 @@ var description: string;
   selector: 'app-budget',
   templateUrl: './budget.component.html',
   styleUrls: ['./budget.component.css'],
-  providers :[BudgetService,ItemService,TransactionsService, AccountService]
+  providers :[BudgetService,ItemService,TransactionsService, AccountService,LoginComponent]
 
 })
 export class BudgetComponent implements OnInit {
-  constructor(public budgetService: BudgetService,public itemService: ItemService, public transactionService:TransactionsService, public accountService:AccountService) { }
+  constructor(public loginComponent:LoginComponent,public budgetService: BudgetService,public itemService: ItemService, public transactionService:TransactionsService, public accountService:AccountService) { }
 
   ngOnInit() {
     this.getBudgets();
@@ -67,7 +68,7 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
     })
   }
   getAccounts(){//OBTENGO LA LISTA DE USUARIOS
-    this.accountService.getAccounts().subscribe(res =>{
+    this.accountService.getAccounts(this.loginComponent.getIdentification()).subscribe(res =>{
       this.accountService.accountArray = res as Account[];
     })
   } 
