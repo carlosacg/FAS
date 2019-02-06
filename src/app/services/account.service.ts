@@ -16,7 +16,7 @@ export class AccountService {
    }
 
   getAccounts(id:string){//LEER
-    return this.http.get(this.URL_API+"/"+id);     
+    return this.http.get(this.URL_API);     
   }
 
   postAccount(account:Account,id:string){//CREAR

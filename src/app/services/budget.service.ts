@@ -14,12 +14,11 @@ export class BudgetService {
     this.selectedBudget = new Budget();
    }
 
-  getBudgets(id:string){//LEER
-    return this.http.get(this.URL_API+"/"+id);     
+  getBudgets(){//LEER
+    return this.http.get(this.URL_API);     
   }
 
-  postBudget(budget:Budget,id:string){//CREAR
-    budget.identification=id; //INSERTO EL ID DEL USUARIO LOGUEADO
+  postBudget(budget:Budget){//CREAR
     return this.http.post(this.URL_API,budget);
   }
 

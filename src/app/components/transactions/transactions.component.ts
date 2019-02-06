@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from '../../services/transactions.service';
 import { NgForm } from '@angular/forms';
 import { Transaction } from '../../models/transaction';
-import { LoginComponent } from '../../components/login/login.component'
-
 declare var M: any;
 declare var transactionId: any;
 
@@ -11,7 +9,7 @@ declare var transactionId: any;
   selector: 'app-transactions',
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.css'],
-  providers :[TransactionsService,LoginComponent]
+  providers :[TransactionsService]
 
 })
 
@@ -20,7 +18,7 @@ declare var transactionId: any;
 
 export class TransactionsComponent implements OnInit {
 
-  constructor(public loginComponent:LoginComponent,public transactionService: TransactionsService) { }
+  constructor(public transactionService: TransactionsService) { }
 
 
   ngOnInit() {
@@ -40,7 +38,7 @@ export class TransactionsComponent implements OnInit {
 
 
   getTransactions(){//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res =>{
+    this.transactionService.getTransactions().subscribe(res =>{
       let transactions=this.transactionService.transactionArray = res as Transaction[];
       console.log(transactions);
     })

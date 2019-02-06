@@ -9,6 +9,7 @@ export class Item {
         this.description=description;
 
     }
+    identification: string;
     budget_number: string;
     item_number : string;
     planned_balance : string;

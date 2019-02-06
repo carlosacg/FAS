@@ -15,13 +15,14 @@ export class ItemService {
     this.selectedItem = new Item();
    }
 
-  getItems(id:string){//LEER
-    return this.http.get(this.URL_API+"/"+id);     
+  getItems(){//LEER
+    return this.http.get(this.URL_API);     
   }
 
   postItem(item:Item){//CREAR
     item.spent_balance='0';
-    console.log(item);
+    let subcadena=item.budget_number.substr(1,1);
+    item.budget_number=subcadena;
     return this.http.post(this.URL_API,item);
   }
 

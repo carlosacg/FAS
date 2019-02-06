@@ -37,7 +37,7 @@ export class BudgetComponent implements OnInit {
   }
 
   addBudget(form?:NgForm){//AGREGAR CUENTA
-      this.budgetService.postBudget(form.value,this.loginComponent.getIdentification()).subscribe(res =>{
+      this.budgetService.postBudget(form.value).subscribe(res =>{
         this.resetForm(form);
         M.toast({html: 'Presupuesto Creada satisfactoriamente'});
         this.getBudgets();
@@ -46,7 +46,6 @@ export class BudgetComponent implements OnInit {
   }
 
   addItem(form?:NgForm){//AGREGAR CUENTA
-    console.log(form.value)
     this.itemService.postItem(form.value).subscribe(res =>{
       this.resetForm(form);
       M.toast({html: 'Item Creada satisfactoriamente'});
@@ -64,7 +63,7 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 }
 
   getBudgets(){//OBTENGO LA LISTA DE USUARIOS
-    this.budgetService.getBudgets(this.loginComponent.getIdentification()).subscribe(res =>{
+    this.budgetService.getBudgets().subscribe(res =>{
       this.budgetService.budgetArray = res as Budget[];
     })
   }
@@ -76,16 +75,14 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 
 
   getItems(){//OBTENGO LA LISTA DE USUARIOS
-    if(this.itemService.itemArray!=undefined){
-      this.itemService.getItems(this.loginComponent.getIdentification()).subscribe(res =>{
-        this.itemService.itemArray = res as Item[];
-      })
-    }
+    this.itemService.getItems().subscribe(res =>{
+      this.itemService.itemArray = res as Item[];
+    })
   }
 
 
   getTransactions(){//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res =>{
+    this.transactionService.getTransactions().subscribe(res =>{
       this.transactionService.transactionArray = res as Transaction[];
     })
   }
