@@ -46,6 +46,7 @@ export class BudgetComponent implements OnInit {
   }
 
   addItem(form?:NgForm){//AGREGAR CUENTA
+    console.log(form.value)
     this.itemService.postItem(form.value).subscribe(res =>{
       this.resetForm(form);
       M.toast({html: 'Item Creada satisfactoriamente'});
