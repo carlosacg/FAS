@@ -14,8 +14,8 @@ export class TransactionsService {
     this.selectedTransaction = new Transaction();
    }
 
-  getTransactions(){//LEER
-    return this.http.get(this.URL_API);     
+  getTransactions(id:string){//LEER
+    return this.http.get(this.URL_API+"/"+id);     
   }
 
   postEgress(transaction:Transaction , number_item:string, descriptions:string){//CREAR

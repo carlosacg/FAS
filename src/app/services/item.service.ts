@@ -15,8 +15,8 @@ export class ItemService {
     this.selectedItem = new Item();
    }
 
-  getItems(){//LEER
-    return this.http.get(this.URL_API);     
+  getItems(id:string){//LEER
+    return this.http.get(this.URL_API+"/"+id);     
   }
 
   postItem(item:Item){//CREAR

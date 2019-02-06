@@ -63,7 +63,7 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 }
 
   getBudgets(){//OBTENGO LA LISTA DE USUARIOS
-    this.budgetService.getBudgets().subscribe(res =>{
+    this.budgetService.getBudgets(this.loginComponent.getIdentification()).subscribe(res =>{
       this.budgetService.budgetArray = res as Budget[];
     })
   }
@@ -75,14 +75,14 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 
 
   getItems(){//OBTENGO LA LISTA DE USUARIOS
-    this.itemService.getItems().subscribe(res =>{
+    this.itemService.getItems(this.loginComponent.getIdentification()).subscribe(res =>{
       this.itemService.itemArray = res as Item[];
     })
   }
 
 
   getTransactions(){//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions().subscribe(res =>{
+    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res =>{
       this.transactionService.transactionArray = res as Transaction[];
     })
   }
