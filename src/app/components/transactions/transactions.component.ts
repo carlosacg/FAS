@@ -40,7 +40,7 @@ export class TransactionsComponent implements OnInit {
 
 
   getTransactions(){//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res =>{
+    this.transactionService.getTransactions().subscribe(res =>{
       let transactions=this.transactionService.transactionArray = res as Transaction[];
       console.log(transactions);
     })
