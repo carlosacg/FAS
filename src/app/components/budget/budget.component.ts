@@ -76,9 +76,11 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 
 
   getItems(){//OBTENGO LA LISTA DE USUARIOS
-    this.itemService.getItems(this.loginComponent.getIdentification()).subscribe(res =>{
-      this.itemService.itemArray = res as Item[];
-    })
+    if(this.itemService.itemArray!=undefined){
+      this.itemService.getItems(this.loginComponent.getIdentification()).subscribe(res =>{
+        this.itemService.itemArray = res as Item[];
+      })
+    }
   }
 
 
