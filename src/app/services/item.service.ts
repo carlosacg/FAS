@@ -22,8 +22,6 @@ export class ItemService {
   postItem(item:Item){//CREAR
     item.spent_balance='0';
     console.log(item);
-    let subcadena=item.budget_number.substr(1,1);
-    item.budget_number=subcadena;
     return this.http.post(this.URL_API,item);
   }
 

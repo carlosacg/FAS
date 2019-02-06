@@ -18,7 +18,8 @@ export class BudgetService {
     return this.http.get(this.URL_API+"/"+id);     
   }
 
-  postBudget(budget:Budget){//CREAR
+  postBudget(budget:Budget,id:string){//CREAR
+    budget.identification=id; //INSERTO EL ID DEL USUARIO LOGUEADO
     return this.http.post(this.URL_API,budget);
   }
 
