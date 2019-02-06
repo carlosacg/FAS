@@ -22,6 +22,16 @@ export class ItemService {
   postItem(item:Item){//CREAR
     item.spent_balance='0';
     let subcadena=item.budget_number.substr(1,1);
+
+    if(item.budget_number.substr(1,2)==' '){ 
+      subcadena=item.budget_number.substr(1,1);
+    }
+    if(item.budget_number.substr(1,3)==' '){
+      subcadena=item.budget_number.substr(1,2);
+    }
+    if(item.budget_number.substr(1,4)==' '){
+      subcadena=item.budget_number.substr(1,3);
+    }
     item.budget_number=subcadena;
     return this.http.post(this.URL_API,item);
   }
