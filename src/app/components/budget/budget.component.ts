@@ -37,7 +37,7 @@ export class BudgetComponent implements OnInit {
   }
 
   addBudget(form?:NgForm){//AGREGAR CUENTA
-      this.budgetService.postBudget(form.value).subscribe(res =>{
+      this.budgetService.postBudget(form.value,this.loginComponent.getIdentification()).subscribe(res =>{
         this.resetForm(form);
         M.toast({html: 'Presupuesto Creada satisfactoriamente'});
         this.getBudgets();

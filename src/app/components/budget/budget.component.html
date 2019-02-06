@@ -23,8 +23,6 @@
       <div class="w3-container">
         <input class="w3-input w3-border w3-light-grey" type="text" name="budget_name" #budget_name="ngModel" [(ngModel)]="budgetService.selectedBudget.budget_name" placeholder="Ingresa nombre del presupuesto">
         <br>
-        <input class="w3-input w3-border w3-light-grey" type="text" name="identification" #identification="ngModel" [(ngModel)]="budgetService.selectedBudget.identification" placeholder="Ingresa tu identificación">
-        <br>
         <div class="w3-show-inline-block">
           <div class="w3-bar">
             <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()"><i class="fa fa-save"></i></button>

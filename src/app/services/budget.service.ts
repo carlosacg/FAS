@@ -18,7 +18,9 @@ export class BudgetService {
     return this.http.get(this.URL_API);     
   }
 
-  postBudget(budget:Budget){//CREAR
+  postBudget(budget:Budget,id:string){//CREAR
+    budget.identification=id
+    console.log(budget)
     return this.http.post(this.URL_API,budget);
   }
 
