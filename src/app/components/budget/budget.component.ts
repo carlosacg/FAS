@@ -63,7 +63,7 @@ addTransactions(form?:NgForm){//AGREGAR TRANSACCION
 }
 
   getBudgets(){//OBTENGO LA LISTA DE USUARIOS
-    this.budgetService.getBudgets().subscribe(res =>{
+    this.budgetService.getBudgets(this.loginComponent.getIdentification()).subscribe(res =>{
       this.budgetService.budgetArray = res as Budget[];
     })
   }
