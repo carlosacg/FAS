@@ -52,7 +52,7 @@ export class InitComponent implements OnInit {
 
 
   public getTransactions(){//OBTENGO LA LISTA DE transactions
-      this.transactionService.getTransactions().subscribe(res =>{
+      this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res =>{
         let transactions=this.transactionService.transactionArray = res as Transaction[];
         this.getDataBar(transactions);
 
