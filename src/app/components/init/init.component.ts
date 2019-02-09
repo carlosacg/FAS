@@ -43,7 +43,7 @@ export class InitComponent implements OnInit {
   }
 
   public getItems() {//OBTENGO LA LISTA DE USUARIOS
-    this.itemService.getItems().subscribe(res => {
+    this.itemService.getItems(this.loginComponent.getIdentification()).subscribe(res => {
       let items = this.itemService.itemArray = res as Item[];
       this.getDataDonaItem(items);
     })
