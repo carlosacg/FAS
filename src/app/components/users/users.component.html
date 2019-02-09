@@ -5,7 +5,7 @@
         <div class="card-content">
           <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
             <div class="row">
-             
+
               <div class="input-field col s12">
                 <input type="hidden" name="identification" #identification="ngModel" [(ngModel)]="userService.selectedUser.identification">
               </div>
@@ -49,9 +49,9 @@
           <tr *ngFor="let user of userService.userArray">
             <td>{{ user.user_name}}</td>
             <td>{{ user.last_name}}</td>
-            <td>{{ user.email}}</td>   
-            <td>{{ user.pass}}</td> 
-            <td>{{ user.picture}}</td> 
+            <td>{{ user.email}}</td>
+            <td>{{ user.pass}}</td>
+            <td>{{ user.picture}}</td>
             <td>
               <a (click)="updateUser(user)">
                 <i class="material-icons">edit</i>
@@ -59,7 +59,7 @@
               <a (click)="deleteUser(user.identification)">
                 <i class="material-icons">delete</i>
               </a>
-            </td>       
+            </td>
           </tr>
         </tbody>
       </table>

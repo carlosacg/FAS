@@ -9,7 +9,7 @@ declare var M: any;
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css'],
-  providers :[UserService]
+  providers: [UserService]
 })
 export class UsersComponent implements OnInit {
 
@@ -18,17 +18,17 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.getUsers();
   }
-  addUser(form?:NgForm){//AGREGAR USUARIO
-    if(form.value.identification){//SI EL INPUT ID HIDDEN ESTA LLENO ACTUALIZO EL USUARIO
-        this.userService.putUser(form.value).subscribe(res=>{
+  addUser(form?: NgForm) {//AGREGAR USUARIO
+    if (form.value.identification) {//SI EL INPUT ID HIDDEN ESTA LLENO ACTUALIZO EL USUARIO
+      this.userService.putUser(form.value).subscribe(res => {
         this.resetForm(form);
-        M.toast({html: 'Usuario Actualizado satisfactoriamente'});
+        M.toast({ html: 'Usuario Actualizado satisfactoriamente' });
         this.getUsers();
       });
-    }else{//SI NO HAY ID, INSERTO EL USUARIO
-      this.userService.postUser(form.value).subscribe(res =>{
+    } else {//SI NO HAY ID, INSERTO EL USUARIO
+      this.userService.postUser(form.value).subscribe(res => {
         this.resetForm(form);
-        M.toast({html: 'Usuario Creado satisfactoriamente'});
+        M.toast({ html: 'Usuario Creado satisfactoriamente' });
         this.getUsers();
 
       })
@@ -36,33 +36,33 @@ export class UsersComponent implements OnInit {
   }
 
 
-  getUsers(){//OBTENGO LA LISTA DE USUARIOS
-    this.userService.getUsers().subscribe(res =>{
+  getUsers() {//OBTENGO LA LISTA DE USUARIOS
+    this.userService.getUsers().subscribe(res => {
       this.userService.userArray = res as User[];
     })
   }
 
-  updateUser(user:User){//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
-    this.userService.selectedUser= user;
+  updateUser(user: User) {//DADO EL ICONO DE SELECCIONAR MUESTRA LA INFO DEL REGISTRO
+    this.userService.selectedUser = user;
   }
 
-  deleteUser(identification:number,form: NgForm){
-    if(confirm('¿Seguro que desea eliminar este usuario?')) {
+  deleteUser(identification: number, form: NgForm) {
+    if (confirm('¿Seguro que desea eliminar este usuario?')) {
       this.userService.deleteUser(identification).subscribe(res => {
-        M.toast({html: 'Usuario eliminado'});
+        M.toast({ html: 'Usuario eliminado' });
         this.getUsers();
-          this.resetForm(form);
-        });
+        this.resetForm(form);
+      });
     }
     this.getUsers();
     this.ngOnInit();
   }
 
-  resetForm(form?:NgForm){//LIMPIA LOS CAMPOS
-    if(form){
+  resetForm(form?: NgForm) {//LIMPIA LOS CAMPOS
+    if (form) {
       form.reset();
       this.userService.selectedUser = new User();
-      
+
     }
   }
 }

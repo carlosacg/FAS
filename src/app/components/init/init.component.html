@@ -4,24 +4,24 @@
 
   <!-- Header -->
   <header class="w3-container">
-    <h4><b><i class="fa fa-home fa-fw"></i> Inicio</b></h4>
+    <h4>
+      <b>
+        <i class="fa fa-home fa-fw"></i> Inicio</b>
+    </h4>
   </header>
 
   <div class="w3-row-padding">
     <div class="w3-half w3-center">
       <!--GRAFICO DE DONA SALDOS-->
       <header class="w3-container ">
-        <h4><b> Saldo de cuentas</b></h4>
+        <h4>
+          <b> Saldo de cuentas</b>
+        </h4>
       </header>
-      <div class="w3-container w3-center"  id="donut">
-        <div *ngIf="doughnutChartData.length > 1" >
-          <canvas baseChart #baseChart="base-chart" 
-                      [data]="doughnutChartData"
-                      [labels]="doughnutChartLabels"
-                      [chartType]="doughnutChartType"
-                      [options]="doughnutChartOptions"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
+      <div class="w3-container w3-center" id="donut">
+        <div *ngIf="doughnutChartData.length > 1">
+          <canvas baseChart #baseChart="base-chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+            [options]="doughnutChartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
     </div>
@@ -29,28 +29,25 @@
     <div class="w3-half w3-center">
       <!--GRAFICO DE DONA TOP ITEM-->
       <header class="w3-container">
-        <h4><b> Top #5 gastos</b></h4>
+        <h4>
+          <b> Top #5 gastos</b>
+        </h4>
       </header>
       <div class="w3-container w3-center" id="donut">
-        <div *ngIf="doughnutChartDataItem.length > 1" >
-          <canvas  baseChart #baseChart2="base-chart" 
-                      [data]="doughnutChartDataItem"
-                      [labels]="doughnutChartLabelsItem"
-                      [chartType]="doughnutChartTypeItem"
-                      [options]="doughnutChartOptionsItem"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
+        <div *ngIf="doughnutChartDataItem.length > 1">
+          <canvas baseChart #baseChart2="base-chart" [data]="doughnutChartDataItem" [labels]="doughnutChartLabelsItem" [chartType]="doughnutChartTypeItem"
+            [options]="doughnutChartOptionsItem" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
     </div>
 
   </div>
-  
-  
+
+
   <hr class="separators">
 
-<div class="w3-row-padding">
-  <!-- <div class="w3-half w3-center">
+  <div class="w3-row-padding">
+    <!-- <div class="w3-half w3-center">
       <div class="w3-container w3-half" id="lines">
         <div style="display: block;">
         <canvas baseChart 
@@ -82,29 +79,25 @@
     <div class="w3-half w3-center">
       <!--GRAFICO DE BARRAS-->
       <header class="w3-container">
-        <h4><b> Transacciones por mes</b></h4>
+        <h4>
+          <b> Transacciones por mes</b>
+        </h4>
       </header>
       <div class="w3-container" style="display: block" id="bars">
-          <canvas baseChart
-                  [datasets]="barChartData"
-                  [labels]="barChartLabels"
-                  [options]="barChartOptions"
-                  [legend]="barChartLegend"
-                  [chartType]="barChartType"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></canvas>
-        </div>
+        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+          [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+      </div>
     </div>
-    
+
   </div>
 
-  
 
-  
- 
+
+
+
   <!-- Footer -->
   <footer class="w3-container w3-padding-small w3-dark-grey">
-  <p>Powered by XSOFT</p>
+    <p>Powered by XSOFT</p>
   </footer>
 
   <!-- End page content -->

@@ -4,7 +4,10 @@
 
   <!-- Header -->
   <header class="w3-container">
-    <h4><b><i class="fa fa-database"></i> Cuentas</b></h4>
+    <h4>
+      <b>
+        <i class="fa fa-database"></i> Cuentas</b>
+    </h4>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
@@ -18,20 +21,27 @@
       <br>
       <br>
       <div class="input-field col s12">
-        <input class="form-control" type="hidden" name="positive_balance" value="0" #positive_balance="ngModel" [(ngModel)]="accountService.selectedAccount.positive_balance" placeholder="Ingresa Saldo Inicial">
+        <input class="form-control" type="hidden" name="positive_balance" value="0" #positive_balance="ngModel" [(ngModel)]="accountService.selectedAccount.positive_balance"
+          placeholder="Ingresa Saldo Inicial">
       </div>
       <br>
       <div class="input-field col s12">
         <input class="form-control" type="hidden" name="negative_balance" value="0" #negative_balance="ngModel" [(ngModel)]="accountService.selectedAccount.negative_balance">
       </div>
-      <input class="w3-input w3-border w3-light-grey" type="text" name="description" #description="ngModel" [(ngModel)]="accountService.selectedAccount.description" placeholder="Ingresa una descripción">
+      <input class="w3-input w3-border w3-light-grey" type="text" name="description" #description="ngModel" [(ngModel)]="accountService.selectedAccount.description"
+        placeholder="Ingresa una descripción">
       <br>
-      <input class="w3-input w3-border w3-light-grey" type="text" name="bank_name" #bank_name="ngModel" [(ngModel)]="accountService.selectedAccount.bank_name" placeholder="Ingresa tu banco">
+      <input class="w3-input w3-border w3-light-grey" type="text" name="bank_name" #bank_name="ngModel" [(ngModel)]="accountService.selectedAccount.bank_name"
+        placeholder="Ingresa tu banco">
       <br>
       <div class="w3-show-inline-block">
         <div class="w3-bar">
-            <button class="w3-button w3-padding-16 w3-blue-gray w3-circle" (click)="redirect()" ><i class="fa fa-save"></i></button>
-            <button class="w3-button w3-blue-gray w3-padding-16 w3-circle" (click)="resetForm(accountForm)" ><i class="fa fa-repeat"></i></button>
+          <button class="w3-button w3-padding-16 w3-blue-gray w3-circle" (click)="redirect()">
+            <i class="fa fa-save"></i>
+          </button>
+          <button class="w3-button w3-blue-gray w3-padding-16 w3-circle" (click)="resetForm(accountForm)">
+            <i class="fa fa-repeat"></i>
+          </button>
         </div>
       </div>
     </form>
@@ -64,15 +74,15 @@
           </tr>
           <tr>
             <td>
-                <a (click)="updateAccount(account)">
-                  <i class="fa fa-pencil"></i>
-                </a>
-                <a (click)="deleteAccount(account.account_number)">
-                  <i class="fa fa-trash"></i>
-                </a>
-                <a (click)="insertIncome(account)">
-                  <i class="fa fa-usd"></i>
-                </a>
+              <a (click)="updateAccount(account)">
+                <i class="fa fa-pencil"></i>
+              </a>
+              <a (click)="deleteAccount(account.account_number)">
+                <i class="fa fa-trash"></i>
+              </a>
+              <a (click)="insertIncome(account)">
+                <i class="fa fa-usd"></i>
+              </a>
             </td>
             <td></td>
             <td></td>
@@ -84,7 +94,7 @@
   </div>
   <!-- Footer -->
   <footer class="w3-container w3-padding-small w3-dark-grey">
-  <p>Powered by XSOFT</p>
+    <p>Powered by XSOFT</p>
   </footer>
 
   <!-- End page content -->

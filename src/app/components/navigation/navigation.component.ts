@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {Router} from "@angular/router";
-import {LoginComponent} from '../login/login.component';
+import { Router } from "@angular/router";
+import { LoginComponent } from '../login/login.component';
 import { User } from '../../models/user';
 
 
@@ -10,20 +10,20 @@ import { User } from '../../models/user';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  name:string="KT";
+  name: string = "KT";
 
-  constructor( ) { }
+  constructor() { }
   @ViewChild(LoginComponent) login: LoginComponent;
 
-  getName(){
+  getName() {
 
     return this.login.getName();
     var temporalName = this.login.getName();
   }
 
-  getIdentification(){
-    
-    return 
+  getIdentification() {
+
+    return
     var temporalName = this.login.getName();
   }
 

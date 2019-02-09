@@ -28,20 +28,20 @@ export class LoginComponent implements OnInit {
     this.getUsers();
   }
 
-  constructor( private socialAuthService: AuthService, public usersService: UserService, private router: Router ) {}
-  
-  public socialSignIn(socialPlatform : string) {
+  constructor(private socialAuthService: AuthService, public usersService: UserService, private router: Router) { }
+
+  public socialSignIn(socialPlatform: string) {
     let socialPlatformProvider;
-    if(socialPlatform == "facebook"){
+    if (socialPlatform == "facebook") {
       socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    }else if(socialPlatform == "google"){
+    } else if (socialPlatform == "google") {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
     let isDone: boolean;
 
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log(socialPlatform+" sign in data : " , userData);
+        console.log(socialPlatform + " sign in data : ", userData);
         let user = new User();
         user.identification = userData.id;
         user.user_name = userData.name.split(' ')[1];
@@ -53,39 +53,39 @@ export class LoginComponent implements OnInit {
         id = userData.id;
         console.log(name);
         isDone = true
-        this.usersService.postUser(user).subscribe(res =>{
-          M.toast({html: 'Usuario Creado satisfactoriamente'});
+        this.usersService.postUser(user).subscribe(res => {
+          M.toast({ html: 'Usuario Creado satisfactoriamente' });
           this.getUsers();
           isDone = true
           return isDone;
         })
         console.log("pase");
 
-        if(isDone == true){
+        if (isDone == true) {
           this.onLoginClick();
         }
       }
     );
-    
+
   }
 
-  getName(){
+  getName() {
     console.log(name)
     return name;
   }
-  getIdentification(){
+  getIdentification() {
     console.log(id)
-    return  id;
+    return id;
   }
-  getUsers(){//OBTENGO LA LISTA DE USUARIOS
-    this.usersService.getUsers().subscribe(res =>{
+  getUsers() {//OBTENGO LA LISTA DE USUARIOS
+    this.usersService.getUsers().subscribe(res => {
       this.usersService.userArray = res as User[];
     })
   }
 
-  public onLoginClick(){
+  public onLoginClick() {
     this.router.navigate(['./navigation']);
-}
+  }
 
 }
 
