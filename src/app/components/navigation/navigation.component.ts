@@ -7,27 +7,22 @@ import { User } from '../../models/user';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.css'],
+  providers: [LoginComponent]
+
 })
 export class NavigationComponent implements OnInit {
-  name: string = "KT";
+  
 
-  constructor() { }
-  @ViewChild(LoginComponent) login: LoginComponent;
-
-  getName() {
-
-    return this.login.getName();
-    var temporalName = this.login.getName();
-  }
-
-  getIdentification() {
-
-    return
-    var temporalName = this.login.getName();
-  }
+  constructor( public loginComponent: LoginComponent) { }
+  
+  name: string = this.loginComponent.getName();
+  picture: string = this.loginComponent.getImageProfile();
 
   ngOnInit() {
+    this.loginComponent.getIdentification();
+    this.loginComponent.getName();
+    this.loginComponent.getImageProfile();
   }
 
 

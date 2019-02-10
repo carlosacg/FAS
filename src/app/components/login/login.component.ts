@@ -2,30 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider} from "angular-6-social-login";
+import { getAuthServiceConfigs } from "./socialloginConfig ";
 
-
-import {
-  AuthService,
-  FacebookLoginProvider,
-  GoogleLoginProvider
-} from "angular-6-social-login";
-import { isBoolean } from 'util';
-import { tryParse } from 'selenium-webdriver/http';
 
 declare var M: any;
 var name: string;
 var id: string;
+var image: string;
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
+  
 })
 
 export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+
   }
 
   constructor(private socialAuthService: AuthService, public usersService: UserService, private router: Router) { }
@@ -51,22 +49,21 @@ export class LoginComponent implements OnInit {
         user.picture = userData.image;
         name = userData.name.split(' ')[2];
         id = userData.id;
+        image =  user.picture;
         console.log(name);
         isDone = true
-        this.usersService.postUser(user).subscribe(res => {
-          M.toast({ html: 'Usuario Creado satisfactoriamente' });
-          this.getUsers();
-          isDone = true
-          return isDone;
-        })
-        console.log("pase");
-
-        if (isDone == true) {
-          this.onLoginClick();
+          this.usersService.postUser(user).subscribe(res => {
+           M.toast({ html: 'Usuario Creado satisfactoriamente' });
+           this.sendToRestApiMethod(userData.idToken);
+           this.getUsers();
+            isDone = true
+            return isDone;
+          })
+           if (isDone == true) {
+           this.onLoginClick();
+           }
         }
-      }
     );
-
   }
 
   getName() {
@@ -76,6 +73,10 @@ export class LoginComponent implements OnInit {
   getIdentification() {
     console.log(id)
     return id;
+  }
+  getImageProfile() {
+    console.log(image)
+    return image;
   }
   getUsers() {//OBTENGO LA LISTA DE USUARIOS
     this.usersService.getUsers().subscribe(res => {
