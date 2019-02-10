@@ -3,7 +3,6 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider} from "angular-6-social-login";
-import { getAuthServiceConfigs } from "./socialloginConfig ";
 
 
 declare var M: any;
