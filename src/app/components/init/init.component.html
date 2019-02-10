@@ -5,8 +5,7 @@
   <!-- Header -->
   <header class="w3-container">
     <h4>
-      <b>
-        <i class="fa fa-home fa-fw"></i> Inicio</b>
+      <b><i class="fa fa-home fa-fw"></i> Inicio</b>
     </h4>
   </header>
 
@@ -40,16 +39,14 @@
         </div>
       </div>
     </div>
-
   </div>
-
 
   <hr class="separators">
 
   <div class="w3-row-padding">
     <!-- <div class="w3-half w3-center">
       <div class="w3-container w3-half" id="lines">
-        <div style="display: block;">
+        <div class"bar">
         <canvas baseChart 
                     [datasets]="lineChartData"
                     [labels]="lineChartLabels"
@@ -83,17 +80,12 @@
           <b> Transacciones por mes</b>
         </h4>
       </header>
-      <div class="w3-container" style="display: block" id="bars">
+      <div class="w3-container bar" id="bars">
         <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
           [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
       </div>
     </div>
-
   </div>
-
-
-
-
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-small w3-dark-grey">

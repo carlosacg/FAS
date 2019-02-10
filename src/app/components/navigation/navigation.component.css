@@ -8,6 +8,10 @@
     font-family: sans-serif, Helvetica;
     margin-top: 10px;
 }
+.w3-main{
+    margin-top:50px;
+    font-family: sans-serif, Helvetica;
+}
 .w3-bar-item .w3-button .w3-light-gray .w3-right{
     padding: 8px 8px;
     border-radius: 5px;
@@ -22,6 +26,9 @@
 }
 a{
     text-decoration: none;
+}
+.image{
+    width:65px;
 }
     
     
