@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         isDone = true
           this.usersService.postUser(user).subscribe(res => {
            M.toast({ html: 'Usuario Creado satisfactoriamente' });
-           this.sendToRestApiMethod(userData.idToken);
+           //this.sendToRestApiMethod(userData.idToken);
            this.getUsers();
             isDone = true
             return isDone;
