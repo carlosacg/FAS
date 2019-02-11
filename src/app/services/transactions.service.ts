@@ -25,17 +25,16 @@ export class TransactionsService {
     transaction.account_number = subcadena;
     transaction.item_number = number_item;
     transaction.description = descriptions;
-    transaction.spent_date = f.getDate() + "-" + (f.getMonth() + 1) + "-" + f.getFullYear();
-    console.log(transaction);
     return this.http.post(this.URL_API, transaction);
   }
+
   postIngress(transaction: Transaction) {//CREAR
     var f = new Date();
-    transaction.spent_date = f.getDate() + "-" + (f.getMonth() + 1) + "-" + f.getFullYear();
     transaction.item_number = "2";
     transaction.description = "Ingreso Nomina";
     return this.http.post(this.URL_API, transaction);
   }
+
   putTransaction(transaction: Transaction) {//ACTUALIZAR
     transaction.spent_date = transaction.spent_date.substring(0, 10);
     alert(transaction.spent_balance);

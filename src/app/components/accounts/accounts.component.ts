@@ -60,8 +60,8 @@ export class AccountsComponent implements OnInit {
   }
 
   deleteAccount(account_number: string, form: NgForm) {
-    if (confirm('¿Seguro que desea eliminar este usuario?')) {
-      this.accountService.deleteAccount(account_number, this.loginComponent.getIdentification()).subscribe(res => {
+    if (confirm('¿Seguro que desea eliminar esta cuenta bancaria?')) {
+      this.accountService.deleteAccount(account_number).subscribe(res => {
         M.toast({ html: 'cuenta eliminado' });
         this.getAccounts();
         this.resetForm(form);

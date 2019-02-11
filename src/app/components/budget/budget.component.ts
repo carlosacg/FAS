@@ -109,7 +109,6 @@ export class BudgetComponent implements OnInit {
         this.getBudgets();
         this.getItems();
         this.resetForm(form);
-        this.redirect();
       });
     }
     this.ngOnInit();
@@ -146,7 +145,6 @@ export class BudgetComponent implements OnInit {
     let cantidadItem = this.itemService.itemArray.length
     let totalGastado = 0
     for (var i = 0; i < cantidadItem; i++) {
-      console.log(this.itemService.itemArray[i].budget_number);
       if (this.itemService.itemArray[i].budget_number != null) {
         totalGastado += parseInt(this.itemService.itemArray[i].spent_balance)
       }

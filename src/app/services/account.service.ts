@@ -30,7 +30,7 @@ export class AccountService {
     return this.http.put(this.URL_API + "/" + account.account_number, account);
   }
 
-  deleteAccount(account_number: string, id: string) {//ELIMINAR
+  deleteAccount(account_number: string) {//ELIMINAR
     return this.http.delete(this.URL_API + "/" + account_number);
   }
 
