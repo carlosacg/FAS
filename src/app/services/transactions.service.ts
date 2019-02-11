@@ -6,7 +6,7 @@ import { Transaction } from '../models/transaction';
   providedIn: 'root'
 })
 export class TransactionsService {
-  readonly URL_API = "https://backend-fas-uv.herokuapp.com/api/transactions";
+  readonly URL_API = "http://localhost:3000/api/transactions";
   selectedTransaction: Transaction;
   transactionArray: Transaction[];
 
@@ -14,8 +14,9 @@ export class TransactionsService {
     this.selectedTransaction = new Transaction();
   }
 
-  getTransactions() {//LEER
+  getTransactions(id: string) {//LEER
     return this.http.get(this.URL_API);
+    //return this.http.get(this.URL_API+ "/" + id);
   }
 
   postEgress(transaction: Transaction, number_item: string, descriptions: string) {//CREAR
@@ -25,6 +26,7 @@ export class TransactionsService {
     transaction.item_number = number_item;
     transaction.description = descriptions;
     transaction.spent_date = f.getDate() + "-" + (f.getMonth() + 1) + "-" + f.getFullYear();
+    console.log(transaction);
     return this.http.post(this.URL_API, transaction);
   }
   postIngress(transaction: Transaction) {//CREAR

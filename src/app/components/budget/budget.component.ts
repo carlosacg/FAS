@@ -82,7 +82,7 @@ export class BudgetComponent implements OnInit {
 
 
   getTransactions() {//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions().subscribe(res => {
+    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res => {
       this.transactionService.transactionArray = res as Transaction[];
     })
   }

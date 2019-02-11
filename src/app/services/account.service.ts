@@ -6,7 +6,7 @@ import { Account } from '../models/account';
   providedIn: 'root'
 })
 export class AccountService {
-  readonly URL_API = "https://backend-fas-uv.herokuapp.com/api/accounts";
+  readonly URL_API = "http://localhost:3000/api/accounts";
   selectedAccount: Account;
   accountArray: Account[];
 
@@ -16,7 +16,8 @@ export class AccountService {
   }
 
   getAccounts(id: string) {//LEER
-    return this.http.get(this.URL_API + "/" + id);
+    return this.http.get(this.URL_API);
+    //return this.http.get(this.URL_API + "/" + id);
   }
 
   postAccount(account: Account, id: string) {//CREAR

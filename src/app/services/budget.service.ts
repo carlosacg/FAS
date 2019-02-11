@@ -6,7 +6,7 @@ import { Budget } from '../models/budget';
   providedIn: 'root'
 })
 export class BudgetService {
-  readonly URL_API = "https://backend-fas-uv.herokuapp.com/api/budgets";
+  readonly URL_API = "http://localhost:3000/api/budgets";
   selectedBudget: Budget;
   budgetArray: Budget[];
 
@@ -15,7 +15,8 @@ export class BudgetService {
   }
 
   getBudgets(id: string) {//LEER
-    return this.http.get(this.URL_API + "/" + id);
+    return this.http.get(this.URL_API);
+    //return this.http.get(this.URL_API + "/" + id);
   }
 
   postBudget(budget: Budget, id: string) {//CREAR
