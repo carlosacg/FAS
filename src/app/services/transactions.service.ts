@@ -6,7 +6,7 @@ import { Transaction } from '../models/transaction';
   providedIn: 'root'
 })
 export class TransactionsService {
-  readonly URL_API = "http://localhost:3000/api/transactions";
+  readonly URL_API = "https://backend-fas-uv.herokuapp.com/api/transactions";
   selectedTransaction: Transaction;
   transactionArray: Transaction[];
 
