@@ -21,20 +21,6 @@ import {
 
 import { InitComponent } from './components/init/init.component';
 
-/*
-let config = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("289312158718-vhs2e0pghd0081amen631t9brgp3eoqr.apps.googleusercontent.com")
-  },
-  {
-    id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("")
-  }
-]);
-*/
-
-// Configs 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
     [

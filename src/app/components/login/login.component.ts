@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
         user.email = userData.email;
         user.user_name = userData.name;
         user.picture = userData.image;
-        name = userData.name.split(' ')[2];
+     //   token = userData.idToken;
+        name = (userData.name.split(' ')[1]+ userData.name.split(' ')[2]);
         id = userData.id;
         image =  user.picture;
         console.log(name);
