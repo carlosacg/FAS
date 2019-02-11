@@ -24,6 +24,9 @@
     cursor:pointer;
     font-family: sans-serif, Helvetica;
 }
+.profile{
+    margin-left: 50px;
+}
 a{
     text-decoration: none;
 }
