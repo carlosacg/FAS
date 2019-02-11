@@ -38,18 +38,18 @@
                     <td *ngIf="transactions.spent_date==transactions.spent_date">{{transactions.spent_date | date}}</td>
                     <td *ngIf="transactions.spent_balance==transactions.spent_balance">{{transactions.spent_balance | currency:'USD'}}</td>
                     <td>
-                        <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle">
-                            <i class="fa fa-eye" (click)="updateOverFlowTransactions(transactions)"></i>
+                        <button onclick="document.getElementById('id01').style.display='block'" (click)="updateOverFlowTransactions(transactions)"class="w3-button w3-padding-small w3-circle">
+                            <i class="fa fa-eye"></i>
                         </button>
                     </td>
                     <td>
-                        <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-small w3-circle">
-                            <i class="fa fa-pencil" (click)="updateOverFlowTransactions(transactions)"></i>
+                        <button onclick="document.getElementById('id02').style.display='block'" (click)="updateOverFlowTransactions(transactions)" class="w3-button w3-padding-small w3-circle">
+                            <i class="fa fa-pencil" ></i>
                         </button>
                     </td>
                     <td>
-                        <button class="w3-button w3-padding-small w3-circle">
-                            <i class="fa fa-trash" (click)="deleteTransaction(transactions.transaction_number)"></i>
+                        <button class="w3-button w3-padding-small w3-circle" (click)="deleteTransaction(transactions.transaction_number)">
+                            <i class="fa fa-trash"></i>
                         </button>
                     </td>
                 </tr>
