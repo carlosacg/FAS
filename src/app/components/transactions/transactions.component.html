@@ -2,13 +2,13 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
 
-    <!-- Header -->
     <header class="w3-container">
         <h4>
             <b><i class="fa fa-credit-card"></i> Transacciones</b>
         </h4>
     </header>
 
+    <!--transaction information table-->
     <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-container">
             <h6>
@@ -38,12 +38,16 @@
                     <td *ngIf="transactions.spent_date==transactions.spent_date">{{transactions.spent_date | date}}</td>
                     <td *ngIf="transactions.spent_balance==transactions.spent_balance">{{transactions.spent_balance | currency:'USD'}}</td>
                     <td>
-                        <button onclick="document.getElementById('id01').style.display='block'" (click)="updateOverFlowTransactions(transactions)"class="w3-button w3-padding-small w3-circle">
+                        <button onclick="document.getElementById('id01').style.display='block'" 
+                                (click)="updateOverFlowTransactions(transactions)"
+                                class="w3-button w3-padding-small w3-circle">
                             <i class="fa fa-eye"></i>
                         </button>
                     </td>
                     <td>
-                        <button onclick="document.getElementById('id02').style.display='block'" (click)="updateOverFlowTransactions(transactions)" class="w3-button w3-padding-small w3-circle">
+                        <button onclick="document.getElementById('id02').style.display='block'" 
+                                (click)="updateOverFlowTransactions(transactions)" 
+                                class="w3-button w3-padding-small w3-circle">
                             <i class="fa fa-pencil" ></i>
                         </button>
                     </td>
@@ -55,8 +59,8 @@
                 </tr>
             </table>
         </div>
+        <!-- form to see item-->
         <div class="w3-container">
-            <!-- FORMULARIO ITEM-->
             <div id="id01" class="w3-modal">
                 <div class="w3-modal-content">
                     <header class="w3-container w3-blue-gray">
@@ -66,32 +70,44 @@
                     <div class="w3-container">
                         <form class="w3-container" #viewTransactionForm="ngForm">
                             <label>Categoría</label>
-                            <input class="w3-input w3-border w3-light-grey" type="text" name="item_number" #item_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.item_number"
-                                placeholder="Ingresa el numero del item">
+                            <input class="w3-input w3-border w3-light-grey" 
+                                    type="text" 
+                                    name="item_number" 
+                                    #item_number="ngModel" 
+                                    [(ngModel)]="transactionService.selectedTransaction.item_number"
+                                    placeholder="Ingresa el numero del item">
                             <br>
-
                             <label>Número de cuenta</label>
-                            <input class="w3-input w3-border w3-light-grey" type="text" name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number"
-                                placeholder="Ingresa el numero de cuenta">
+                            <input class="w3-input w3-border w3-light-grey" 
+                                    type="text" name="account_number" 
+                                    #account_number="ngModel" 
+                                    [(ngModel)]="transactionService.selectedTransaction.account_number"
+                                    placeholder="Ingresa el numero de cuenta">
                             <br>
-
                             <label>Fecha del gasto</label>
-                            <input class="w3-input w3-light-grey w3-border" type="text" value="aaaa/mm/dd" name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date">
+                            <input class="w3-input w3-light-grey w3-border" 
+                                    type="text" 
+                                    value="aaaa/mm/dd" 
+                                    name="spent_date" 
+                                    #spent_date="ngModel" 
+                                    [(ngModel)]="transactionService.selectedTransaction.spent_date">
                             <br>
-
                             <label>Valor del gasto</label>
-                            <input class="w3-input w3-border w3-light-grey" type="text" name="spent_balance" #spent_balance="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_balance"
-                                placeholder="Ingresa el valor">
+                            <input class="w3-input w3-border w3-light-grey" 
+                                    type="text" 
+                                    name="spent_balance" 
+                                    #spent_balance="ngModel" 
+                                    [(ngModel)]="transactionService.selectedTransaction.spent_balance"
+                                    placeholder="Ingresa el valor">
                             <br>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- form to edit item-->
         <div class="w3-container">
-            <!-- FORMULARIO ITEM-->
             <div id="id02" class="w3-modal">
                 <div class="w3-modal-content">
                     <header class="w3-container w3-blue-gray">
@@ -99,16 +115,28 @@
                         <h2>Editar transacción</h2>
                     </header>
                     <div class="w3-container">
-                        <form class="w3-container" #transactionForm="ngForm" (ngSubmit)="updateTransaction(transactionForm)">
-                            <input type="hidden" name="transaction_number" #transaction_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.transaction_number">
-
+                        <form class="w3-container" 
+                            #transactionForm="ngForm" 
+                            (ngSubmit)="updateTransaction(transactionForm)">
+                            <input type="hidden" 
+                                    name="transaction_number" 
+                                    #transaction_number="ngModel" 
+                                    [(ngModel)]="transactionService.selectedTransaction.transaction_number">
                             <label>Fecha del gasto</label>
-                            <input class="w3-input w3-light-grey w3-border" type="text" value="aaaa-mm-dd " name="spent_date" #spent_date="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_date ">
+                            <input class="w3-input w3-light-grey w3-border" 
+                                    type="text" 
+                                    value="aaaa-mm-dd " 
+                                    name="spent_date" 
+                                    #spent_date="ngModel" 
+                                    [(ngModel)]="transactionService.selectedTransaction.spent_date ">
                             <br>
-
                             <label>Valor del gasto</label>
-                            <input class="w3-input w3-border w3-light-grey" type="text" name="spent_balance" #spent_balance="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_balance "
-                                placeholder="Ingresa el valor">
+                            <input class="w3-input w3-border w3-light-grey" 
+                                    type="text" 
+                                    name="spent_balance" 
+                                    #spent_balance="ngModel" 
+                                    [(ngModel)]="transactionService.selectedTransaction.spent_balance "
+                                    placeholder="Ingresa el valor">
                             <br>
                             <div class="w3-show-inline-block">
                                 <div class="w3-bar">
@@ -121,17 +149,16 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
 
-    <!-- Footer -->
     <footer class="w3-container w3-padding-small w3-dark-grey">
         <p>Powered by XSOFT</p>
     </footer>
 
-    <!-- End page content -->
+<!-- End page content -->
 </div>

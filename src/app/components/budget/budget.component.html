@@ -2,32 +2,47 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
 
-  <!-- Header -->
   <header class="w3-container">
     <h4>
-      <b>
-        <i class="fa fa-calendar"></i> Presupuesto</b>
+      <b><i class="fa fa-calendar"></i> Presupuesto</b>
     </h4>
   </header>
 
   <div class="w3-row-padding w3-margin-bottom">
-    <form class="w3-container" #budgetForm="ngForm" (ngSubmit)="addBudget(budgetForm)">
+    <!-- entry of budget information -->
+    <form class="w3-container" 
+        #budgetForm="ngForm" 
+        (ngSubmit)="addBudget(budgetForm)">
       <div class="w3-row-padding">
         <div class="w3-half">
           <label>Fecha inicial</label>
-          <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="initial_date" #initial_date="ngModel"
-            [(ngModel)]="budgetService.selectedBudget.initial_date">
+          <input class="w3-input w3-light-grey w3-border" 
+                type="date" 
+                id="myDate" 
+                value="aaaa/mm/dd" 
+                name="initial_date" 
+                #initial_date="ngModel"
+                [(ngModel)]="budgetService.selectedBudget.initial_date">
         </div>
         <div class="w3-half">
           <label>Fecha finalización</label>
-          <input class="w3-input w3-light-grey w3-border" type="date" id="myDate" value="aaaa/mm/dd" name="end_date" #end_date="ngModel"
-            [(ngModel)]="budgetService.selectedBudget.end_date">
+          <input class="w3-input w3-light-grey w3-border" 
+                type="date" 
+                id="myDate" 
+                value="aaaa/mm/dd" 
+                name="end_date" 
+                #end_date="ngModel"
+                [(ngModel)]="budgetService.selectedBudget.end_date">
         </div>
       </div>
       <br>
       <div class="w3-container">
-        <input class="w3-input w3-border w3-light-grey" type="text" name="budget_name" #budget_name="ngModel" [(ngModel)]="budgetService.selectedBudget.budget_name"
-          placeholder="Ingresa nombre del presupuesto">
+        <input class="w3-input w3-border w3-light-grey" 
+              type="text" 
+              name="budget_name" 
+              #budget_name="ngModel" 
+              [(ngModel)]="budgetService.selectedBudget.budget_name"
+              placeholder="Ingresa nombre del presupuesto">
         <br>
         <div class="w3-show-inline-block">
           <div class="w3-bar">
@@ -41,7 +56,9 @@
         </div>
       </div>
     </form>
+
     <hr class="separators">
+    <!--total budget information-->
     <div class="w3-container">
       <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-third">
@@ -82,6 +99,8 @@
         </div>
       </div>
     </div>
+
+    
     <div class="w3-row-padding">
       <div class="w3-row-padding">
         <div class="w3-row-padding">
@@ -95,6 +114,7 @@
     </div>
 
     <hr class="separators">
+    <!--budget information tables-->
     <div>
       <div class="w3-container" *ngFor="let budget of budgetService.budgetArray">
         <h5>
@@ -102,7 +122,9 @@
         </h5>
         <h6>
           <strong>FECHA INICIAL: </strong> {{budget.initial_date | date}} //
-          <strong> FECHA FINALIZACIÓN: </strong>{{budget.end_date | date}}</h6>
+          <strong> FECHA FINALIZACIÓN: </strong>{{budget.end_date | date}}
+        </h6>
+
         <table class="w3-table-all w3-hoverable ">
           <thead>
             <tr class="w3-blue-gray">
@@ -125,28 +147,30 @@
               </button>
             </td>
             <td *ngIf="budget.budget_number==item.budget_number">
-              <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-padding-small w3-circle" (click)="getNumberItem(item)">
+              <button onclick="document.getElementById('id01').style.display='block'" 
+                      class="w3-button w3-padding-small w3-circle" 
+                      (click)="getNumberItem(item)">
                 <i class="fa fa-money"></i>
               </button>
             </td>
           </tr>
-
           <tr>
             <td>
               <a>
-                <button onclick="document.getElementById('id02').style.display='block'" class="w3-button w3-padding-16 w3-blue-grey w3-circle">
+                <button onclick="document.getElementById('id02').style.display='block'" 
+                        class="w3-button w3-padding-16 w3-blue-grey w3-circle">
                   <i class="fa fa-plus"></i>
                 </button>
               </a>
             </td>
             <td>
               <a>
-                <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="deleteBudget(budget.budget_number)">
+                <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" 
+                        (click)="deleteBudget(budget.budget_number)">
                   <i class="fa fa-trash"></i>
                 </button>
               </a>
             </td>
-
             <td></td>
             <td></td>
             <td></td>
@@ -154,25 +178,37 @@
           </tr>
         </table>
 
-        <div class="w3-container">
-          <!-- FORMULARIO EGRESO-->
+        <!-- egress form-->
+        <div class="w3-container">          
           <div id="id01" class="w3-modal">
             <div class="w3-modal-content">
               <header class="w3-container w3-blue-gray">
-                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <span onclick="document.getElementById('id01').style.display='none'"
+                      class="w3-button w3-display-topright">&times;
+                </span>
                 <h2>Insertar egreso</h2>
               </header>
               <div class="w3-container">
                 <form class="w3-container" #egresoForm="ngForm" (ngSubmit)="addTransactions(egresoForm)">
                   <label> Seleccione la cuenta</label>
-                  <select class="w3-input w3-border w3-light-grey" name="account_number" #account_number="ngModel" [(ngModel)]="transactionService.selectedTransaction.account_number">
+                  <select class="w3-input w3-border w3-light-grey" 
+                          name="account_number" 
+                          #account_number="ngModel" 
+                          [(ngModel)]="transactionService.selectedTransaction.account_number">
                     <option value="" disabled selected></option>
-                    <option *ngFor="let account of accountService.accountArray" ng-selected="Seleccione la cuenta" placeholder="Seleccione la cuenta">#{{account.account_number}} {{account.description}} </option>
+                    <option *ngFor="let account of accountService.accountArray" 
+                            ng-selected="Seleccione la cuenta" 
+                            placeholder="Seleccione la cuenta">#{{account.account_number}} {{account.description}} 
+                    </option>
                   </select>
                   <br>
                   <label>Valor de egreso</label>
-                  <input class="w3-input w3-border w3-light-grey" type="number" name="spent_balance" #spent_balance="ngModel" [(ngModel)]="transactionService.selectedTransaction.spent_balance"
-                    placeholder="Ingresa el valor del egreso">
+                  <input class="w3-input w3-border w3-light-grey" 
+                        type="number" 
+                        name="spent_balance" 
+                        #spent_balance="ngModel" 
+                        [(ngModel)]="transactionService.selectedTransaction.spent_balance"
+                        placeholder="Ingresa el valor del egreso">
                   <br>
                   <div class="w3-show-inline-block">
                     <div class="w3-bar">
@@ -186,33 +222,46 @@
                   </div>
                 </form>
               </div>
-
             </div>
           </div>
         </div>
 
+        <!-- item form-->
         <div class="w3-container">
-          <!-- FORMULARIO ITEM-->
           <div id="id02" class="w3-modal">
             <div class="w3-modal-content">
               <header class="w3-container w3-blue-gray">
-                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <span onclick="document.getElementById('id02').style.display='none'" 
+                      class="w3-button w3-display-topright">&times;
+                </span>
                 <h2>Insertar ítem</h2>
               </header>
               <div class="w3-container">
                 <form class="w3-container" #itemForm="ngForm" (ngSubmit)="addItem(itemForm)">
                   <label> Seleccione el presupuesto</label>
-                  <select class="w3-input w3-border w3-light-grey" name="budget_number" #budget_number="ngModel" [(ngModel)]="itemService.selectedItem.budget_number">
-                    <option *ngFor="let budget of budgetService.budgetArray" ng-selected="Seleccione el presupuesto" placeholder="Seleccione el presupuesto">#{{budget.budget_number}} {{budget.budget_name}}</option>
+                  <select class="w3-input w3-border w3-light-grey" 
+                          name="budget_number" 
+                          #budget_number="ngModel" 
+                          [(ngModel)]="itemService.selectedItem.budget_number">
+                    <option *ngFor="let budget of budgetService.budgetArray" 
+                            ng-selected="Seleccione el presupuesto" 
+                            placeholder="Seleccione el presupuesto">#{{budget.budget_number}} {{budget.budget_name}}
+                    </option>
                   </select>
                   <br>
-
-                  <input class="w3-input w3-border w3-light-grey" type="text" name="description" #description="ngModel" [(ngModel)]="itemService.selectedItem.description"
-                    placeholder="Ingresa nombre de la categoría">
+                  <input class="w3-input w3-border w3-light-grey" 
+                        type="text" 
+                        name="description" 
+                        #description="ngModel" 
+                        [(ngModel)]="itemService.selectedItem.description"
+                        placeholder="Ingresa nombre de la categoría">
                   <br>
-
-                  <input class="w3-input w3-border w3-light-grey" type="number" name="planned_balance" #planned_balance="ngModel" [(ngModel)]="itemService.selectedItem.planned_balance"
-                    placeholder="Ingresa valor planeado">
+                  <input class="w3-input w3-border w3-light-grey" 
+                        type="number" 
+                        name="planned_balance" 
+                        #planned_balance="ngModel" 
+                        [(ngModel)]="itemService.selectedItem.planned_balance"
+                        placeholder="Ingresa valor planeado">
                   <br>
                   <div class="w3-show-inline-block">
                     <div class="w3-bar">
@@ -229,15 +278,16 @@
             </div>
           </div>
         </div>
+
       </div>
       <hr>
 
-      <!-- Footer -->
       <footer class="w3-container w3-padding-small w3-dark-grey">
         <p>Powered by XSOFT</p>
       </footer> 
 
-    <!-- End page content -->
     </div>
+
   </div>
+<!-- End page content -->
 </div>

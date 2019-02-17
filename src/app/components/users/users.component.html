@@ -7,19 +7,38 @@
             <div class="row">
 
               <div class="input-field col s12">
-                <input type="hidden" name="identification" #identification="ngModel" [(ngModel)]="userService.selectedUser.identification">
+                <input type="hidden" 
+                        name="identification" 
+                        #identification="ngModel" 
+                        [(ngModel)]="userService.selectedUser.identification">
               </div>
               <div class="input-field col s12">
-                <input type="text" name="user_name" #user_name="ngModel" [(ngModel)]="userService.selectedUser.user_name" placeholder="Ingresa tu nombre">
+                <input type="text" 
+                        name="user_name" 
+                        #user_name="ngModel" 
+                        [(ngModel)]="userService.selectedUser.user_name" 
+                        placeholder="Ingresa tu nombre">
               </div>
               <div class="input-field col s12">
-                <input type="text" name="last_name" #last_name="ngModel" [(ngModel)]="userService.selectedUser.last_name" placeholder="Ingresa tu apellido">
+                <input type="text" 
+                        name="last_name" 
+                        #last_name="ngModel" 
+                        [(ngModel)]="userService.selectedUser.last_name" 
+                        placeholder="Ingresa tu apellido">
               </div>
               <div class="input-field col s12">
-                <input type="text" name="email" #email="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Ingresa tu email">
+                <input type="text" 
+                        name="email" 
+                        #email="ngModel" 
+                        [(ngModel)]="userService.selectedUser.email" 
+                        placeholder="Ingresa tu email">
               </div>
               <div class="input-field col s12">
-                <input type="text" name="picture" #picture="ngModel" [(ngModel)]="userService.selectedUser.picture" placeholder="Ingresa tu foto">
+                <input type="text" 
+                        name="picture" 
+                        #picture="ngModel" 
+                        [(ngModel)]="userService.selectedUser.picture" 
+                        placeholder="Ingresa tu foto">
               </div>
               <div class="card-action">
                 <div class="input-field col s12">

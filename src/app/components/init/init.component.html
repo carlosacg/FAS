@@ -2,16 +2,16 @@
 <!-- !PAGE CONTENT! -->
 <div class="w3-main">
 
-  <!-- Header -->
   <header class="w3-container">
     <h4>
       <b><i class="fa fa-home fa-fw"></i> Inicio</b>
     </h4>
   </header>
 
+  <!--donut graph-->
   <div class="w3-row-padding">
+    <!--donut chart, balance-->
     <div class="w3-half w3-center">
-      <!--GRAFICO DE DONA SALDOS-->
       <header class="w3-container ">
         <h4>
           <b> Saldo de cuentas</b>
@@ -19,14 +19,20 @@
       </header>
       <div class="w3-container w3-center" id="donut">
         <div *ngIf="doughnutChartData.length > 1">
-          <canvas baseChart #baseChart="base-chart" [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-            [options]="doughnutChartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          <canvas baseChart #baseChart="base-chart" 
+                  [data]="doughnutChartData" 
+                  [labels]="doughnutChartLabels" 
+                  [chartType]="doughnutChartType"
+                  [options]="doughnutChartOptions" 
+                  (chartHover)="chartHovered($event)" 
+                  (chartClick)="chartClicked($event)">
+          </canvas>
         </div>
       </div>
     </div>
 
+    <!--donut chart, top item-->
     <div class="w3-half w3-center">
-      <!--GRAFICO DE DONA TOP ITEM-->
       <header class="w3-container">
         <h4>
           <b> Top #5 gastos</b>
@@ -34,8 +40,14 @@
       </header>
       <div class="w3-container w3-center" id="donut">
         <div *ngIf="doughnutChartDataItem.length > 1">
-          <canvas baseChart #baseChart2="base-chart" [data]="doughnutChartDataItem" [labels]="doughnutChartLabelsItem" [chartType]="doughnutChartTypeItem"
-            [options]="doughnutChartOptionsItem" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+          <canvas baseChart #baseChart2="base-chart" 
+                [data]="doughnutChartDataItem" 
+                [labels]="doughnutChartLabelsItem" 
+                [chartType]="doughnutChartTypeItem"
+                [options]="doughnutChartOptionsItem" 
+                (chartHover)="chartHovered($event)" 
+                (chartClick)="chartClicked($event)">
+          </canvas>
         </div>
       </div>
     </div>
@@ -43,6 +55,7 @@
 
   <hr class="separators">
 
+  <!--bar graph-->
   <div class="w3-row-padding">
     <!-- <div class="w3-half w3-center">
       <div class="w3-container w3-half" id="lines">
@@ -73,24 +86,29 @@
       </div>
     </div> -->
 
+    <!--bar graphic-->
     <div class="w3-half w3-center">
-      <!--GRAFICO DE BARRAS-->
       <header class="w3-container">
         <h4>
           <b> Transacciones por mes</b>
         </h4>
       </header>
       <div class="w3-container bar" id="bars">
-        <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-          [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+        <canvas baseChart [datasets]="barChartData" 
+                [labels]="barChartLabels"  
+                [options]="barChartOptions" 
+                [legend]="barChartLegend"
+                [chartType]="barChartType" 
+                (chartHover)="chartHovered($event)" 
+                (chartClick)="chartClicked($event)">
+        </canvas>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="w3-container w3-padding-small w3-dark-grey">
     <p>Powered by XSOFT</p>
   </footer>
 
-  <!-- End page content -->
+<!-- End page content -->
 </div>
