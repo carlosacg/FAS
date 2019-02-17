@@ -19,13 +19,11 @@ export class AccountsComponent implements OnInit {
   constructor(public accountService: AccountService, public transactionService: TransactionsService, public loginComponent: LoginComponent) { }
   ngOnInit() {
     this.getAccounts();
-    this.loginComponent.getIdentification();
-    this.loginComponent.getName();
   }
 
   addAccount(form?: NgForm) {//AGREGAR CUENTA
     if (form.value.account_number) {//SI EL INPUT ID HIDDEN ESTA LLENO ACTUALIZO EL CUENTA
-      this.accountService.putAccount(form.value, this.loginComponent.getIdentification()).subscribe(res => {
+      this.accountService.putAccount(form.value, sessionStorage.getItem("id")).subscribe(res => {
         this.resetForm(form);
         M.toast({ html: 'Cuenta Actualizado satisfactoriamente' });
         this.getAccounts();
@@ -33,7 +31,7 @@ export class AccountsComponent implements OnInit {
     } else {//SI NO HAY ID, INSERTO EL CUENTA
       //form.value.identication=this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
       //console.log(form.value);
-      this.accountService.postAccount(form.value, this.loginComponent.getIdentification()).subscribe(res => {
+      this.accountService.postAccount(form.value, sessionStorage.getItem("id")).subscribe(res => {
         this.resetForm(form);
         M.toast({ html: 'Cuenta Creada satisfactoriamente' });
         this.getAccounts();
@@ -44,13 +42,13 @@ export class AccountsComponent implements OnInit {
 
 
   getAccounts() {//OBTENGO LA LISTA DE USUARIOS
-    this.accountService.getAccounts(this.loginComponent.getIdentification()).subscribe(res => {
+    this.accountService.getAccounts(sessionStorage.getItem("id")).subscribe(res => {
       this.accountService.accountArray = res as Account[];
     })
   }
 
   getTransactions() {//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res => {
+    this.transactionService.getTransactions(sessionStorage.getItem("id")).subscribe(res => {
       this.transactionService.transactionArray = res as Transaction[];
     })
   }
@@ -89,7 +87,7 @@ export class AccountsComponent implements OnInit {
           this.getTransactions();
         })
         this.accountService.selectedAccount = account; //ACTUALIZA LA LISTA
-        this.accountService.putAccount(account, this.loginComponent.getIdentification()).subscribe(res => { //ACTUALIZA SALDO EN LA BASE DE DATOS
+        this.accountService.putAccount(account,sessionStorage.getItem("id")).subscribe(res => { //ACTUALIZA SALDO EN LA BASE DE DATOS
           this.resetForm(form);//REINICIA EL FORMULARIO
           M.toast({ html: 'INGRESO REALIZADO EXITOSAMENTE' });
           this.getAccounts();

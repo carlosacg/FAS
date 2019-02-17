@@ -46,15 +46,15 @@ export class LoginComponent implements OnInit {
         user.email = userData.email;
         user.user_name = userData.name;
         user.picture = userData.image;
-     //   token = userData.idToken;
         name = (userData.name.split(' ')[1]+ userData.name.split(' ')[2]);
         id = userData.id;
         image =  user.picture;
-        console.log(name);
+        sessionStorage.setItem("name", name);
+        sessionStorage.setItem("picture", image);
+        sessionStorage.setItem("id", id);
         isDone = true
           this.usersService.postUser(user).subscribe(res => {
            M.toast({ html: 'Usuario Creado satisfactoriamente' });
-           //this.sendToRestApiMethod(userData.idToken);
            this.getUsers();
             isDone = true
             return isDone;
@@ -66,18 +66,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  getName() {
-    console.log(name)
-    return name;
-  }
-  getIdentification() {
-    console.log(id)
-    return id;
-  }
-  getImageProfile() {
-    console.log(image)
-    return image;
-  }
+
   getUsers() {//OBTENGO LA LISTA DE USUARIOS
     this.usersService.getUsers().subscribe(res => {
       this.usersService.userArray = res as User[];

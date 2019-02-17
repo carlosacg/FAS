@@ -37,7 +37,7 @@ export class BudgetComponent implements OnInit {
   }
 
   addBudget(form?: NgForm) {//AGREGAR CUENTA
-    this.budgetService.postBudget(form.value, this.loginComponent.getIdentification()).subscribe(res => {
+    this.budgetService.postBudget(form.value, sessionStorage.getItem("id")).subscribe(res => {
       this.resetForm(form);
       M.toast({ html: 'Presupuesto Creada satisfactoriamente' });
       this.getBudgets();
@@ -63,26 +63,26 @@ export class BudgetComponent implements OnInit {
   }
 
   getBudgets() {//OBTENGO LA LISTA DE USUARIOS
-    this.budgetService.getBudgets(this.loginComponent.getIdentification()).subscribe(res => {
+    this.budgetService.getBudgets(sessionStorage.getItem("id")).subscribe(res => {
       this.budgetService.budgetArray = res as Budget[];
     })
   }
   getAccounts() {//OBTENGO LA LISTA DE USUARIOS
-    this.accountService.getAccounts(this.loginComponent.getIdentification()).subscribe(res => {
+    this.accountService.getAccounts(sessionStorage.getItem("id")).subscribe(res => {
       this.accountService.accountArray = res as Account[];
     })
   }
 
 
   getItems() {//OBTENGO LA LISTA DE USUARIOS
-    this.itemService.getItems(this.loginComponent.getIdentification()).subscribe(res => {
+    this.itemService.getItems(sessionStorage.getItem("id")).subscribe(res => {
       this.itemService.itemArray = res as Item[];
     })
   }
 
 
   getTransactions() {//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res => {
+    this.transactionService.getTransactions(sessionStorage.getItem("id")).subscribe(res => {
       this.transactionService.transactionArray = res as Transaction[];
     })
   }

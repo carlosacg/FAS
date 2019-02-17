@@ -36,14 +36,14 @@ export class InitComponent implements OnInit {
 
   /**OBTENCION DE DATOS */
   public getAccounts() {//OBTENGO LA LISTA DE CUENTAS
-    this.accountService.getAccounts(this.loginComponent.getIdentification()).subscribe(res => {
+    this.accountService.getAccounts(sessionStorage.getItem("id")).subscribe(res => {
       let accounts = this.accountService.accountArray = res as Account[];
       this.getDataDonaSaldo(accounts);
     })
   }
 
   public getItems() {//OBTENGO LA LISTA DE USUARIOS
-    this.itemService.getItems(this.loginComponent.getIdentification()).subscribe(res => {
+    this.itemService.getItems(sessionStorage.getItem("id")).subscribe(res => {
       let items = this.itemService.itemArray = res as Item[];
       this.getDataDonaItem(items);
     })
@@ -52,7 +52,7 @@ export class InitComponent implements OnInit {
 
 
   public getTransactions() {//OBTENGO LA LISTA DE transactions
-    this.transactionService.getTransactions(this.loginComponent.getIdentification()).subscribe(res => {
+    this.transactionService.getTransactions(sessionStorage.getItem("id")).subscribe(res => {
       let transactions = this.transactionService.transactionArray = res as Transaction[];
       this.getDataBar(transactions);
 

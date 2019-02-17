@@ -16,13 +16,10 @@ export class NavigationComponent implements OnInit {
 
   constructor( public loginComponent: LoginComponent) { }
   
-  name: string = this.loginComponent.getName();
-  picture: string = this.loginComponent.getImageProfile();
+  name: string = sessionStorage.getItem("name");
+  picture: string = sessionStorage.getItem("picture");
 
   ngOnInit() {
-    this.loginComponent.getIdentification();
-    this.loginComponent.getName();
-    this.loginComponent.getImageProfile();
   }
 
 

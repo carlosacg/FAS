@@ -15,12 +15,11 @@ export class TransactionsService {
   }
 
   getTransactions(id: string) {//LEER
-    return this.http.get(this.URL_API);
-    //return this.http.get(this.URL_API+ "/" + id);
+    return this.http.get(this.URL_API+ "/" + sessionStorage.getItem("id"));
   }
 
   postEgress(transaction: Transaction, number_item: string, descriptions: string) {//CREAR
-    var f = new Date();
+    var f = new Date(); 
     let subcadena = transaction.account_number.substr(1, 1);
     transaction.account_number = subcadena;
     transaction.item_number = number_item;

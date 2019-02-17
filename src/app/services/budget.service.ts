@@ -15,8 +15,7 @@ export class BudgetService {
   }
 
   getBudgets(id: string) {//LEER
-    return this.http.get(this.URL_API);
-    //return this.http.get(this.URL_API + "/" + id);
+    return this.http.get(this.URL_API + "/" + sessionStorage.getItem("id"));
   }
 
   postBudget(budget: Budget, id: string) {//CREAR
