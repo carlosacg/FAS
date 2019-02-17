@@ -13,11 +13,15 @@
           <h3>Finance Administrative System</h3>
           <img src="../assets/images/FASG.png" class="image" alt="Logo FAS" >
         </div>
-        <button class="w3-button w3-padding-16 w3-gray w3-center" (click)="socialSignIn('facebook')">Ingresar con Facebook</button>
         <br>
-        <br>
-        <button class="w3-button w3-padding-16 w3-gray w3-center" (click)="socialSignIn('google')">Ingresar con Google</button>
-        <br>
+        <div class="w3-row-padding">
+          <a class="fb btn" (click)="socialSignIn('facebook')">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+           </a>
+          <a class="google btn" (click)="socialSignIn('google')">
+            <i class="fa fa-google fa-fw"></i> Login with Google+
+          </a>
+        </div>        
         <br>
       </div>
     </div>
