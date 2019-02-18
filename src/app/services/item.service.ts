@@ -21,18 +21,22 @@ export class ItemService {
 
   postItem(item: Item) {//CREAR
     item.spent_balance = '0';
-    let subcadena = item.budget_number.substr(1, 1);
+    let subcadena;
 
-    if (item.budget_number.substr(1, 2) == ' ') {
-      subcadena = item.budget_number.substr(1, 1);
+    if (item.budget_number.substr(2, 1) == ' ') {
+      subcadena = item.budget_number.substr(1, 1);//UN DIGITO
     }
-    if (item.budget_number.substr(1, 3) == ' ') {
-      subcadena = item.budget_number.substr(1, 2);
+    if (item.budget_number.substr(3, 1) == ' ') {
+      subcadena = item.budget_number.substr(1, 2);//DOS DIGITOS
     }
-    if (item.budget_number.substr(1, 4) == ' ') {
-      subcadena = item.budget_number.substr(1, 3);
+    if (item.budget_number.substr(4, 1) == ' ') {
+      subcadena = item.budget_number.substr(1, 3);//TRES DIGITOS
+    }
+    if (item.budget_number.substr(5, 1) == ' ') {
+      subcadena = item.budget_number.substr(1, 4);//CUATRO DIGITOS
     }
     item.budget_number = subcadena;
+    console.log(item);
     return this.http.post(this.URL_API, item);
   }
 

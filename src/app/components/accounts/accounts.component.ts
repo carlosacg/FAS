@@ -23,14 +23,13 @@ export class AccountsComponent implements OnInit {
 
   addAccount(form?: NgForm) {//AGREGAR CUENTA
     if (form.value.account_number) {//SI EL INPUT ID HIDDEN ESTA LLENO ACTUALIZO EL CUENTA
+      console.log(form.value);
       this.accountService.putAccount(form.value, sessionStorage.getItem("id")).subscribe(res => {
         this.resetForm(form);
         M.toast({ html: 'Cuenta Actualizado satisfactoriamente' });
         this.getAccounts();
       });
     } else {//SI NO HAY ID, INSERTO EL CUENTA
-      //form.value.identication=this.loginComponent.getIdentification(); //INSERTO EL ID DEL USUARIO LOGUEADO
-      //console.log(form.value);
       this.accountService.postAccount(form.value, sessionStorage.getItem("id")).subscribe(res => {
         this.resetForm(form);
         M.toast({ html: 'Cuenta Creada satisfactoriamente' });

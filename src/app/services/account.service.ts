@@ -26,6 +26,7 @@ export class AccountService {
   }
 
   putAccount(account: Account, id: string) {//ACTUALIZAR
+    console.log(account);
     return this.http.put(this.URL_API + "/" + account.account_number, account);
   }
 

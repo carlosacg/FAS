@@ -20,10 +20,25 @@ export class TransactionsService {
 
   postEgress(transaction: Transaction, number_item: string, descriptions: string) {//CREAR
     var f = new Date(); 
-    let subcadena = transaction.account_number.substr(1, 1);
+    let subcadena;
+
+    if (transaction.account_number.substr(2, 1) == ' ') {
+      subcadena = transaction.account_number.substr(1, 1);//UN DIGITO
+    }
+    if (transaction.account_number.substr(3, 1) == ' ') {
+      subcadena = transaction.account_number.substr(1, 2);//DOS DIGITOS
+    }
+    if (transaction.account_number.substr(4, 1) == ' ') {
+      subcadena = transaction.account_number.substr(1, 3);//TRES DIGITOS
+    }
+    if (transaction.account_number.substr(5, 1) == ' ') {
+      subcadena = transaction.account_number.substr(1, 4);//CUATRO DIGITOS
+    }
+    
     transaction.account_number = subcadena;
     transaction.item_number = number_item;
     transaction.description = descriptions;
+    console.log(transaction);
     return this.http.post(this.URL_API, transaction);
   }
 
