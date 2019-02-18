@@ -1,42 +1,43 @@
-.w3-bar .w3-top .w3-padding{
-    z-index:4;
-    font-family: sans-serif, Helvetica;
-} 
-#mySidebar{
-    z-index:3;
-    width:200px;
-    font-family: sans-serif, Helvetica;
-    margin-top: 10px;
-}
-.w3-main{
-    margin-top:50px;
-    font-family: sans-serif, Helvetica;
-}
-.w3-bar-item .w3-button .w3-light-gray .w3-right{
-    padding: 8px 8px;
-    border-radius: 5px;
-    Position:Absolute; 
-    left:92%; 
-    top:15%;
-    font-family: sans-serif, Helvetica;
-}
-.w3-overlay .w3-hide-large .w3-animate-opacity{
-    cursor:pointer;
-    font-family: sans-serif, Helvetica;
-}
-.profile{
-    margin-left: 50px;
-}
-a{
+a {
     text-decoration: none;
 }
-.image{
-    width:65px;
+
+.image {
+    width: 65px;
+}
+
+#mySidebar {
+    font-family: sans-serif, Helvetica;
+    margin-top: 10px;
+    width: 200px;
+    z-index: 3;
 }
     
-    
-    
-    
-    
-    
+.profile {
+    margin-left: 50px;
+} 
+
+.w3-animate-opacity .w3-hide-large .w3-overlay  {
+    cursor: pointer;
+    font-family: sans-serif, Helvetica;
+}
+
+.w3-bar .w3-padding .w3-top {
+    font-family: sans-serif, Helvetica;
+    z-index: 4;
+} 
+
+.w3-bar-item .w3-button .w3-light-gray .w3-right {
+    border-radius: 5px;
+    font-family: sans-serif, Helvetica;
+    left: 92%; 
+    padding: 8px 8px;
+    Position: Absolute; 
+    top: 15%;
+}
+
+.w3-main {
+    font-family: sans-serif, Helvetica;
+    margin-top: 50px;
+}
     

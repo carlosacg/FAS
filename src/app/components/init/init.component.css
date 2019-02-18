@@ -1,40 +1,43 @@
-.w3-main{
-    margin-left:200px;
-    margin-top:50px;
+.bar {
+    display: block;
+}
+
+#bars,
+#donut,
+#lines {
+    width: 100%;    
+}
+
+button {
+    border: 0;
+    margin-right: 5px;
+    outline: 0 none;
+}
+
+header {
     font-family: sans-serif, Helvetica;
 }
-.w3-container{
-    padding-top:20px;
-    font-family: sans-serif, Helvetica;
-}
-i{
+
+i {
     width: 30px;
 }
-table{
-    width: 50%;
-    font-family: sans-serif, Helvetica;
-}
-button {
-    border:0;
-    outline:0 none;
-    margin-right: 5px;
-}
-header{
-    font-family: sans-serif, Helvetica;
-}
-#donut{
-    width: 100%;
-    
-}
-#lines{
-    width: 100%;
-}
-#bars{
-    width: 100%;
-}
-.separators{
+
+.separators {
     border-top: 1px solid rgb(52, 109, 141);
 }
-.bar{
-    display: block;
+
+table {
+    font-family: sans-serif, Helvetica;
+    width: 50%;
+}
+
+.w3-main {
+    font-family: sans-serif, Helvetica;
+    margin-left: 200px;
+    margin-top: 50px;
+}
+
+.w3-container {
+    font-family: sans-serif, Helvetica;
+    padding-top: 20px;
 }
