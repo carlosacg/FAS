@@ -61,10 +61,16 @@
       <br>
       <div class="w3-show-inline-block">
         <div class="w3-bar">
-          <button class="w3-button w3-padding-16 w3-blue-gray w3-circle" (click)="redirect()">
+          <button class="w3-button w3-padding-16 w3-blue-gray w3-circle" 
+                  (click)="redirect()"
+                  data-toggle="tooltip" 
+              		title="Guardar cuenta">
             <i class="fa fa-save"></i>
           </button>
-          <button class="w3-button w3-blue-gray w3-padding-16 w3-circle" (click)="resetForm(accountForm)">
+          <button class="w3-button w3-blue-gray w3-padding-16 w3-circle" 
+                  (click)="resetForm(accountForm)"
+                  data-toggle="tooltip" 
+              		title="Limpiar datos">
             <i class="fa fa-repeat"></i>
           </button>
         </div>
@@ -101,13 +107,19 @@
           </tr>
           <tr>
             <td>
-              <a (click)="updateAccount(account)">
+              <a (click)="updateAccount(account)"
+                  data-toggle="tooltip" 
+              		title="Editar cuenta">
                 <i class="fa fa-pencil"></i>
               </a>
-              <a (click)="deleteAccount(account.account_number)">
+              <a (click)="deleteAccount(account.account_number)"
+                  data-toggle="tooltip" 
+              		title="Eliminar cuenta">
                 <i class="fa fa-trash"></i>
               </a>
-              <a (click)="insertIncome(account)">
+              <a (click)="insertIncome(account)"
+                  data-toggle="tooltip" 
+              		title="Insertar monto">
                 <i class="fa fa-usd"></i>
               </a>
             </td>

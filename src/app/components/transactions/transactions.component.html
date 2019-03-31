@@ -11,13 +11,6 @@
     <!--transaction information table-->
     <div class="w3-row-padding w3-margin-bottom">
         <div class="w3-container">
-            <h6>
-                <strong>FECHA INICIAL: </strong> //
-                <strong> FECHA FINALIZACIÓN: </strong>
-                <button class="w3-button w3-padding-small w3-blue-grey w3-circle">
-                    <i class="fa fa-search"></i>
-                </button>
-            </h6>
             <table class="w3-table-all w3-hoverable ">
                 <thead>
                     <tr class="w3-blue-gray">
@@ -40,19 +33,26 @@
                     <td>
                         <button onclick="document.getElementById('id01').style.display='block'" 
                                 (click)="updateOverFlowTransactions(transactions)"
-                                class="w3-button w3-padding-small w3-circle">
+                                class="w3-button w3-padding-small w3-circle"
+                                data-toggle="tooltip" 
+              				    title="Ver transacción">
                             <i class="fa fa-eye"></i>
                         </button>
                     </td>
                     <td>
                         <button onclick="document.getElementById('id02').style.display='block'" 
                                 (click)="updateOverFlowTransactions(transactions)" 
-                                class="w3-button w3-padding-small w3-circle">
+                                class="w3-button w3-padding-small w3-circle"
+                                data-toggle="tooltip" 
+              				    title="Editar transacción">
                             <i class="fa fa-pencil" ></i>
                         </button>
                     </td>
                     <td>
-                        <button class="w3-button w3-padding-small w3-circle" (click)="deleteTransaction(transactions.transaction_number)">
+                        <button class="w3-button w3-padding-small w3-circle" 
+                                (click)="deleteTransaction(transactions.transaction_number)"
+                                data-toggle="tooltip" 
+              				    title="Eliminar transacción">
                             <i class="fa fa-trash"></i>
                         </button>
                     </td>
@@ -140,10 +140,16 @@
                             <br>
                             <div class="w3-show-inline-block">
                                 <div class="w3-bar">
-                                    <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()">
+                                    <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" 
+                                            (click)="redirect()"
+                                            data-toggle="tooltip" 
+              				                title="Guardar cambios">
                                         <i class="fa fa-save"></i>
                                     </button>
-                                    <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(transactionForm)">
+                                    <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" 
+                                            (click)="resetForm(transactionForm)"
+                                            data-toggle="tooltip" 
+              				                title="Limpiar datos">
                                         <i class="fa fa-repeat"></i>
                                     </button>
                                 </div>
