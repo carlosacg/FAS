@@ -46,10 +46,16 @@
         <br>
         <div class="w3-show-inline-block">
           <div class="w3-bar">
-            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()">
+            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" 
+                    (click)="redirect()"
+                    data-toggle="tooltip" 
+              			title="Guardar presupuesto">
               <i class="fa fa-save"></i>
             </button>
-            <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)">
+            <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" 
+                    (click)="resetForm(budgetForm)"
+                    data-toggle="tooltip" 
+              			title="Limpiar datos">
               <i class="fa fa-repeat"></i>
             </button>
           </div>
@@ -105,7 +111,10 @@
       <div class="w3-row-padding">
         <div class="w3-row-padding">
           <a>
-            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle w3-right" (click)="calculateTotal()">
+            <button class="w3-button w3-padding-16 w3-blue-grey w3-circle w3-right" 
+                    (click)="calculateTotal()"
+                    data-toggle="tooltip" 
+              			title="Calcular valores">
               <i class="fa fa-calculator"></i>
             </button>
           </a>
@@ -142,14 +151,19 @@
             <td *ngIf="budget.budget_number==item.budget_number">{{item.spent_balance | currency:'USD'}}</td>
             <td *ngIf="budget.budget_number==item.budget_number">{{item.planned_balance | currency:'USD'}}</td>
             <td *ngIf="budget.budget_number==item.budget_number">
-              <button class="w3-button w3-padding-small w3-circle" (click)="deleteItem(item.item_number)">
+              <button class="w3-button w3-padding-small w3-circle" 
+                      (click)="deleteItem(item.item_number)"
+                      data-toggle="tooltip" 
+              				title="Eliminar ítem">
                 <i class="fa fa-trash"></i>
               </button>
             </td>
             <td *ngIf="budget.budget_number==item.budget_number">
               <button onclick="document.getElementById('id01').style.display='block'" 
                       class="w3-button w3-padding-small w3-circle" 
-                      (click)="getNumberItem(item)">
+                      (click)="getNumberItem(item)"
+                      data-toggle="tooltip" 
+              				title="Añadir egreso">
                 <i class="fa fa-money"></i>
               </button>
             </td>
@@ -158,7 +172,9 @@
             <td>
               <a>
                 <button onclick="document.getElementById('id02').style.display='block'" 
-                        class="w3-button w3-padding-16 w3-blue-grey w3-circle">
+                        class="w3-button w3-padding-16 w3-blue-grey w3-circle"
+                        data-toggle="tooltip" 
+              				  title="Añadir ítem">
                   <i class="fa fa-plus"></i>
                 </button>
               </a>
@@ -166,7 +182,9 @@
             <td>
               <a>
                 <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" 
-                        (click)="deleteBudget(budget.budget_number)">
+                        (click)="deleteBudget(budget.budget_number)"
+                        data-toggle="tooltip" 
+              				  title="Eliminar presupuesto">
                   <i class="fa fa-trash"></i>
                 </button>
               </a>
@@ -212,10 +230,16 @@
                   <br>
                   <div class="w3-show-inline-block">
                     <div class="w3-bar">
-                      <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()">
+                      <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" 
+                              (click)="redirect()"
+                              data-toggle="tooltip" 
+              				        title="Guardar egreso">
                         <i class="fa fa-save"></i>
                       </button>
-                      <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)">
+                      <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" 
+                              (click)="resetForm(budgetForm)"
+                              data-toggle="tooltip" 
+              				        title="Limpiar datos">
                         <i class="fa fa-repeat"></i>
                       </button>
                     </div>
@@ -265,10 +289,16 @@
                   <br>
                   <div class="w3-show-inline-block">
                     <div class="w3-bar">
-                      <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" (click)="redirect()">
+                      <button class="w3-button w3-padding-16 w3-blue-grey w3-circle" 
+                              (click)="redirect()"
+                              data-toggle="tooltip" 
+              				        title="Guardar ítem">
                         <i class="fa fa-save"></i>
                       </button>
-                      <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" (click)="resetForm(budgetForm)">
+                      <button class="w3-button w3-blue-grey w3-padding-16 w3-circle" 
+                              (click)="resetForm(budgetForm)"
+                              data-toggle="tooltip" 
+              				        title="Limpiar datos">
                         <i class="fa fa-repeat"></i>
                       </button>
                     </div>
