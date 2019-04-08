@@ -16,6 +16,7 @@
 }
 
 .card {
+  margin-top: 100px;
   width: 105%;
 }
 
@@ -40,5 +41,6 @@ h3 {
 }
 
 .image {
-  width: 80%;
+  height: 200%;
+  width: 100%;
 }
